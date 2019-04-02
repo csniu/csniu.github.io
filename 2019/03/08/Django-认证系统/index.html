@@ -103,14 +103,15 @@
 
 
   <meta name="description" content="用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。 注册就是在数据库中创建一条数据。但是要满足唯一性。  # 当然上面说到的都是最基本的过程，这中间还会有一些数据的检验与验证等等操作。 # 在 Django 中">
+<meta name="keywords" content="Python,Django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django Auth 认证系统">
-<meta property="og:url" content="http://yoursite.com/2019/03/08/Django-Auth-认证系统/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/08/Django-认证系统/index.html">
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。 注册就是在数据库中创建一条数据。但是要满足唯一性。  # 当然上面说到的都是最基本的过程，这中间还会有一些数据的检验与验证等等操作。 # 在 Django 中">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/django/django-auth.png">
-<meta property="og:updated_time" content="2019-04-02T02:33:55.232Z">
+<meta property="og:updated_time" content="2019-04-02T09:13:23.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django Auth 认证系统">
 <meta name="twitter:description" content="用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。 注册就是在数据库中创建一条数据。但是要满足唯一性。  # 当然上面说到的都是最基本的过程，这中间还会有一些数据的检验与验证等等操作。 # 在 Django 中">
@@ -121,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/08/Django-Auth-认证系统/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/08/Django-认证系统/">
 
 
 
@@ -242,7 +243,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">0</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span>
       </a>
 </li>
 
@@ -253,7 +254,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span>
       </a>
 </li>
 
@@ -318,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/Django-Auth-认证系统/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/Django-认证系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -368,7 +369,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -383,8 +391,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/08/Django-Auth-认证系统/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/03/08/Django-Auth-认证系统/" itemprop="commentsCount"></span>
+                <a href="/2019/03/08/Django-认证系统/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/03/08/Django-认证系统/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -681,7 +689,7 @@
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/03/08/Django-Auth-认证系统/" title="Django Auth 认证系统">http://yoursite.com/2019/03/08/Django-Auth-认证系统/</a>
+    <a href="http://yoursite.com/2019/03/08/Django-认证系统/" title="Django Auth 认证系统">http://yoursite.com/2019/03/08/Django-认证系统/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -691,6 +699,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Django/" rel="tag"># Django</a>
+          
+        </div>
       
 
       
@@ -811,12 +827,53 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
             </nav>
           

@@ -103,13 +103,14 @@
 
 
   <meta name="description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
+<meta name="keywords" content="Python,Django,Form">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django form">
-<meta property="og:url" content="http://yoursite.com/2019/03/11/Django-form/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/11/Django的表单/index.html">
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-02T02:27:53.296Z">
+<meta property="og:updated_time" content="2019-04-02T09:11:13.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django form">
 <meta name="twitter:description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
@@ -119,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/11/Django-form/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/11/Django的表单/">
 
 
 
@@ -240,7 +241,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">0</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span>
       </a>
 </li>
 
@@ -251,7 +252,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span>
       </a>
 </li>
 
@@ -316,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/Django-form/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/Django的表单/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -366,7 +367,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -381,8 +389,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/11/Django-form/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/03/11/Django-form/" itemprop="commentsCount"></span>
+                <a href="/2019/03/11/Django的表单/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/03/11/Django的表单/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -507,7 +515,7 @@
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/03/11/Django-form/" title="Django form">http://yoursite.com/2019/03/11/Django-form/</a>
+    <a href="http://yoursite.com/2019/03/11/Django的表单/" title="Django form">http://yoursite.com/2019/03/11/Django的表单/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -517,6 +525,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Django/" rel="tag"># Django</a>
+          
+            <a href="/tags/Form/" rel="tag"># Form</a>
+          
+        </div>
       
 
       
@@ -537,7 +555,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/14/Python-日志/" rel="prev" title="Python 日志">
+              <a href="/2019/03/14/日志记录/" rel="prev" title="Python 日志">
                 Python 日志 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -637,12 +655,53 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
             </nav>
           

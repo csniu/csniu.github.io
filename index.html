@@ -240,7 +240,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">0</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span>
       </a>
 </li>
 
@@ -251,7 +251,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span>
       </a>
 </li>
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/Blog-Hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/个人博客搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -333,7 +333,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/01/Blog-Hexo/" itemprop="url">Blog Hexo</a></h2>
+                <a class="post-title-link" href="/2019/04/01/个人博客搭建/" itemprop="url">Blog Hexo</a></h2>
         
 
         <div class="post-meta">
@@ -366,7 +366,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
 
                 
                 
@@ -401,18 +401,17 @@
 
       
         
-          
-            <h2 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h2><p>搭建个人博客因该是很多的需要，尤其是程序员！</p>
+          <h2 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h2><p>搭建个人博客因该是很多人的需要，尤其是程序员！</p>
 <p>但是怎么搭建，搭建成什么样的每个人都会有不同的选择。</p>
 <p>根据实现的技术大致有以下几种方案：</p>
 <ul>
 <li><p>个人主页</p>
-<p>有很多的平台都可以注册。优缺点就不言而喻了。</p>
+<p>有很多的平台都可以注册。优缺点就大家各自体会吧。</p>
 </li>
 <li><p>静态网站生成技术</p>
-<p>这个就有一些技术门槛了，要有一些计算机的基础才行了。基本原理就是通过编写一些静态文件（Markdown），再通过编译器自动编译成展示的页面。主流的有 hexo、hugo、jekyll等。</p>
+<p>这个就有一些技术门槛了，要有一些计算机的基础才行了。基本原理就是通过编写一些静态文件（Markdown），再通过编译器自动编译成要展示的页面。主流的有 hexo、hugo、jekyll等。</p>
 <p>优点：操作简单、足够定制化。</p>
-<p>缺点：有一定的技术门槛，是静态的。（动态的部分要通过第三方实现）</p>
+<p>缺点：有一定的技术门槛，是静态的。</p>
 </li>
 <li><p>内容管理系统</p>
 <p>这种技术要求就更高了，要涉及到服务器、数据库、域名等等。也就是建站了。如 Wordpress 等</p>
@@ -420,173 +419,14 @@
 <p>优点：完全定制化。</p>
 </li>
 </ul>
-<p># 更加详细的比较请参考<a href="https://segmentfault.com/a/1190000011661576" target="_blank" rel="noopener">这里</a>。</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p><strong><em>说在前面，本机环境 window10， 64-bit，命令行操作默认是在 Git Bash 下除非特别说明。</em></strong></p>
-<h3 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h3><hr>
-<h4 id="一、搭建环境"><a href="#一、搭建环境" class="headerlink" title="一、搭建环境"></a>一、搭建环境</h4><ul>
-<li><p>安装 Git</p>
-</li>
-<li><p>安装 Node.js</p>
-<ul>
-<li>下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></li>
-<li>默认会添加到环境变量中好安装 npm。</li>
-<li>测试：<code>node -v</code> 、 <code>npm -v</code></li>
-</ul>
-</li>
-<li><p>安装 Hexo</p>
-<ul>
-<li><code>npm install -g hexo-cli</code></li>
-<li>测试：<code>hexo -v</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="二、初始化"><a href="#二、初始化" class="headerlink" title="二、初始化"></a>二、初始化</h4><ul>
-<li><p>创建项目文件夹</p>
-<ul>
-<li><code>mkdir myblog</code></li>
-</ul>
-</li>
-<li><p>初始化</p>
-<ul>
-<li><code>hexo init myblog</code></li>
-<li>会自动在 myblog 文件夹中生成必要的文件。</li>
-</ul>
-</li>
-<li><p>目录介绍</p>
-<ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>_config.yml：配置文件</p>
-<p>packge.json：应用程序的信息</p>
-<p>scaffolds：模板文件夹</p>
-<p>source：资源文件夹</p>
-<p>themex：主题文件夹</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h4><p>网站的大部分配置都可以在 _config.yml 中设置。</p>
-<p>详细介绍请移步<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">官方文档</a>，这里就不过多介绍。</p>
-<h4 id="四、小试牛刀"><a href="#四、小试牛刀" class="headerlink" title="四、小试牛刀"></a>四、小试牛刀</h4><p>运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site  <span class="comment"># 新建一篇文章</span></span><br><span class="line">hexo g  <span class="comment"># 解析成 Html 文件</span></span><br><span class="line">hexo s  <span class="comment"># 启动服务器</span></span><br></pre></td></tr></table></figure>
-<p>这个时候打开浏览器访问：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>  ，就能看到你博客了。</p>
-<blockquote>
-<p>会生成 db.json 和 public 文件夹</p>
-<p>db.json: 缓存文件</p>
-<p>public：生成的静态文件地址（Html 等前文件，真正展示的网页文件）</p>
-</blockquote>
-<h4 id="五、运行原理及流程"><a href="#五、运行原理及流程" class="headerlink" title="五、运行原理及流程"></a>五、运行原理及流程</h4><p>操作流程一般是：1.创建 md 文件。2.渲染成 html 文件。3.发布</p>
-<p><strong>1.</strong>  <code>hexo new [layout] &lt;title&gt;</code></p>
-<blockquote>
-<ul>
-<li><p>默认使用配置文件中的：<code>default_layout</code> </p>
-</li>
-<li><p>首先根据 layout 参数到 scaffolsd 文件夹下查找对应的模板文件。</p>
-</li>
-<li><p>layout 参数主要用来查找模板得到 Front-matter，和判断文件要保存的位置</p>
-</li>
-<li><p>Front-matter，如下</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;   </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<hr>
-<blockquote>
-<p>title: Hello World</p>
-<h2 id="date-2013-7-13-20-46-25"><a href="#date-2013-7-13-20-46-25" class="headerlink" title="date: 2013/7/13 20:46:25"></a>date: 2013/7/13 20:46:25</h2></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;  - 记录一些必要信息，标题、时间、分类、标签等，详细参数[参见文档](https://hexo.io/zh-cn/docs/front-matter)</span><br><span class="line">&gt; - hexo 提供了三种默认的布局：post(一篇文字)、page（一个文件夹）、draft。保存地址如下：</span><br><span class="line">&gt;  - post: source/_posts</span><br><span class="line">&gt;  - page: source</span><br><span class="line">&gt;  - draft: source/_drafts</span><br><span class="line">&gt;  - 其他所有的布局都和 post 一样。</span><br><span class="line">&gt;  - 创建一个 page 就是对应一个导航地址（如 home， tags 等）</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<ul>
-<li>创建 md 文件</li>
-<li>默认以“标题 ”为文件名。</li>
-<li>更改 new_post_name ，修改文件名规则，如  <code>:year-:month-:day-:title.md</code></li>
-</ul>
-</blockquote>
-<p><strong>2.</strong> <code>hexo generate</code></p>
-<blockquote>
-<ul>
-<li>查找文件<ul>
-<li>忽略 source 下所有以 “_”开头的文件/文件夹，除了 _port</li>
-<li>md 文件将被解析，其他文件会被直接拷贝</li>
-</ul>
-</li>
-<li>解析 md 文件。<ul>
-<li>根据当前的主题和一定的解析规则，将 md 文件解析成 html 文件用于展示。</li>
-<li>解析的文件和拷贝的文件被保存在 public 中。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p><strong>3.</strong> <code>hexo deploy</code></p>
-<blockquote>
-<ul>
-<li>就是将 public 文件夹下的文件推送到远端。</li>
-<li>其他文件并不会被推送。</li>
-</ul>
-</blockquote>
-<h3 id="主题篇"><a href="#主题篇" class="headerlink" title="主题篇"></a>主题篇</h3><hr>
-<h4 id="一、命令"><a href="#一、命令" class="headerlink" title="一、命令"></a>一、命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">hexo -help</span><br><span class="line"></span><br><span class="line">hexo init [folder]  # 初始化，可指定文件夹，默认当前路径</span><br><span class="line"></span><br><span class="line">hexo new [layout] &lt;title&gt;  # 新建一片文章，可指定 layout,默认使用配置文件中的默认值</span><br><span class="line"></span><br><span class="line">hexo generate # 生成静态文件，可选参数 -d(--deploy):生成后立即部署，-w(--watch):监视文件变化</span><br><span class="line"></span><br><span class="line">hexo publish [layout] &lt;filename&gt;  # 发表草稿</span><br><span class="line"></span><br><span class="line">hexo server # 启动服务器，默认 4000端口。可选参数：-p(--port):端口号，-s(--static):只使用静态文件，-l(--log):启动日志记录；-i：指定ip地址</span><br><span class="line"></span><br><span class="line">hexo deploy  # 部署，可选 -g(--generate):部署之前生成静态文件</span><br><span class="line"></span><br><span class="line">hexo render &lt;file1&gt; [file2] ...  # 渲染文件，可选 -o(--output):输出路径</span><br><span class="line"></span><br><span class="line">hexo migrate &lt;type&gt;  # 从其他博客系统迁移内容</span><br><span class="line"></span><br><span class="line">hexo clean  # 清除缓存文件（db.json）和已生成的静态文件（public）</span><br><span class="line"></span><br><span class="line">hexo list  </span><br><span class="line"></span><br><span class="line">hexo version</span><br><span class="line"></span><br><span class="line"># 以上命令都有以下可选参数</span><br><span class="line">hexo --safe  # 安全模式，不使用插件和脚本</span><br><span class="line">hexo --debug  # 调试模式，在终端和debug.log 中记录日志</span><br><span class="line">hexo --config custom.yml  # 自定义配置文件路径</span><br><span class="line">hexo --draft  # 显示草稿。（source/_drafts）</span><br><span class="line">hexo --cwd /path/to  # 自定义当前工作路径</span><br></pre></td></tr></table></figure>
-<p># generate 简写 g；deploy–d;watch–w;</p>
-<h4 id="二、部署到远端服务器"><a href="#二、部署到远端服务器" class="headerlink" title="二、部署到远端服务器"></a>二、部署到远端服务器</h4><p>在基础篇中都是部署在本地的，建博客当然是要让更多人看到我们的文章了，明显在本地是不行的。</p>
-<p>hexo 提供了一键部署的功能 <code>hexo deploy</code>。</p>
-<p>但是在云溪运行前要现在配置文件在配置好远端的信息才性。</p>
-<p>以下以配置git 的远程仓库为例（如 gitbub）:</p>
-<p>安装部署git插件：<code>npm install hexo-deployer-git --save</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: &lt;repository url&gt; #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io.git</span><br><span class="line">  branch: [branch] #published</span><br><span class="line">  message: [message]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>type:  类型，当然不止 git 一种了</p>
-<p>repo：远端仓库地址</p>
-<p>branch：分支，使用 gitbub 时系统会自动检测</p>
-<p>massage：提交信息</p>
-</blockquote>
-<p><strong>也可以同时配置多个远端。</strong></p>
-<p><strong>更直接的把 public 文件夹直接拷贝走。</strong></p>
-<h4 id="三、主题"><a href="#三、主题" class="headerlink" title="三、主题"></a>三、主题</h4><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
-<li>所有主题都存放在根目录下的 themes 下。</li>
-<li>下载主题：<code>git clone https://github.com/iissnan/hexo-theme-next.git（主题的地址）</code></li>
-<li>官方主题列表：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></li>
-<li>一个主题就 themes 下的一个文件夹，一般结构如下：<ul>
-<li>_config.yml：主题配置文件</li>
-<li>languages：语言文件</li>
-<li>layout：布局文件，存放主题的模板文件。决定网页的呈现方式。本质就是带变量的 html 文件，一般包括如下<ul>
-<li>index: 首页</li>
-<li>post：文章详情页</li>
-<li>page：导航标签页</li>
-<li>archive：归档页</li>
-<li>category：类别页</li>
-<li>tag：标签页</li>
-<li>layout：网页的整个布局，动态的由以上文件组成</li>
-</ul>
-</li>
-<li>scripts：脚本文件夹</li>
-<li>source：资源文件夹</li>
-</ul>
-</li>
-</ul>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><ul>
-<li>配置配置文件中的theme字段信息即可</li>
-</ul>
-<h4 id="四、异步问题"><a href="#四、异步问题" class="headerlink" title="四、异步问题"></a>四、异步问题</h4><ul>
-<li><p>本地是配置好了，可以写作发布。但是如果回到家使用其他电脑要怎么办昵？</p>
-<ul>
-<li>办法一：正常编写，但不发布。</li>
-<li>办法二：创建一个相同的开发环境。部署到远端只是把 public 推送到了远端，替他必要的文件并没有推送，这就需要其他的方法备份其他文件，从而达到复制环境的目的了。</li>
-</ul>
-</li>
-</ul>
-<h4 id="五、其他"><a href="#五、其他" class="headerlink" title="五、其他"></a>五、其他</h4><ul>
-<li>在实际使用中每个人都有一些不同的个性化需求。如 评论系统 等。</li>
-<li>遇到想要的功能 Google 一下基本都会有的。</li>
-<li>我的学习 hexo 的原则就是理解其运行原理即可，不懂的、想用的可以自行 Google。太深入的问题就没有必要去深究了。否则就违背了初衷。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a>，更加详细的介绍。</p>
-<p><a href="https://www.jianshu.com/p/5a1e6d8c83af" target="_blank" rel="noopener">站点布局的原理</a>。</p>
-
-          
+<p>参考：<a href="https://segmentfault.com/a/1190000011661576" target="_blank" rel="noopener">怎么选择和快速搭建个人博客</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/01/个人博客搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -638,7 +478,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/Pyhon-MySQL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/数据库操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -657,7 +497,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/26/Pyhon-MySQL/" itemprop="url">Pyhon MySQL</a></h2>
+                <a class="post-title-link" href="/2019/03/26/数据库操作/" itemprop="url">Pyhon MySQL</a></h2>
         
 
         <div class="post-meta">
@@ -836,7 +676,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/Python-日志/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/日志记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -855,7 +695,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/14/Python-日志/" itemprop="url">Python 日志</a></h2>
+                <a class="post-title-link" href="/2019/03/14/日志记录/" itemprop="url">Python 日志</a></h2>
         
 
         <div class="post-meta">
@@ -888,7 +728,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
 
                 
                 
@@ -1301,7 +1141,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/Django-form/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/Django的表单/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -1320,7 +1160,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/11/Django-form/" itemprop="url">Django form</a></h2>
+                <a class="post-title-link" href="/2019/03/11/Django的表单/" itemprop="url">Django form</a></h2>
         
 
         <div class="post-meta">
@@ -1353,7 +1193,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -1570,7 +1417,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -1789,7 +1643,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/Django-Auth-认证系统/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/Django-认证系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -1808,7 +1662,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/08/Django-Auth-认证系统/" itemprop="url">Django Auth 认证系统</a></h2>
+                <a class="post-title-link" href="/2019/03/08/Django-认证系统/" itemprop="url">Django Auth 认证系统</a></h2>
         
 
         <div class="post-meta">
@@ -1841,7 +1695,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -2230,7 +2091,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
 
                 
                 
@@ -2407,7 +2282,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Develop/" itemprop="url" rel="index"><span itemprop="name">Develop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -2603,12 +2485,53 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
             </nav>
           
