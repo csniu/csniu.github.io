@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="在日常开发过程中总是在所难免的会和数据库打交道。 在 Python 中对数据库（MySQL为例）的操作不外乎以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-03T08:57:15.420Z">
+<meta property="og:updated_time" content="2019-04-03T09:10:32.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 中对 MySQL 数据库的使用">
 <meta name="twitter:description" content="在日常开发过程中总是在所难免的会和数据库打交道。 在 Python 中对数据库（MySQL为例）的操作不外乎以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
@@ -539,7 +539,7 @@
 <li><p>代码优先：通过编写代码动态的创建数据库。需要考虑数据的迁移问题(alembic )。</p>
 </li>
 <li><p>数据库优先：一般数据库已经创建好了，再去编写 Model 就很繁琐。这个时候可以通过一些工具直接从数据库生成 Model。（如 sqlacodegen ）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install sqlacodegen</span><br><span class="line">sqlacodegen mysql+pymysql://root:<span class="number">123456</span>@<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">3306</span>/mystock &gt; models.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install sqlacodegen</span><br><span class="line">sqlacodegen mysql+pymysql://root:<span class="number">123456</span>@<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">3306</span>/mystock &gt; models.py</span><br><span class="line"><span class="comment"># 有主键的会生成一个类（Model），没有主键会生成一个表（Table）</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>2.也不是只有只有这两种方法，条条大路通罗马。</p>
