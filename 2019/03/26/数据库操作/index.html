@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="Python-MySQL在日常脚本中操作数据库一般存在以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。  1.原生 SQL使用原生的 SQL 语句去操作数据库会更加的灵活可以，也比较轻量级。 和在数据库的客户端执行 SQL 基本无差。 一般流程：  1.创建连接 2.获得游标 3.执行 SQL 语句（拼接 SQL 语句） 4.关闭游标和连接  1234567">
+  <meta name="description" content="Python-MySQL在日常脚本中操作数据库一般存在以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
 <meta name="keywords" content="Python,MySql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pyhon MySQL">
-<meta property="og:url" content="http://yoursite.com/2019/03/26/数据库操作/index.html">
+<meta property="og:url" content="https://csniu.github.io/2019/03/26/数据库操作/index.html">
 <meta property="og:site_name" content="李大宝的包子">
-<meta property="og:description" content="Python-MySQL在日常脚本中操作数据库一般存在以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。  1.原生 SQL使用原生的 SQL 语句去操作数据库会更加的灵活可以，也比较轻量级。 和在数据库的客户端执行 SQL 基本无差。 一般流程：  1.创建连接 2.获得游标 3.执行 SQL 语句（拼接 SQL 语句） 4.关闭游标和连接  1234567">
+<meta property="og:description" content="Python-MySQL在日常脚本中操作数据库一般存在以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-02T09:09:11.953Z">
+<meta property="og:updated_time" content="2019-04-03T01:41:25.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pyhon MySQL">
-<meta name="twitter:description" content="Python-MySQL在日常脚本中操作数据库一般存在以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。  1.原生 SQL使用原生的 SQL 语句去操作数据库会更加的灵活可以，也比较轻量级。 和在数据库的客户端执行 SQL 基本无差。 一般流程：  1.创建连接 2.获得游标 3.执行 SQL 语句（拼接 SQL 语句） 4.关闭游标和连接  1234567">
+<meta name="twitter:description" content="Python-MySQL在日常脚本中操作数据库一般存在以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/26/数据库操作/">
+  <link rel="canonical" href="https://csniu.github.io/2019/03/26/数据库操作/">
 
 
 
@@ -252,7 +252,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span>
       </a>
 </li>
 
@@ -265,6 +265,16 @@
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span>
       </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 </li>
 
       
@@ -317,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/数据库操作/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/03/26/数据库操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -416,6 +426,8 @@
 <li>使用支持原生 SQL 语句的连接方式。</li>
 <li>使用支持 ORM 框架的方式。</li>
 </ul>
+<a id="more"></a>
+<hr>
 <h4 id="1-原生-SQL"><a href="#1-原生-SQL" class="headerlink" title="1.原生 SQL"></a>1.原生 SQL</h4><p>使用原生的 SQL 语句去操作数据库会更加的灵活可以，也比较轻量级。</p>
 <p>和在数据库的客户端执行 SQL 基本无差。</p>
 <p>一般流程：</p>
@@ -442,6 +454,7 @@
 <p>优点是安装方便简单。</p>
 </li>
 </ul>
+<hr>
 <h4 id="2-ORM-框架"><a href="#2-ORM-框架" class="headerlink" title="2.ORM 框架"></a>2.ORM 框架</h4><p>在使用原生 SQL 时，对于简单的数据库操作或者是不底频次的操作时，是一种很简单方便的方式。</p>
 <p>但是如果项目比较繁琐需要频繁的对数据库进行操作，这个时候就会遇到一些问题，比如连接池的问题，性能的问题等等。</p>
 <p>ORM 框架是建立在数据库 API 之上，使用关系对象映射进行数据操作。</p>
@@ -489,7 +502,7 @@
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/03/26/数据库操作/" title="Pyhon MySQL">http://yoursite.com/2019/03/26/数据库操作/</a>
+    <a href="https://csniu.github.io/2019/03/26/数据库操作/" title="Pyhon MySQL">https://csniu.github.io/2019/03/26/数据库操作/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -602,7 +615,7 @@
               <img class="site-author-image" itemprop="image" src="/images/my_avatar.jpg" alt="csniu">
             
               <p class="site-author-name" itemprop="name">csniu</p>
-              <p class="site-description motion-element" itemprop="description">python 学习笔记！</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -635,9 +648,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -689,7 +700,7 @@
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:dandyjefferson@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:csniulv@aliyun.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   
                 </span>
               

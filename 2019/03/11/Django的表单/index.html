@@ -106,11 +106,11 @@
 <meta name="keywords" content="Python,Django,Form">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django form">
-<meta property="og:url" content="http://yoursite.com/2019/03/11/Django的表单/index.html">
+<meta property="og:url" content="https://csniu.github.io/2019/03/11/Django的表单/index.html">
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-02T09:11:13.459Z">
+<meta property="og:updated_time" content="2019-04-03T01:46:56.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django form">
 <meta name="twitter:description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/11/Django的表单/">
+  <link rel="canonical" href="https://csniu.github.io/2019/03/11/Django的表单/">
 
 
 
@@ -252,7 +252,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span>
       </a>
 </li>
 
@@ -265,6 +265,16 @@
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span>
       </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 </li>
 
       
@@ -317,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/Django的表单/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/03/11/Django的表单/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -367,14 +377,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
                   ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
 
                 
                 
@@ -435,6 +445,7 @@
 </blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"input"</span> <span class="attr">action</span>=<span class="string">"html_form_action.php"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">    First name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstname"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    Last name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastname"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>  <a href="http://www.runoob.com/html/html-forms.html" target="_blank" rel="noopener">参考</a></p>
+<a id="more"></a>
 <h3 id="二-django"><a href="#二-django" class="headerlink" title="二.django"></a>二.django</h3><p> 在模板中直接编写表单是很简单的事情，但是如果表单过多，会增加代码量，同时对日后的维护和更新带来很大的不便。django 封装了完善的表单功能，详情见<a href="https://docs.djangoproject.com/zh-hans/2.1/topics/forms/" target="_blank" rel="noopener">官方文档</a>。</p>
 <p> 核心内容是 django 的 Form 类和其子类（ModelForm） 。</p>
 <p>​    # ModelForm 是将模型的字段转换成表单字段，在从表单字段生成 Html 表单控件。</p>
@@ -515,7 +526,7 @@
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/03/11/Django的表单/" title="Django form">http://yoursite.com/2019/03/11/Django的表单/</a>
+    <a href="https://csniu.github.io/2019/03/11/Django的表单/" title="Django form">https://csniu.github.io/2019/03/11/Django的表单/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -630,7 +641,7 @@
               <img class="site-author-image" itemprop="image" src="/images/my_avatar.jpg" alt="csniu">
             
               <p class="site-author-name" itemprop="name">csniu</p>
-              <p class="site-description motion-element" itemprop="description">python 学习笔记！</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -663,9 +674,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -717,7 +726,7 @@
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:dandyjefferson@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:csniulv@aliyun.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   
                 </span>
               
