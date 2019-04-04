@@ -393,7 +393,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2019/04/03/Python-中对-MySQL-数据库的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/03/Python-中对-MySQL-数据库的使用/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/03/Python-中对-MySQL-数据库的使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -634,9 +634,12 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
 
   
@@ -967,6 +970,45 @@
 
   
 
+  
+    <script id="dsq-count-scr" src="https://csniu.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://csniu.github.io/2019/04/03/Python-中对-MySQL-数据库的使用/';
+        this.page.identifier = '2019/04/03/Python-中对-MySQL-数据库的使用/';
+        this.page.title = 'Python 中对 MySQL 数据库的使用';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://csniu.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
 
 
 	
@@ -981,48 +1023,7 @@
 
 
 
-  
 
-
-
-
-
-
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname,
-            owner: 'csniu',
-            repo: 'gitment-comments',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '74a4f3ffda5c79e8269a3341fab741b8b88d665a',
-            
-                client_id: '166d06d4b10638bc4bf0'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
