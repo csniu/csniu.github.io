@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://csniu.github.io/images/rabbitmq/direct.png">
 <meta property="og:image" content="https://csniu.github.io/images/rabbitmq/fanout.png">
 <meta property="og:image" content="https://csniu.github.io/images/rabbitmq/topic.png">
-<meta property="og:updated_time" content="2019-06-03T07:58:00.919Z">
+<meta property="og:updated_time" content="2019-09-04T05:27:30.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ">
 <meta name="twitter:description" content="消息队列消息队列是一种应用间通信的方式。  生产者只负责发送消息。  消息系统负责传递和分发消息。  消费者只用从消息系统中取得消息。  目前的消息队列产品有很多如：ActiveMQ、RabbitMQ 、ZeroMQ 、RocketMQ 等等。 RabbitMQ使用 Erlang 语言开发，基于 AMQP（Advanced Message Queue）协议实现的开源项目。支持多语言，包括但不限于">
@@ -246,7 +246,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">16</span>
       </a>
 </li>
 
@@ -257,7 +257,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span>
       </a>
 </li>
 
@@ -268,7 +268,7 @@
   
   <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">12</span>
       </a>
 </li>
 
@@ -440,7 +440,7 @@
 <p>官网： <a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">https://www.rabbitmq.com/</a></p>
 <a id="more"></a>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
-<li><p>安装 Relang 语言</p>
+<li><p>安装 Erlang 语言</p>
 <p>下载地址： <a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">http://www.erlang.org/downloads</a></p>
 </li>
 <li><p>安装 RabbitMQ</p>
@@ -467,9 +467,9 @@
 </ol>
 <h1 id="Python-客户端"><a href="#Python-客户端" class="headerlink" title="Python 客户端"></a>Python 客户端</h1><p>在 Python 中使用 RabbitMQ 依赖于 <strong>pika</strong> 库，需要提前安装。</p>
 <p>定义生产者：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接服务器</span></span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(<span class="string">'localhost'</span>))</span><br><span class="line"><span class="comment"># 创建一个信道</span></span><br><span class="line">channel = connection.channel()</span><br><span class="line"><span class="comment"># 创建一个队列，重复声明唯一性，确保队列存在（如果不存在，消息会丢失）(使用不同参数重复命名会报错)</span></span><br><span class="line">channel.queue_declare(queue=<span class="string">'task_queue'</span>) </span><br><span class="line"><span class="comment"># 发送一条消息</span></span><br><span class="line">channel.basic_publish(exchange=<span class="string">''</span>,          <span class="comment"># 指定交换器</span></span><br><span class="line">                      routing_key=<span class="string">'hello'</span>,  <span class="comment"># 指定路由键</span></span><br><span class="line">                      body=<span class="string">'Hello World!'</span>)  <span class="comment"># 消息体</span></span><br><span class="line"><span class="comment"># 关闭连接</span></span><br><span class="line">connection.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接服务器</span></span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(<span class="string">'localhost'</span>))</span><br><span class="line"><span class="comment"># 创建一个信道</span></span><br><span class="line">channel = connection.channel()</span><br><span class="line"><span class="comment"># 创建一个队列，重复声明唯一性，确保队列存在（如果不存在，消息会丢失）(使用不同参数重复命名会报错)</span></span><br><span class="line">channel.queue_declare(queue=<span class="string">'task_queue'</span>) </span><br><span class="line"><span class="comment"># 发送一条消息</span></span><br><span class="line">channel.basic_publish(exchange=<span class="string">''</span>,          <span class="comment"># 指定交换器</span></span><br><span class="line">                      routing_key=<span class="string">'task_queue'</span>,  <span class="comment"># 指定路由键</span></span><br><span class="line">                      body=<span class="string">'Hello World!'</span>)  <span class="comment"># 消息体</span></span><br><span class="line"><span class="comment"># 关闭连接</span></span><br><span class="line">connection.close()</span><br></pre></td></tr></table></figure>
 <p>定义消费者：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(<span class="string">'localhost'</span>))</span><br><span class="line">channel = connection.channel()</span><br><span class="line">channel.queue_declare(queue=<span class="string">'task_queue'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></span><br><span class="line">    print(<span class="string">" [x] Received %r"</span> % body)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绑定队列的回调函数,接收到消息后调用回调函数</span></span><br><span class="line">channel.basic_consume(queue=<span class="string">'hello'</span>,                 <span class="comment"># 指定队列</span></span><br><span class="line">                      auto_ack=<span class="literal">True</span>,                 <span class="comment"># 打开自动确认</span></span><br><span class="line">                      on_message_callback=callback)  <span class="comment"># 指定回调函数</span></span><br><span class="line"><span class="comment"># 开始接受消息，会一直运行</span></span><br><span class="line">channel.start_consuming()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(<span class="string">'localhost'</span>))</span><br><span class="line">channel = connection.channel()</span><br><span class="line">channel.queue_declare(queue=<span class="string">'task_queue'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></span><br><span class="line">    print(<span class="string">" [x] Received %r"</span> % body)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绑定队列的回调函数,接收到消息后调用回调函数</span></span><br><span class="line">channel.basic_consume(queue=<span class="string">'task_queue'</span>,            <span class="comment"># 指定队列</span></span><br><span class="line">                      auto_ack=<span class="literal">True</span>,                 <span class="comment"># 打开自动确认</span></span><br><span class="line">                      on_message_callback=callback)  <span class="comment"># 指定回调函数</span></span><br><span class="line"><span class="comment"># 开始接受消息，会一直运行</span></span><br><span class="line">channel.start_consuming()</span><br></pre></td></tr></table></figure>
 <h2 id="问题1：消息确认"><a href="#问题1：消息确认" class="headerlink" title="问题1：消息确认"></a>问题1：消息确认</h2><p>在消费者定义定义中设置 auto_act=True 表示打开自动确认（默认为 Fasle），这种情况下当 RabbitMQ 将一条消息分发出去后会将消息标记为删除，如果此时消费者被后台杀死等异常情况发送，并且任务并没有被顺利完成，则此条消息将会被丢失。</p>
 <p>可以使用手动确认的方式，确保任务被正常消费。如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></span><br><span class="line">    print(<span class="string">" [x] Received %r"</span> % body)</span><br><span class="line">    ch.basic_ack(delivery_tag=method.delivery_tag)  <span class="comment"># 手动确认</span></span><br><span class="line">    </span><br><span class="line">channel.basic_consume(queue=<span class="string">'hello'</span>,</span><br><span class="line">                      auto_ack=<span class="literal">False</span>,               <span class="comment"># 关闭自动确认，使用手动确认</span></span><br><span class="line">                      on_message_callback=callback)</span><br></pre></td></tr></table></figure>
@@ -677,7 +677,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -704,7 +704,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -745,7 +747,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
