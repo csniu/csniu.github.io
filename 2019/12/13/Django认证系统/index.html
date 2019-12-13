@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="title: Django Auth 认证系统 tags:  Python Django  categories:  Web Django  date: 2019-03-08 13:59:30用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注">
+  <meta name="description" content="用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。 注册就是在数据库中创建一条数据。但是要满足唯一性。  # 当然上面说到的都是最基本的过程，这中间还会有一些数据的检验与验证等等操作。 # 在 Django 中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django认证系统">
 <meta property="og:url" content="https://csniu.github.io/2019/12/13/Django认证系统/index.html">
 <meta property="og:site_name" content="李大宝的包子">
-<meta property="og:description" content="title: Django Auth 认证系统 tags:  Python Django  categories:  Web Django  date: 2019-03-08 13:59:30用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注">
+<meta property="og:description" content="用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。 注册就是在数据库中创建一条数据。但是要满足唯一性。  # 当然上面说到的都是最基本的过程，这中间还会有一些数据的检验与验证等等操作。 # 在 Django 中">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://csniu.github.io/images/django/django-auth.png">
-<meta property="og:updated_time" content="2019-12-13T08:13:57.985Z">
+<meta property="og:updated_time" content="2019-12-13T08:18:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django认证系统">
-<meta name="twitter:description" content="title: Django Auth 认证系统 tags:  Python Django  categories:  Web Django  date: 2019-03-08 13:59:30用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注">
+<meta name="twitter:description" content="用户管理系统 用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。 用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。 注册就是在数据库中创建一条数据。但是要满足唯一性。  # 当然上面说到的都是最基本的过程，这中间还会有一些数据的检验与验证等等操作。 # 在 Django 中">
 <meta name="twitter:image" content="https://csniu.github.io/images/django/django-auth.png">
 
 
@@ -357,7 +357,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T16:13:57+08:00">2019-12-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T12:31:31+08:00">2019-12-13</time>
             
 
             
@@ -422,19 +422,7 @@
       
 
       
-        <hr>
-<p>title: Django Auth 认证系统</p>
-<p>tags:</p>
-<ul>
-<li>Python</li>
-<li>Django</li>
-</ul>
-<p>categories:</p>
-<ul>
-<li>Web</li>
-<li>Django</li>
-</ul>
-<h2 id="date-2019-03-08-13-59-30"><a href="#date-2019-03-08-13-59-30" class="headerlink" title="date: 2019-03-08 13:59:30"></a>date: 2019-03-08 13:59:30</h2><h2 id="用户管理系统"><a href="#用户管理系统" class="headerlink" title="用户管理系统"></a>用户管理系统</h2><ul>
+        <h2 id="用户管理系统"><a href="#用户管理系统" class="headerlink" title="用户管理系统"></a>用户管理系统</h2><ul>
 <li>用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。</li>
 <li>用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。</li>
 <li>注册就是在数据库中创建一条数据。但是要满足唯一性。</li>
@@ -942,8 +930,8 @@ group.permission.add(permission)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/13/Django-Haystack/" rel="next" title="Django Haystack">
-                <i class="fa fa-chevron-left"></i> Django Haystack
+              <a href="/2019/12/13/Django的表单/" rel="next" title="Django的表单">
+                <i class="fa fa-chevron-left"></i> Django的表单
               </a>
             
           </div>
@@ -952,8 +940,8 @@ group.permission.add(permission)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/13/Django的表单/" rel="prev" title="Django的表单">
-                Django的表单 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/13/Django-Haystack/" rel="prev" title="Django Haystack">
+                Django Haystack <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1168,7 +1156,7 @@ group.permission.add(permission)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#date-2019-03-08-13-59-30"><span class="nav-number">1.</span> <span class="nav-text">date: 2019-03-08 13:59:30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户管理系统"><span class="nav-number">2.</span> <span class="nav-text">用户管理系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-Auth-认证系统"><span class="nav-number">3.</span> <span class="nav-text">Django-Auth 认证系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、在-django-中使用认证系统"><span class="nav-number">3.1.</span> <span class="nav-text">一、在 django 中使用认证系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、扩展-User"><span class="nav-number">3.2.</span> <span class="nav-text">二、扩展 User</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展完成后进入后台系统，会发现一个问题：没有用户管理"><span class="nav-number">3.2.0.1.</span> <span class="nav-text">扩展完成后进入后台系统，会发现一个问题：没有用户管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、登陆"><span class="nav-number">3.3.</span> <span class="nav-text">三、登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、注册"><span class="nav-number">3.4.</span> <span class="nav-text">四、注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、退出"><span class="nav-number">3.5.</span> <span class="nav-text">五、退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、修改密码"><span class="nav-number">3.6.</span> <span class="nav-text">六、修改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、找回密码"><span class="nav-number">3.7.</span> <span class="nav-text">七、找回密码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、配置邮件"><span class="nav-number">3.7.0.1.</span> <span class="nav-text">1、配置邮件</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#八、用户权限和用户组"><span class="nav-number">3.8.</span> <span class="nav-text">八、用户权限和用户组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本操作如下"><span class="nav-number">3.8.1.</span> <span class="nav-text">基本操作如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-自定义模型权限"><span class="nav-number">3.8.2.</span> <span class="nav-text">1.自定义模型权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-视图函数中的权限判断"><span class="nav-number">3.8.3.</span> <span class="nav-text">2.视图函数中的权限判断</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意和参考"><span class="nav-number">3.9.</span> <span class="nav-text">注意和参考</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户管理系统"><span class="nav-number">1.</span> <span class="nav-text">用户管理系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-Auth-认证系统"><span class="nav-number">2.</span> <span class="nav-text">Django-Auth 认证系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、在-django-中使用认证系统"><span class="nav-number">2.1.</span> <span class="nav-text">一、在 django 中使用认证系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、扩展-User"><span class="nav-number">2.2.</span> <span class="nav-text">二、扩展 User</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展完成后进入后台系统，会发现一个问题：没有用户管理"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">扩展完成后进入后台系统，会发现一个问题：没有用户管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、登陆"><span class="nav-number">2.3.</span> <span class="nav-text">三、登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、注册"><span class="nav-number">2.4.</span> <span class="nav-text">四、注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、退出"><span class="nav-number">2.5.</span> <span class="nav-text">五、退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、修改密码"><span class="nav-number">2.6.</span> <span class="nav-text">六、修改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、找回密码"><span class="nav-number">2.7.</span> <span class="nav-text">七、找回密码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、配置邮件"><span class="nav-number">2.7.0.1.</span> <span class="nav-text">1、配置邮件</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#八、用户权限和用户组"><span class="nav-number">2.8.</span> <span class="nav-text">八、用户权限和用户组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本操作如下"><span class="nav-number">2.8.1.</span> <span class="nav-text">基本操作如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-自定义模型权限"><span class="nav-number">2.8.2.</span> <span class="nav-text">1.自定义模型权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-视图函数中的权限判断"><span class="nav-number">2.8.3.</span> <span class="nav-text">2.视图函数中的权限判断</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意和参考"><span class="nav-number">2.9.</span> <span class="nav-text">注意和参考</span></a></li></div>
             
 
           </div>

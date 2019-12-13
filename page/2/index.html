@@ -321,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/RabbitMQ/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Docker入门基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -340,7 +340,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/13/RabbitMQ/" itemprop="url">RabbitMQ</a></h2>
+                <a class="post-title-link" href="/2019/12/13/Docker入门基础/" itemprop="url">Docker入门基础</a></h2>
         
 
         <div class="post-meta">
@@ -352,7 +352,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T16:13:41+08:00">2019-12-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:24:46+08:00">2019-12-13</time>
             
 
             
@@ -370,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/13/RabbitMQ/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/RabbitMQ/" itemprop="commentCount"></span>
+                <a href="/2019/12/13/Docker入门基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Docker入门基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -400,31 +400,30 @@
 
       
         
-          <hr>
-<p>title: RabbitMQ</p>
-<p>tags:</p>
+          <h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>在整个程序的开发、测试、运维过程中，程序的环境依赖配置是一件很麻烦的的事情，而且还会出现一些莫名其妙的错误。为了解决这个问题一般的方法有使用虚拟机和容器技术。其中虚拟机是对整个物理机的模拟，而容器是进程级别的隔离，这两者的优缺点也就显而易见了。</p>
+<p>Docker 就是一种流行的软件容器平台。底层基础也就是容器。</p>
+<p>基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等技术，对进程进行封装隔离。这个被隔离的进程就可以抽象化为<strong>容器</strong>。</p>
+<p>Docker 的架构图如下：</p>
+<p><img src="images/docker/framework.png" alt="docker 架构"></p>
 <ul>
-<li>RabbitMQ</li>
-</ul>
-<p>categories:</p>
+<li><p>是一个C/S（客户端/服务端）架构。</p>
+</li>
+<li><p>客户端使用命令行或其他工具使用 <a href="https://docs.docker.com/develop/sdk/" target="_blank" rel="noopener">Docker API</a> 于守护进程（docker daemon）通信。</p>
 <ul>
-<li>消息中间件 </li>
+<li>如命令 <code>docker pull</code>，就是通过可执行文件 docker 建立一个客户端并将请求消息 “pull” 发送给守护进程进行通信。</li>
+<li>可以使用 go 或 python 自定义一个客户端进行通信（使用 Docker API）。</li>
+<li>默认都是将消息发送到本地的守护进程，也可通过 “-H”或修改配置文件将消息发送到远端的守护进程。</li>
 </ul>
-<h2 id="date-2019-05-11-15-54-49"><a href="#date-2019-05-11-15-54-49" class="headerlink" title="date: 2019-05-11 15:54:49"></a>date: 2019-05-11 15:54:49</h2><h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><p>消息队列是一种应用间通信的方式。</p>
-<ol>
-<li><p>生产者只负责发送消息。</p>
 </li>
-<li><p>消息系统负责传递和分发消息。</p>
+<li>守护进程根据镜像（Images）生成容器。<ul>
+<li>如果本地没有需要的镜像，会自动从注册仓库（Registry）下载相应的镜像文件。</li>
+<li>容器底层也有一些技术支持来满足资源控制、访问隔离、文件系统隔离的一系列的问题。</li>
+</ul>
 </li>
-<li>消费者只用从消息系统中取得消息。</li>
-</ol>
-<p>目前的消息队列产品有很多如：ActiveMQ、RabbitMQ 、ZeroMQ 、RocketMQ 等等。</p>
-<h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><p>使用 Erlang 语言开发，基于 AMQP（Advanced Message Queue）协议实现的开源项目。支持多语言，包括但不限于 Python、Java、Ruby、PHP、C#、JavaScript、GO 等</p>
-<p>Github 地址为： <a href="https://github.com/rabbitmq/rabbitmq-website" target="_blank" rel="noopener">https://github.com/rabbitmq/rabbitmq-website</a></p>
-<p>官网： <a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">https://www.rabbitmq.com/</a></p>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/12/13/RabbitMQ/#more" rel="contents">
+            <a class="btn" href="/2019/12/13/Docker入门基础/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -480,7 +479,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/日志记录/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Django-RESTful/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -499,7 +498,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/13/日志记录/" itemprop="url">日志记录</a></h2>
+                <a class="post-title-link" href="/2019/12/13/Django-RESTful/" itemprop="url">Django RESTful</a></h2>
         
 
         <div class="post-meta">
@@ -511,7 +510,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T16:11:11+08:00">2019-12-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:14:54+08:00">2019-12-13</time>
             
 
             
@@ -521,6 +520,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -529,8 +546,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/13/日志记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/日志记录/" itemprop="commentCount"></span>
+                <a href="/2019/12/13/Django-RESTful/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Django-RESTful/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -559,31 +576,41 @@
 
       
         
-          <h1 id="Python-logging"><a href="#Python-logging" class="headerlink" title="Python-logging"></a>Python-logging</h1><p>python 的标准库包。提供了日志记录的 API。</p>
-<p>包结构：</p>
-<pre><code>logging\
-    | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。
-    | config.py  # 定义了 配置函数以及读取配置文件的类。
-    | handlers.py  # 对 handler 的扩展完善。
-</code></pre><p>基本概念：</p>
-<blockquote>
-<p>1.Logger：日志的系统入口。</p>
-<p>2.Handler：将日志记录（logger 创建）发送到指定的目标。</p>
-<p>3.Filter：过滤日志。</p>
-<p>4.Formatter：设置日志的格式。</p>
-</blockquote>
-<p>关系：</p>
-<blockquote>
+          <hr>
+<p>title: Django RESTful</p>
+<p>tags:</p>
 <ul>
-<li>一个程序可以有多个 Logger 对象。（多个入口）（层级关系）</li>
-<li>一个 Logger 对应多个 Handler。（输入到多个地方）</li>
-<li>一个 Logger 对应多个 Filter。（多个过滤器）</li>
-<li>一个 Handler 对应一个 Formatter。（输出格式）</li>
+<li>django</li>
+<li>RESTful</li>
 </ul>
-</blockquote>
+<p>categories:</p>
+<ul>
+<li>WEB</li>
+</ul>
+<h2 id="date-2019-11-05-16-35-01"><a href="#date-2019-11-05-16-35-01" class="headerlink" title="date: 2019-11-05 16:35:01"></a>date: 2019-11-05 16:35:01</h2><h1 id="RESTful-框架"><a href="#RESTful-框架" class="headerlink" title="RESTful 框架"></a>RESTful 框架</h1><ul>
+<li>RESTful框架是一种 Web 框架的<strong>设计规范</strong>，而不是标准。</li>
+<li>REST  是 <code>Representational State Transfer</code> 的缩写，翻译为“(<strong>资源</strong>的)表现层状态转化”。</li>
+<li>资源：就是网络上的一个实体，可以是一段文本，一张图片等等。每种资源都对应一个特定的URL（统一资源定位符）。</li>
+<li>表现层：资源的表现形式，可以是 XML、JSON、HTML等格式。</li>
+<li>URL只代表资源的实体（定位），并不代表它的表现形式。即使URL中有“.json”后缀也不能代表就是json格式的数据。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定。</li>
+<li>状态：<ul>
+<li>实际上状态应该区分为应用状态和资源状态，客户端负责维护应用状态，而服务端维护资源状态。</li>
+<li>客户端与服务端的交互必须是无状态的（标准的（无Cookie、Session）HTTP协议是一种<strong>无状态</strong>（服务端不应该保存客户端状态）的协议），并在每一次请求中包含处理该请求所需的一切信息。</li>
+<li>服务端不需要在请求间保留应用状态，只有在接受到实际请求的时候，服务端才会关注应用状态。</li>
+<li>如果Cookie保存的是一些服务器不依赖于会话状态即可验证的信息（比如认证令牌），这样的Cookie也是符合REST原则的。</li>
+</ul>
+</li>
+<li>（应用）状态转化：<ul>
+<li>“会话”状态不是作为资源状态保存在服务端的，而是被客户端作为应用状态进行跟踪的。</li>
+<li>客户端应用状态在服务端提供的超媒体的指引下发生<strong>变迁</strong>，服务端通过超媒体告诉客户端当前状态有哪些后续状态可以进入。</li>
+</ul>
+</li>
+<li>表现层状态转移：建立在表现层上的状态转化。客户端通过HTTP的不同动作完成资源的操作。</li>
+<li>资源接口要统一，并且是要HTTP标准动作操作资源。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/12/13/日志记录/#more" rel="contents">
+            <a class="btn" href="/2019/12/13/Django-RESTful/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
