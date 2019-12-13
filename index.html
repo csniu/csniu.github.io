@@ -259,7 +259,7 @@
   
   <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">1</span>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">12</span>
       </a>
 </li>
 
@@ -321,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/03/08/Django-Haystack/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/RabbitMQ/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -340,7 +340,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/08/Django-Haystack/" itemprop="url">Django Haystack</a></h2>
+                <a class="post-title-link" href="/2019/12/13/RabbitMQ/" itemprop="url">未命名</a></h2>
         
 
         <div class="post-meta">
@@ -352,7 +352,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T14:00:03+08:00">2019-03-08</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
             
 
             
@@ -362,31 +362,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -395,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/08/Django-Haystack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/08/Django-Haystack/" itemprop="commentCount"></span>
+                <a href="/2019/12/13/RabbitMQ/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/RabbitMQ/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -425,11 +400,1475 @@
 
       
         
-          <h1 id="django-Haystack"><a href="#django-Haystack" class="headerlink" title="django-Haystack"></a>django-Haystack</h1><p>django 的第三方插件，提供可拔插式的搜索后端。支持 <a href="http://lucene.apache.org/solr/" target="_blank" rel="noopener">Solr</a>， <a href="http://elasticsearch.org/" target="_blank" rel="noopener">Elasticsearch</a>，<a href="https://bitbucket.org/mchaput/whoosh/" target="_blank" rel="noopener">Whoosh</a>，<a href="http://xapian.org/" target="_blank" rel="noopener">Xapian</a></p>
-<p>等搜索引擎。是项目于搜索引擎解耦和。cccccccchhhhh</p>
+          <hr>
+<p>title: RabbitMQ</p>
+<p>tags:</p>
+<ul>
+<li>RabbitMQ</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>消息中间件 </li>
+</ul>
+<h2 id="date-2019-05-11-15-54-49"><a href="#date-2019-05-11-15-54-49" class="headerlink" title="date: 2019-05-11 15:54:49"></a>date: 2019-05-11 15:54:49</h2><h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><p>消息队列是一种应用间通信的方式。</p>
+<ol>
+<li><p>生产者只负责发送消息。</p>
+</li>
+<li><p>消息系统负责传递和分发消息。</p>
+</li>
+<li>消费者只用从消息系统中取得消息。</li>
+</ol>
+<p>目前的消息队列产品有很多如：ActiveMQ、RabbitMQ 、ZeroMQ 、RocketMQ 等等。</p>
+<h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><p>使用 Erlang 语言开发，基于 AMQP（Advanced Message Queue）协议实现的开源项目。支持多语言，包括但不限于 Python、Java、Ruby、PHP、C#、JavaScript、GO 等</p>
+<p>Github 地址为： <a href="https://github.com/rabbitmq/rabbitmq-website" target="_blank" rel="noopener">https://github.com/rabbitmq/rabbitmq-website</a></p>
+<p>官网： <a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">https://www.rabbitmq.com/</a></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/08/Django-Haystack/#more" rel="contents">
+            <a class="btn" href="/2019/12/13/RabbitMQ/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Django-Haystack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Django-Haystack/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Django-Haystack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Django-Haystack/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Django Haystack</p>
+<p>tags:</p>
+<ul>
+<li>Python</li>
+<li>Django</li>
+<li>搜索引擎</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>Web</li>
+<li>Django</li>
+</ul>
+<h2 id="date-2019-03-08-14-00-03"><a href="#date-2019-03-08-14-00-03" class="headerlink" title="date: 2019-03-08 14:00:03"></a>date: 2019-03-08 14:00:03</h2><h1 id="django-Haystack"><a href="#django-Haystack" class="headerlink" title="django-Haystack"></a>django-Haystack</h1><p>django 的第三方插件，提供可拔插式的搜索后端。支持 <a href="http://lucene.apache.org/solr/" target="_blank" rel="noopener">Solr</a>， <a href="http://elasticsearch.org/" target="_blank" rel="noopener">Elasticsearch</a>，<a href="https://bitbucket.org/mchaput/whoosh/" target="_blank" rel="noopener">Whoosh</a>，<a href="http://xapian.org/" target="_blank" rel="noopener">Xapian</a></p>
+<p>等搜索引擎。是项目于搜索引擎解耦和。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/Django-Haystack/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Django的表单/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Django的表单/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Django的表单/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Django的表单/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Django form</p>
+<p>tags:</p>
+<ul>
+<li>Python</li>
+<li>Django</li>
+<li>Form</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>Web</li>
+<li>Django</li>
+</ul>
+<h2 id="date-2019-03-11-15-59-47"><a href="#date-2019-03-11-15-59-47" class="headerlink" title="date: 2019-03-11 15:59:47"></a>date: 2019-03-11 15:59:47</h2><h1 id="django-form"><a href="#django-form" class="headerlink" title="django-form"></a>django-form</h1><h3 id="一、Form"><a href="#一、Form" class="headerlink" title="一、Form"></a>一、Form</h3><p>  在 HTML 中， 表单是在 <code>&lt;form&gt;....&lt;/form&gt;</code> 中的一些元素，用于收集不同类型的用户输入。</p>
+<p>  一个完整的表单主要包括：</p>
+<blockquote>
+<p>* 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。</p>
+<p>* 请求方式：method 属性指定。</p>
+<p>* 元素控件：input 标签。获取输入数据，由其 type 属性定义输入数据的类型，常见如下：</p>
+<blockquote>
+<p>ext：文本，默认是20个字符长</p>
+<p>password：密码，不会明文显示，而是以星号或圆点替代。</p>
+<p>radio：单选框</p>
+<p>checkbox：复选框</p>
+<p>submit：提交，当用户单击确认按钮时，表单的内容会被传送到另一个文件。表单的动作属性定义了目的文件的文件名。</p>
+</blockquote>
+<p>* 提交按钮：input 标签，type=submit</p>
+</blockquote>
+<pre><code class="html"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"input"</span> <span class="attr">action</span>=<span class="string">"html_form_action.php"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span>
+    First name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstname"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>
+    Last name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastname"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">form</span>&gt;</span>
+</code></pre>
+<p>  <a href="http://www.runoob.com/html/html-forms.html" target="_blank" rel="noopener">参考</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/Django的表单/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Python-单元测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Python-单元测试/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Python-单元测试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Python-单元测试/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Python 单元测试<br>tags:</p>
+<ul>
+<li>Python</li>
+<li>Django</li>
+<li>test<br>categories:</li>
+<li>Develop<br>date: 2019-03-04 14:00:45</li>
+</ul>
+<hr>
+<h2 id="Python-单元测试"><a href="#Python-单元测试" class="headerlink" title="Python-单元测试"></a>Python-单元测试</h2><ul>
+<li>测试就是对一段代码（一个函数、一个模块等）的评估。</li>
+<li>通过输入不同的值，对结果的正确性进行判断。如果不是“理想”值，要么是被测试的代码有问题，要么是测试的输入值有问题。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/Python-单元测试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/个人博客搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/个人博客搭建/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/个人博客搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/个人博客搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Blog Hexo</p>
+<p>tags:</p>
+<ul>
+<li>hexo</li>
+<li>blog</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>Web</li>
+<li>Hexo</li>
+</ul>
+<h2 id="date-2019-04-01-16-51-03"><a href="#date-2019-04-01-16-51-03" class="headerlink" title="date: 2019-04-01 16:51:03"></a>date: 2019-04-01 16:51:03</h2><h2 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h2><p>搭建个人博客因该是很多人的需要，尤其是程序员！</p>
+<p>但是怎么搭建，搭建成什么样的每个人都会有不同的选择。</p>
+<p>根据实现的技术大致有以下几种方案：</p>
+<ul>
+<li><p>个人主页</p>
+<p>有很多的平台都可以注册。优缺点就大家各自体会吧。</p>
+</li>
+<li><p>静态网站生成技术</p>
+<p>这个就有一些技术门槛了，要有一些计算机的基础才行了。基本原理就是通过编写一些静态文件（Markdown），再通过编译器自动编译成要展示的页面。主流的有 hexo、hugo、jekyll等。</p>
+<p>优点：操作简单、足够定制化。</p>
+<p>缺点：有一定的技术门槛，是静态的。</p>
+</li>
+<li><p>内容管理系统</p>
+<p>这种技术要求就更高了，要涉及到服务器、数据库、域名等等。也就是建站了。如 Wordpress 等</p>
+<p>缺点：技术要求高、维护成本高。</p>
+<p>优点：完全定制化。</p>
+</li>
+</ul>
+<p>参考：<a href="https://segmentfault.com/a/1190000011661576" target="_blank" rel="noopener">怎么选择和快速搭建个人博客</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/个人博客搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Python-中对MySQL数据库的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Python-中对MySQL数据库的使用/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Python-中对MySQL数据库的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Python-中对MySQL数据库的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Python 中对 MySQL 数据库的使用</p>
+<p>tags:</p>
+<ul>
+<li>MySQL</li>
+<li>Python</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>工具</li>
+</ul>
+<h2 id="date-2019-04-03-16-56-10"><a href="#date-2019-04-03-16-56-10" class="headerlink" title="date: 2019-04-03 16:56:10"></a>date: 2019-04-03 16:56:10</h2><p>在日常开发过程中总是在所难免的会和数据库打交道。</p>
+<p>在 Python 中对数据库（MySQL为例）的操作不外乎以下两种情况：</p>
+<ul>
+<li>使用支持原生 SQL 语句的连接方式。</li>
+<li>使用支持 ORM 框架的方式。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/Python-中对MySQL数据库的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Django-分页/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Django-分页/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Django-分页/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Django-分页/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Django 分页</p>
+<p>tags:</p>
+<ul>
+<li>Python</li>
+<li>Django</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>Web</li>
+<li>Django</li>
+</ul>
+<h2 id="date-2019-02-21-17-00-25"><a href="#date-2019-02-21-17-00-25" class="headerlink" title="date: 2019-02-21 17:00:25"></a>date: 2019-02-21 17:00:25</h2><h2 id="django-分页"><a href="#django-分页" class="headerlink" title="django 分页"></a>django 分页</h2><p>django 的分页管理对象是 <a href="https://docs.djangoproject.com/zh-hans/2.1/topics/pagination/#django.core.paginator.Paginator" target="_blank" rel="noopener"><code>Paginator</code></a> 类 和 <code>Page</code> 类 。</p>
+<p>实例化是需要两个参数，数据源和每页需要展示的条数。</p>
+<pre><code class="python"><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator
+objects = [<span class="string">'john'</span>, <span class="string">'paul'</span>, <span class="string">'george'</span>, <span class="string">'ringo'</span>]
+p = Paginator(objects, <span class="number">2</span>)
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/Django-分页/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/日志记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/日志记录/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/日志记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/日志记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Python 日志</p>
+<p>tags:</p>
+<ul>
+<li>logging</li>
+<li>python</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>工具</li>
+</ul>
+<h2 id="date-2019-03-14-10-00-56"><a href="#date-2019-03-14-10-00-56" class="headerlink" title="date: 2019-03-14 10:00:56"></a>date: 2019-03-14 10:00:56</h2><h2 id="Python-logging"><a href="#Python-logging" class="headerlink" title="Python-logging"></a>Python-logging</h2><p>python 的标准库包。提供了日志记录的 API。</p>
+<p>包结构：</p>
+<pre><code>logging\
+    | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。
+    | config.py  # 定义了 配置函数以及读取配置文件的类。
+    | handlers.py  # 对 handler 的扩展完善。
+</code></pre><p>基本概念：</p>
+<blockquote>
+<p>1.Logger：日志的系统入口。</p>
+<p>2.Handler：将日志记录（logger 创建）发送到指定的目标。</p>
+<p>3.Filter：过滤日志。</p>
+<p>4.Formatter：设置日志的格式。</p>
+</blockquote>
+<p>关系：</p>
+<blockquote>
+<ul>
+<li>一个程序可以有多个 Logger 对象。（多个入口）（层级关系）</li>
+<li>一个 Logger 对应多个 Handler。（输入到多个地方）</li>
+<li>一个 Logger 对应多个 Filter。（多个过滤器）</li>
+<li>一个 Handler 对应一个 Formatter。（输出格式）</li>
+</ul>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/日志记录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Django认证系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Django认证系统/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Django认证系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Django认证系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Django Auth 认证系统</p>
+<p>tags:</p>
+<ul>
+<li>Python</li>
+<li>Django</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>Web</li>
+<li>Django</li>
+</ul>
+<h2 id="date-2019-03-08-13-59-30"><a href="#date-2019-03-08-13-59-30" class="headerlink" title="date: 2019-03-08 13:59:30"></a>date: 2019-03-08 13:59:30</h2><h2 id="用户管理系统"><a href="#用户管理系统" class="headerlink" title="用户管理系统"></a>用户管理系统</h2><ul>
+<li>用户管理的本质就是数据库中的一张或多张与用户相关的表，存储的用户的基本信息和权限及用户组等高级信息。</li>
+<li>用户的登陆就是接受用户的请求信息（登陆信息），并和数据库中存储的信息相比较。判断用户是否注册和是否激活等状态，完成登陆操作。</li>
+<li>注册就是在数据库中创建一条数据。但是要满足唯一性。</li>
+</ul>
+<p># 当然上面说到的都是最基本的过程，这中间还会有一些数据的检验与验证等等操作。</p>
+<p># 在 Django 中也有很好的封装。但是也要明白最基本的原理。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/Django认证系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Docker入门基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Docker入门基础/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Docker入门基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Docker入门基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>title: Docker入门基础<br>tags:</p>
+<ul>
+<li>Docker</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>工具</li>
+</ul>
+<h2 id="date-2019-07-03-12-56-24"><a href="#date-2019-07-03-12-56-24" class="headerlink" title="date: 2019-07-03 12:56:24"></a>date: 2019-07-03 12:56:24</h2><h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>在整个程序的开发、测试、运维过程中，程序的环境依赖配置是一件很麻烦的的事情，而且还会出现一些莫名其妙的错误。为了解决这个问题一般的方法有使用虚拟机和容器技术。其中虚拟机是对整个物理机的模拟，而容器是进程级别的隔离，这两者的优缺点也就显而易见了。</p>
+<p>Docker 就是一种流行的软件容器平台。底层基础也就是容器。</p>
+<p>基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等技术，对进程进行封装隔离。这个被隔离的进程就可以抽象化为<strong>容器</strong>。</p>
+<p>Docker 的架构图如下：</p>
+<p><img src="images/docker/framework.png" alt="docker 架构"></p>
+<ul>
+<li><p>是一个C/S（客户端/服务端）架构。</p>
+</li>
+<li><p>客户端使用命令行或其他工具使用 <a href="https://docs.docker.com/develop/sdk/" target="_blank" rel="noopener">Docker API</a> 于守护进程（docker daemon）通信。</p>
+<ul>
+<li>如命令 <code>docker pull</code>，就是通过可执行文件 docker 建立一个客户端并将请求消息 “pull” 发送给守护进程进行通信。</li>
+<li>可以使用 go 或 python 自定义一个客户端进行通信（使用 Docker API）。</li>
+<li>默认都是将消息发送到本地的守护进程，也可通过 “-H”或修改配置文件将消息发送到远端的守护进程。</li>
+</ul>
+</li>
+<li>守护进程根据镜像（Images）生成容器。<ul>
+<li>如果本地没有需要的镜像，会自动从注册仓库（Registry）下载相应的镜像文件。</li>
+<li>容器底层也有一些技术支持来满足资源控制、访问隔离、文件系统隔离的一系列的问题。</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/Docker入门基础/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -473,6 +1912,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -515,7 +1958,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -544,7 +1987,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">0</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -589,7 +2032,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">0</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
