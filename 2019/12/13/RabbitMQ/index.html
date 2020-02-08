@@ -103,21 +103,22 @@
 
 
   <meta name="description" content="消息队列消息队列是一种应用间通信的方式。  生产者只负责发送消息。  消息系统负责传递和分发消息。  消费者只用从消息系统中取得消息。  目前的消息队列产品有很多如：ActiveMQ、RabbitMQ 、ZeroMQ 、RocketMQ 等等。 RabbitMQ使用 Erlang 语言开发，基于 AMQP（Advanced Message Queue）协议实现的开源项目。支持多语言，包括但不限于">
+<meta name="keywords" content="WEBTAGe28057c1b77cd42014297d20883b298e">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ">
 <meta property="og:url" content="https://csniu.github.io/2019/12/13/RabbitMQ/index.html">
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="消息队列消息队列是一种应用间通信的方式。  生产者只负责发送消息。  消息系统负责传递和分发消息。  消费者只用从消息系统中取得消息。  目前的消息队列产品有很多如：ActiveMQ、RabbitMQ 、ZeroMQ 、RocketMQ 等等。 RabbitMQ使用 Erlang 语言开发，基于 AMQP（Advanced Message Queue）协议实现的开源项目。支持多语言，包括但不限于">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://csniu.github.io/images/rabbitmq/rabbitmq.png">
-<meta property="og:image" content="https://csniu.github.io/images/rabbitmq/direct.png">
-<meta property="og:image" content="https://csniu.github.io/images/rabbitmq/fanout.png">
-<meta property="og:image" content="https://csniu.github.io/images/rabbitmq/topic.png">
-<meta property="og:updated_time" content="2019-12-13T09:01:09.000Z">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/06/1yslMd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/06/1ysGZt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/06/1ys3qI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/06/1ysMxH.png">
+<meta property="og:updated_time" content="2020-02-07T08:46:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ">
 <meta name="twitter:description" content="消息队列消息队列是一种应用间通信的方式。  生产者只负责发送消息。  消息系统负责传递和分发消息。  消费者只用从消息系统中取得消息。  目前的消息队列产品有很多如：ActiveMQ、RabbitMQ 、ZeroMQ 、RocketMQ 等等。 RabbitMQ使用 Erlang 语言开发，基于 AMQP（Advanced Message Queue）协议实现的开源项目。支持多语言，包括但不限于">
-<meta name="twitter:image" content="https://csniu.github.io/images/rabbitmq/rabbitmq.png">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/02/06/1yslMd.png">
 
 
 
@@ -245,7 +246,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">20</span>
       </a>
 </li>
 
@@ -256,7 +257,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span>
       </a>
 </li>
 
@@ -267,7 +268,7 @@
   
   <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">12</span>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span>
       </a>
 </li>
 
@@ -360,7 +361,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:27:27+08:00">2019-12-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:27:26+08:00">2019-12-13</time>
             
 
             
@@ -428,7 +429,7 @@
 <p>下载地址：<a href="https://www.rabbitmq.com/download.html" target="_blank" rel="noopener">https://www.rabbitmq.com/download.html</a></p>
 </li>
 </ol>
-<h2 id="基础概览介绍"><a href="#基础概览介绍" class="headerlink" title="基础概览介绍"></a>基础概览介绍</h2><p><img src="/images/rabbitmq/rabbitmq.png" alt="RabbitMQ 原理图"></p>
+<h2 id="基础概览介绍"><a href="#基础概览介绍" class="headerlink" title="基础概览介绍"></a>基础概览介绍</h2><p><img src="https://s2.ax1x.com/2020/02/06/1yslMd.png" alt="RabbitMQ 原理图"></p>
 <ol>
 <li>Message 消息：由消息头和消息体组成，消息体是不透明的，消息头由一系列属性组成，如下：<ol>
 <li>routing-key：路由键</li>
@@ -512,16 +513,16 @@ channel.basic_publish(exchange=<span class="string">''</span>,
 <p>在 RabbitMQ 中还有一些其他类型的交换器，如：direct、topic、headers 、fanout。</p>
 <ol>
 <li><p>direct：完全匹配、单播的模式</p>
-<p><img src="/images/rabbitmq/direct.png" alt="direct"></p>
+<p><img src="https://s2.ax1x.com/2020/02/06/1ysGZt.png" alt="direct"></p>
 <p>消息中的路由键（routing key）如果和 Binding 中的 binding key 一致， 交换器就将消息发到对应的队列中。</p>
 <p>路由键与队列名完全匹配，如果一个队列绑定到交换机要求路由键为“dog”，则只转发 routing key 标记为“dog”的消息，不会转发“dog.puppy”，也不会转发“dog.guard”等等。</p>
 </li>
 <li><p>fanout：广播模式</p>
-<p><img src="/images/rabbitmq/fanout.png" alt="fanout"></p>
+<p><img src="https://s2.ax1x.com/2020/02/06/1ys3qI.png" alt="fanout"></p>
 <p>该模式会将接收的消息广播到所有绑定的消息队列中，而不会处理 routing-key。</p>
 </li>
 <li><p>topic：模式匹配模式</p>
-<p><img src="/images/rabbitmq/topic.png" alt="topic"></p>
+<p><img src="https://s2.ax1x.com/2020/02/06/1ysMxH.png" alt="topic"></p>
 <p>首先发送消息客户端的 routing-key 不能是随意的，必须是有点（“.”）分割的单词组成。</p>
 <p>再者binding-key 是routing-key 的一种匹配模式，其中通配符 “*” 匹配一个单词，“#” 匹配0个或多个单词。如上图。</p>
 <p>参考：<a href="https://www.rabbitmq.com/tutorials/tutorial-five-python.html" target="_blank" rel="noopener">https://www.rabbitmq.com/tutorials/tutorial-five-python.html</a></p>
@@ -609,6 +610,12 @@ connection.close()
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WEBTAGe28057c1b77cd42014297d20883b298e/" rel="tag"># WEBTAGe28057c1b77cd42014297d20883b298e</a>
+          
+        </div>
       
 
       
@@ -717,7 +724,7 @@ connection.close()
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -748,7 +755,13 @@ connection.close()
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -795,7 +808,13 @@ connection.close()
                     
                       
                     
-                    <span class="site-state-item-count">0</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -872,7 +891,7 @@ connection.close()
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

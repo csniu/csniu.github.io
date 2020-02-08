@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="django-Haystackdjango 的第三方插件，提供可拔插式的搜索后端。支持 Solr， Elasticsearch，Whoosh，Xapian 等搜索引擎。是项目于搜索引擎解耦和。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-13T08:18:07.000Z">
+<meta property="og:updated_time" content="2020-02-08T06:53:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django Haystack">
 <meta name="twitter:description" content="django-Haystackdjango 的第三方插件，提供可拔插式的搜索后端。支持 Solr， Elasticsearch，Whoosh，Xapian 等搜索引擎。是项目于搜索引擎解耦和。">
@@ -240,7 +240,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">20</span>
       </a>
 </li>
 
@@ -251,7 +251,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span>
       </a>
 </li>
 
@@ -262,7 +262,7 @@
   
   <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">12</span>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span>
       </a>
 </li>
 
@@ -376,7 +376,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
 
                 
                 
@@ -721,8 +728,7 @@ sqs = super(DateRangeSearchForm, self).search()  <span class="comment"># 父类�
 
 </code></pre>
 <p><a href="https://django-haystack.readthedocs.io/en/v2.8.1/multiple_index.html" target="_blank" rel="noopener">官方说明</a></p>
-<h3 id="SearchQuerySet"><a href="#SearchQuerySet" class="headerlink" title="SearchQuerySet"></a>SearchQuerySet</h3><hr>
-<ul>
+<h3 id="SearchQuerySet"><a href="#SearchQuerySet" class="headerlink" title="SearchQuerySet"></a>SearchQuerySet</h3><ul>
 <li>Haystack 的查询方式主要是 SearchQuerySet 类实现。</li>
 <li>查询方式类是与 django 的 Query。</li>
 <li>主要有如下方法：</li>
@@ -735,20 +741,7 @@ Q.models(model_name).filter(content=<span class="string">'egfr'</span>)
 
 </code></pre>
 <p># 其中查询参数有：</p>
-<blockquote>
-<p>content  ： 最常用的，‘包括’</p>
-<p>contains</p>
-<p>exact</p>
-<p>gt</p>
-<p>gte</p>
-<p>lt</p>
-<p>lte</p>
-<p>in</p>
-<p>startswith</p>
-<p>endswith</p>
-<p>range</p>
-<p>fuzzy</p>
-</blockquote>
+<p>content、contains、exact、gt、gte、lt、lte、in、startswith、endswith、range、fuzzy</p>
 
       
     </div>
@@ -888,7 +881,7 @@ Q.models(model_name).filter(content=<span class="string">'egfr'</span>)
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -919,7 +912,13 @@ Q.models(model_name).filter(content=<span class="string">'egfr'</span>)
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -966,7 +965,13 @@ Q.models(model_name).filter(content=<span class="string">'egfr'</span>)
                     
                       
                     
-                    <span class="site-state-item-count">0</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1043,7 +1048,7 @@ Q.models(model_name).filter(content=<span class="string">'egfr'</span>)
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

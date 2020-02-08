@@ -237,7 +237,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">20</span>
       </a>
 </li>
 
@@ -248,7 +248,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span>
       </a>
 </li>
 
@@ -259,7 +259,7 @@
   
   <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">12</span>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span>
       </a>
 </li>
 
@@ -684,7 +684,14 @@ p = Paginator(objects, <span class="number">2</span>)
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
 
                 
                 
@@ -1287,6 +1294,181 @@ p = Paginator(objects, <span class="number">2</span>)
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/logging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/logging/" itemprop="url">logging</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:29:22+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/logging/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/logging/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Python-logging"><a href="#Python-logging" class="headerlink" title="Python-logging"></a>Python-logging</h1><p>python 的标准库包。提供了日志记录的 API。仅是线程安全的，多进程可参考 <a href="https://pypi.org/project/ConcurrentLogHandler/" target="_blank" rel="noopener">ConcurrentLogHandler</a>。</p>
+<p>包结构：</p>
+<pre><code>logging\
+    | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。
+    | config.py  # 定义了 配置函数以及读取配置文件的类。
+    | handlers.py  # 对 handler 的扩展完善。
+</code></pre><p>基本概念：</p>
+<ul>
+<li>Logger：日志的系统入口。</li>
+<li>Handler：将日志记录（logger 创建）发送到指定的目标。</li>
+<li>Filter：过滤日志。</li>
+<li>Formatter：设置日志的格式。</li>
+</ul>
+<p>关系：</p>
+<ul>
+<li>一个程序可以有多个 Logger 对象。（多个入口）（层级关系）</li>
+<li>一个 Logger 对应多个 Handler。（输入到多个地方）</li>
+<li>一个 Logger 对应多个 Filter。（多个过滤器）</li>
+<li>一个 Handler 对应一个 Formatter。（输出格式）</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/13/logging/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/个人博客搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1327,6 +1509,24 @@ p = Paginator(objects, <span class="number">2</span>)
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/个人博客/" itemprop="url" rel="index"><span itemprop="name">个人博客</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1474,7 +1674,7 @@ p = Paginator(objects, <span class="number">2</span>)
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:28:09+08:00">2019-12-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:28:08+08:00">2019-12-13</time>
             
 
             
@@ -1483,6 +1683,24 @@ p = Paginator(objects, <span class="number">2</span>)
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1617,7 +1835,7 @@ p = Paginator(objects, <span class="number">2</span>)
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:27:27+08:00">2019-12-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:27:26+08:00">2019-12-13</time>
             
 
             
@@ -1720,168 +1938,6 @@ p = Paginator(objects, <span class="number">2</span>)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Python中的类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="csniu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/my_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李大宝的包子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/13/Python中的类/" itemprop="url">Python中的类</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:26:52+08:00">2019-12-13</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/12/13/Python中的类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Python中的类/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h1><pre><code class="python"><span class="comment"># -*- coding: utf-8 -*-</span>
-<span class="keyword">import</span> time
-
-<span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span>
-    <span class="string">'''所有的（中国）上海人民'''</span>
-    birthplace = <span class="string">'上海'</span>
-    interest = <span class="string">'甜点'</span>
-    __country = <span class="string">'中国'</span>
-    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, sex, birth)</span>:</span>
-        self.name = name
-        self.sex = sex
-        self._birth = birth
-
-    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span><span class="params">(self)</span>:</span>
-        tm_year = time.localtime().tm_year
-        age = tm_year - self._birth
-        <span class="keyword">return</span> age
-</code></pre>
-<blockquote>
-<ol>
-<li>在 python 定义类使用关键字 class。</li>
-<li>类的命名一般遵守驼峰命名法。</li>
-<li>类也一个对象。</li>
-</ol>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/13/Python中的类/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1931,7 +1987,7 @@ p = Paginator(objects, <span class="number">2</span>)
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1962,7 +2018,13 @@ p = Paginator(objects, <span class="number">2</span>)
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2009,7 +2071,13 @@ p = Paginator(objects, <span class="number">2</span>)
                     
                       
                     
-                    <span class="site-state-item-count">0</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2070,7 +2138,7 @@ p = Paginator(objects, <span class="number">2</span>)
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

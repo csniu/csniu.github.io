@@ -102,26 +102,26 @@
 
 
 
-  <meta name="description" content="Python-loggingpython 的标准库包。提供了日志记录的 API。 包结构： logging\     | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。     | config.py  # 定义了 配置函数以及读取配置文件的类。     | handlers.py  # 对 handler 的扩展完善">
+  <meta name="description" content="Python-loggingpython 的标准库包。提供了日志记录的 API。仅是线程安全的，多进程可参考 ConcurrentLogHandler。 包结构： logging\     | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。     | config.py  # 定义了 配置函数以及读取配置文件的类。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="日志记录">
-<meta property="og:url" content="https://csniu.github.io/2019/12/13/日志记录/index.html">
+<meta property="og:title" content="logging">
+<meta property="og:url" content="https://csniu.github.io/2019/12/13/logging/index.html">
 <meta property="og:site_name" content="李大宝的包子">
-<meta property="og:description" content="Python-loggingpython 的标准库包。提供了日志记录的 API。 包结构： logging\     | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。     | config.py  # 定义了 配置函数以及读取配置文件的类。     | handlers.py  # 对 handler 的扩展完善">
+<meta property="og:description" content="Python-loggingpython 的标准库包。提供了日志记录的 API。仅是线程安全的，多进程可参考 ConcurrentLogHandler。 包结构： logging\     | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。     | config.py  # 定义了 配置函数以及读取配置文件的类。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/1063221/201705/1063221-20170511145312144-488305597.png">
-<meta property="og:updated_time" content="2019-12-13T08:13:12.000Z">
+<meta property="og:image" content="https://s2.ax1x.com/2020/02/08/1Ra2T0.png">
+<meta property="og:updated_time" content="2020-02-08T06:49:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="日志记录">
-<meta name="twitter:description" content="Python-loggingpython 的标准库包。提供了日志记录的 API。 包结构： logging\     | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。     | config.py  # 定义了 配置函数以及读取配置文件的类。     | handlers.py  # 对 handler 的扩展完善">
-<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/1063221/201705/1063221-20170511145312144-488305597.png">
+<meta name="twitter:title" content="logging">
+<meta name="twitter:description" content="Python-loggingpython 的标准库包。提供了日志记录的 API。仅是线程安全的，多进程可参考 ConcurrentLogHandler。 包结构： logging\     | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。     | config.py  # 定义了 配置函数以及读取配置文件的类。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/02/08/1Ra2T0.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://csniu.github.io/2019/12/13/日志记录/">
+  <link rel="canonical" href="https://csniu.github.io/2019/12/13/logging/">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>日志记录 | 李大宝的包子</title>
+  <title>logging | 李大宝的包子</title>
   
 
 
@@ -328,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/日志记录/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/logging/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -345,7 +345,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">日志记录</h2>
+          <h2 class="post-title" itemprop="name headline">logging</h2>
         
 
         <div class="post-meta">
@@ -367,6 +367,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -375,8 +393,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/13/日志记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/日志记录/" itemprop="commentCount"></span>
+                <a href="/2019/12/13/logging/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/logging/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,80 +422,41 @@
       
 
       
-        <h1 id="Python-logging"><a href="#Python-logging" class="headerlink" title="Python-logging"></a>Python-logging</h1><p>python 的标准库包。提供了日志记录的 API。</p>
+        <h1 id="Python-logging"><a href="#Python-logging" class="headerlink" title="Python-logging"></a>Python-logging</h1><p>python 的标准库包。提供了日志记录的 API。仅是线程安全的，多进程可参考 <a href="https://pypi.org/project/ConcurrentLogHandler/" target="_blank" rel="noopener">ConcurrentLogHandler</a>。</p>
 <p>包结构：</p>
 <pre><code>logging\
     | __init__.py  # 包入口，主要模块，定义了 logger、handler、formatter、filter 等类。
     | config.py  # 定义了 配置函数以及读取配置文件的类。
     | handlers.py  # 对 handler 的扩展完善。
 </code></pre><p>基本概念：</p>
-<blockquote>
-<p>1.Logger：日志的系统入口。</p>
-<p>2.Handler：将日志记录（logger 创建）发送到指定的目标。</p>
-<p>3.Filter：过滤日志。</p>
-<p>4.Formatter：设置日志的格式。</p>
-</blockquote>
+<ul>
+<li>Logger：日志的系统入口。</li>
+<li>Handler：将日志记录（logger 创建）发送到指定的目标。</li>
+<li>Filter：过滤日志。</li>
+<li>Formatter：设置日志的格式。</li>
+</ul>
 <p>关系：</p>
-<blockquote>
 <ul>
 <li>一个程序可以有多个 Logger 对象。（多个入口）（层级关系）</li>
 <li>一个 Logger 对应多个 Handler。（输入到多个地方）</li>
 <li>一个 Logger 对应多个 Filter。（多个过滤器）</li>
 <li>一个 Handler 对应一个 Formatter。（输出格式）</li>
 </ul>
-</blockquote>
 <a id="more"></a>
-<h4 id="一、Logger"><a href="#一、Logger" class="headerlink" title="一、Logger"></a>一、Logger</h4><hr>
-<p>提供应用程序可以直接使用的接口。要自行实例化后才可以使用。</p>
+<h4 id="一、Logger"><a href="#一、Logger" class="headerlink" title="一、Logger"></a>一、Logger</h4><p>提供应用程序可以直接使用的接口。要自行实例化后才可以使用。</p>
 <h5 id="1-实例化"><a href="#1-实例化" class="headerlink" title="1.实例化"></a>1.实例化</h5><pre><code class="python">log = logging.getLogger(name)
 </code></pre>
-<p># 使用相同的 “name” 实例化，会始终返回同一个 Logger 对象。</p>
-<p># 如果没有自定，将换回 root logger。</p>
-<p># “name” 可以是句点分割的层次值。类是于 python 包层次结构。<strong>推荐</strong>使用 <code>logging.getLogger(__name__)</code>.</p>
-<blockquote>
-<p>如包test结构如下：（需要 python 把test认定为一个包才行。）</p>
-<p>test\</p>
-<p>​    |t1.py</p>
-<p>​    |t2.py</p>
-<p>t2 中：<code>logging.getLogger(__name__)</code> 就等于 <code>logging.getLogger(test.t2)</code></p>
-</blockquote>
-<h5 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h5><p>方法1：</p>
-<blockquote>
-<p>使用Python代码显式的创建loggers, handlers和formatters并分别调用它们的配置函数；</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>logger.setLevel(logging.INFO)</td>
-<td>指定最低的日志级别，默认为Warning。低于lel的级别将被忽略。debug是最低的内置级别，critical为最高</td>
-</tr>
-<tr>
-<td>Logger.addHandler(hdlr)</td>
-<td>增加指定的handler</td>
-</tr>
-<tr>
-<td>Logger.removeHandler(hdlr)</td>
-<td>删除指定的handler</td>
-</tr>
-<tr>
-<td>Logger.addFilter(filt)</td>
-<td>添加指定的filter</td>
-</tr>
-<tr>
-<td>Logger.removeFilter(filt)</td>
-<td>删除指定的filter</td>
-</tr>
-<tr>
-<td>等等</td>
-</tr>
-</tbody>
-</table>
-<p># 日志级别：logging.DEBUG&lt;logging.INFO&lt;logging.WARNING&lt;logging.ERROR&lt;logging.CRITICAL</p>
+<ul>
+<li>使用相同的 “name” 实例化，会始终返回同一个 Logger 对象。</li>
+<li>如果没有指定，将换回 <code>root logger</code>。</li>
+<li>“name” 可以是句点分割的层次值。类是于 python 包层次结构。<strong>推荐</strong>使用 <code>logging.getLogger(__name__)</code>.</li>
+<li><h5 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h5></li>
+</ul>
+<p>方法1：</p>
+<p>使用Python代码显式的创建loggers, handlers和formatters并分别调用它们的配置函数；<br>| 方法                          | 说明                                                         |<br>| —————————– | ———————————————————— |<br>| logger.setLevel(logging.INFO) | 指定最低的日志级别，默认为Warning。低于lel的级别将被忽略。debug是最低的内置级别，critical为最高 |<br>| Logger.addHandler(hdlr)       | 增加指定的handler                                       |<br>| Logger.removeHandler(hdlr)    | 删除指定的handler                                       |<br>| Logger.addFilter(filt)        | 添加指定的filter                                        |<br>| Logger.removeFilter(filt)     | 删除指定的filter                                       || 等等                          |                                                              |</p>
+<ul>
+<li>日志级别：logging.DEBUG&lt;logging.INFO&lt;logging.WARNING&lt;logging.ERROR&lt;logging.CRITICAL</li>
+</ul>
 <p>如下：</p>
 <pre><code class="python"><span class="keyword">import</span> logging
 <span class="keyword">import</span> sys
@@ -512,10 +491,10 @@ logger.critical(<span class="string">'critical message'</span>)
 2019-02-26 09:44:44,001 - simple_logger - CRITICAL - critical message
 </code></pre><ul>
 <li><code>basicConfig()</code> 也是这一类配置方法。主要是封装了配置代码，经行<strong>简单基本快捷</strong>的配置。</li>
+<li>如果 root logger 已经有 handlers 配置，则不会经行任何配置。</li>
+<li>默认是创建一个 StreamHandler 到 <code>sys.stderr</code>并通过<code>BASIC_FORMAT</code>格式输出。</li>
+<li>也可以指定一些参数，改变默认配置。详见源代码。</li>
 </ul>
-<p># 如果 root logger 已经有 handlers 配置，则不会经行任何配置。</p>
-<p># 默认是创建一个 StreamHandler 到 <code>sys.stderr</code>并通过<code>BASIC_FORMAT</code>格式输出。</p>
-<p># 也可以指定一些参数，改变默认配置。详见源代码。</p>
 <pre><code class="python"><span class="keyword">import</span> logging
 
 logging.basicConfig()
@@ -530,34 +509,33 @@ logger.info(<span class="string">'info message'</span>)
 logger.warn(<span class="string">'warn message'</span>)
 </code></pre>
 <pre><code>WARNING:root:warn message
-</code></pre><p># 只有高于 WARNING 的级别才会输出。</p>
-</blockquote>
+</code></pre><ul>
+<li>只有高于 WARNING 的级别才会输出。</li>
+</ul>
 <p><strong>方法2：</strong></p>
-<blockquote>
 <p><strong>通过配置文件配置。</strong></p>
 <ul>
 <li>读取配置文件，主要是通过 <code>logging.config</code>模块中的<code>fileConfig</code>和<code>dictConfig()</code>方法实现。</li>
 <li>fileConfig 本质是对 configparser 的封装。读取的 “file”。</li>
-<li>dictConfig 中从配置字典中读取信息。</li>
-</ul>
+<li><p>dictConfig 中从配置字典中读取信息。</p>
 <pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">fileConfig</span><span class="params">(fname, defaults=None, disable_existing_loggers=True)</span>:</span>
 </code></pre>
-<p># fname：配置文件。</p>
-<p># defaults：传给 ConfigParser 的默认值。</p>
-<p># 布尔值。默认为 True。表示禁用已经存在的 logger。</p>
+</li>
+<li><p>fname：配置文件。</p>
+</li>
+<li>defaults：传给 ConfigParser 的默认值。</li>
+<li>布尔值。默认为 True。表示禁用已经存在的 logger。</li>
+</ul>
 <p><strong>配置文件格式。</strong></p>
 <ul>
-<li>因为 fileConfig 是对 ConfigParser 的封装，所有 fileConfig 能够理解的格式也是基于 ConfigParser 格式的，只是在其基础上对 <code>section</code>和 <code>option</code>进行了一些规定和现在。如下：</li>
-</ul>
-<blockquote>
+<li><p>因为 fileConfig 是对 ConfigParser 的封装，所有 fileConfig 能够理解的格式也是基于 ConfigParser 格式的，只是在其基础上对 <code>section</code>和 <code>option</code>进行了一些规定和现在。如下：</p>
 <ul>
 <li>配置文件<strong>必须</strong>配置的 section 包含 <code>loggers</code>、<code>handlers</code>、<code>formatters</code>。</li>
 <li>通过 keys(option)来自定已经配置好的 <code>logger</code>、<code>handler</code>、<code>formatter</code>，多个用逗号分割。</li>
 <li>并且 loggers 的 keys 中<strong>必须</strong>要有 root。</li>
 </ul>
-</blockquote>
-<p>logger:</p>
-<blockquote>
+</li>
+<li><p>logger:</p>
 <ul>
 <li>每一个 logger、handler、formatter 都<strong>必须</strong>在一个单独的 section 中定义。</li>
 <li>命名规则为：[logger_loggerName]、[handler_handlerName]、[formatter_formatterName]。</li>
@@ -566,18 +544,19 @@ logger.warn(<span class="string">'warn message'</span>)
 <li>qualname（<strong>必须</strong>）（表示在logger层级中的名字，代码中通过这个名字得到 logger）</li>
 <li>propagate（可选）（默认为1，表示将消息传递给更高层次的 logger 的 handler，一般指定为0）</li>
 </ul>
-</blockquote>
-<p>handler:</p>
-<blockquote>
+</li>
+<li><p>handler:</p>
 <ul>
-<li><strong>必须</strong>指定 class、args。可选 level、formatter。</li>
+<li><strong>必须</strong>指定 class、args。可选 level、formatter。<ul>
 <li>class：handler 的类名。可以是相对 logging模块的相对值。如：FileHandler</li>
 <li>args：传递给 “class” 的参数。<strong>必须</strong>是 tuple 类型。</li>
 <li>level：等级</li>
 <li>formatter：格式器。如果不指定，handler 将会以消息本身进行记录，而不会添加时间等信息。</li>
 </ul>
-</blockquote>
-<p><a href="https://docs.python.org/3/library/logging.config.html#logging-config-dictschema" target="_blank" rel="noopener">参考</a></p>
+</li>
+</ul>
+</li>
+</ul>
 <p>以 fileConfig 为例如下：</p>
 <pre><code class="python"><span class="keyword">import</span> logging
 <span class="keyword">import</span> logging.config
@@ -599,8 +578,6 @@ level = INFO
 handlers = mail, file, console
 propagate = 0
 
-
-
 [handler_mail]
 class = handlers.SMTPHandler
 level = ERROR
@@ -619,14 +596,11 @@ level = INFO
 formatter = format
 args = (sys.stdout,)
 
-
-
 [formatter_format]
 format=%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s
 datefmt=%m/%d/%Y %I:%M:%S %p
 
-</code></pre></blockquote>
-<h4 id="二、handler"><a href="#二、handler" class="headerlink" title="二、handler"></a>二、handler</h4><hr>
+</code></pre><h4 id="二、handler"><a href="#二、handler" class="headerlink" title="二、handler"></a>二、handler</h4><hr>
 <p>定义将日志信息发送到哪里。文件、网络、邮箱。</p>
 <p>基本上不需要开发者关心，直接调用就可以。</p>
 <p>一些常用的 Handler 定义在 <code>__init__.py</code>，不太常用的都定义在 <code>handler</code>中。如下</p>
@@ -668,8 +642,7 @@ datefmt=%m/%d/%Y %I:%M:%S %p
 </tr>
 </tbody>
 </table>
-<h4 id="三、formatter"><a href="#三、formatter" class="headerlink" title="三、formatter"></a>三、formatter</h4><hr>
-<p>决定日志记录的最终输出格式。</p>
+<h4 id="三、formatter"><a href="#三、formatter" class="headerlink" title="三、formatter"></a>三、formatter</h4><p>决定日志记录的最终输出格式。</p>
 <p>可用格式化：</p>
 <table>
 <thead>
@@ -741,8 +714,7 @@ datefmt=%m/%d/%Y %I:%M:%S %p
 </tr>
 </tbody>
 </table>
-<h4 id="四、filter"><a href="#四、filter" class="headerlink" title="四、filter"></a>四、filter</h4><hr>
-<p>ilter可以被Handler和Logger用来做比level更细粒度的、更复杂的过滤功能。Filter是一个过滤器基类，它只允许某个logger层级下的日志事件通过过滤。该类定义如下：</p>
+<h4 id="四、filter"><a href="#四、filter" class="headerlink" title="四、filter"></a>四、filter</h4><p>ilter可以被Handler和Logger用来做比level更细粒度的、更复杂的过滤功能。Filter是一个过滤器基类，它只允许某个logger层级下的日志事件通过过滤。该类定义如下：</p>
 <pre><code class="python"><span class="class"><span class="keyword">class</span> <span class="title">logging</span>.<span class="title">Filter</span><span class="params">(name=<span class="string">''</span>)</span></span>
 <span class="class">    <span class="title">filter</span><span class="params">(record)</span></span>
 <span class="class"></span>
@@ -754,8 +726,7 @@ datefmt=%m/%d/%Y %I:%M:%S %p
         }
 
 </code></pre>
-<h4 id="五、写日志"><a href="#五、写日志" class="headerlink" title="五、写日志"></a>五、写日志</h4><hr>
-<p>在配置好 longing 和实例化 logger 后，就是写日志了，如下：</p>
+<h4 id="五、写日志"><a href="#五、写日志" class="headerlink" title="五、写日志"></a>五、写日志</h4><p>在配置好 longing 和实例化 logger 后，就是写日志了，如下：</p>
 <pre><code class="python">logger.fileConfig(<span class="string">'file'</span>)
 log = logging.getLogger(__name__)
 
@@ -790,8 +761,7 @@ log = logging.getLogger(__name__)
 </tr>
 </tbody>
 </table>
-<h4 id="六、logging日志流处理流程"><a href="#六、logging日志流处理流程" class="headerlink" title="六、logging日志流处理流程"></a>六、logging日志流处理流程</h4><hr>
-<p><img src="https://images2015.cnblogs.com/blog/1063221/201705/1063221-20170511145312144-488305597.png" alt="logging日志流处理流程"></p>
+<h4 id="六、logging日志流处理流程"><a href="#六、logging日志流处理流程" class="headerlink" title="六、logging日志流处理流程"></a>六、logging日志流处理流程</h4><p><img src="https://s2.ax1x.com/2020/02/08/1Ra2T0.png" alt="logging日志流处理流程"></p>
 <p>我们来描述下上面这个图的日志流处理流程：</p>
 <ul>
 <li>1）（在用户代码中进行）日志记录函数调用，如：logger.info(…)，logger.debug(…)等；</li>
@@ -811,12 +781,11 @@ log = logging.getLogger(__name__)
 <li>日志器的处理器等级过滤；</li>
 <li>日志器的处理器的过滤器过滤；</li>
 </ul>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><hr>
-<blockquote>
-<p><a href="https://docs.python.org/3/library/logging.html" target="_blank" rel="noopener">python docs</a></p>
-<p><a href="https://pythonguidecn.readthedocs.io/zh/latest/writing/logging.html" target="_blank" rel="noopener">文档</a></p>
-<p><a href="https://www.cnblogs.com/yyds/p/6901864.html" target="_blank" rel="noopener">云游道士</a></p>
-</blockquote>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="https://docs.python.org/3/library/logging.html" target="_blank" rel="noopener">python docs</a></li>
+<li><a href="https://pythonguidecn.readthedocs.io/zh/latest/writing/logging.html" target="_blank" rel="noopener">文档</a></li>
+<li><a href="https://www.cnblogs.com/yyds/p/6901864.html" target="_blank" rel="noopener">云游道士</a></li>
+</ul>
 
       
     </div>
@@ -838,7 +807,7 @@ log = logging.getLogger(__name__)
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://csniu.github.io/2019/12/13/日志记录/" title="日志记录">https://csniu.github.io/2019/12/13/日志记录/</a>
+    <a href="https://csniu.github.io/2019/12/13/logging/" title="logging">https://csniu.github.io/2019/12/13/logging/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -858,8 +827,8 @@ log = logging.getLogger(__name__)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/13/logging/" rel="next" title="logging">
-                <i class="fa fa-chevron-left"></i> logging
+              <a href="/2019/12/13/个人博客搭建/" rel="next" title="个人博客搭建">
+                <i class="fa fa-chevron-left"></i> 个人博客搭建
               </a>
             
           </div>
@@ -868,8 +837,8 @@ log = logging.getLogger(__name__)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/13/Django的表单/" rel="prev" title="Django的表单">
-                Django的表单 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/13/日志记录/" rel="prev" title="日志记录">
+                日志记录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1275,9 +1244,9 @@ log = logging.getLogger(__name__)
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://csniu.github.io/2019/12/13/日志记录/';
-        this.page.identifier = '2019/12/13/日志记录/';
-        this.page.title = '日志记录';
+        this.page.url = 'https://csniu.github.io/2019/12/13/logging/';
+        this.page.identifier = '2019/12/13/logging/';
+        this.page.title = 'logging';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
