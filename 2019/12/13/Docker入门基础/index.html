@@ -242,7 +242,7 @@
   
   <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span>
       </a>
 </li>
 
@@ -253,7 +253,7 @@
   
   <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span>
       </a>
 </li>
 
@@ -457,7 +457,7 @@
 <pre><code>Registry Mirrors:
  https://dockerhub.azk8s.cn/
 </code></pre><p>获取 <code>gcr.io/*</code> 镜像时，将 <code>gcr.io/&lt;repo-name&gt;/&lt;image-name&gt;:&lt;version&gt;</code> 替换为 <code>gcr.azk8s.cn/&lt;repo-name&gt;/&lt;image-name&gt;:&lt;version&gt;</code> 即可，如：</p>
-<pre><code class="shell"><span class="meta">#</span> docker pull gcr.io/google_containers/hyperkube-amd64:v1.9.2
+<pre><code class="shell"><span class="meta">#</span><span class="bash"> docker pull gcr.io/google_containers/hyperkube-amd64:v1.9.2</span>
 docker pull gcr.azk8s.cn/google_containers/hyperkube-amd64:v1.9.2
 </code></pre>
 <p><strong>启动</strong>：在 window 系统中可以通过双击图标启动，在 Linux 中则通过命令 <code>sudo systemctl start docker</code>启动服务端。</p>
@@ -523,7 +523,7 @@ docker diff webserver # 查看改动，可能不单是index文件，所有有变
 </code></pre>
 <p>通过上面命令我们修改了容器中的一个文件，这时我们想保存当前环境（容器介绍存储层的修改会全部丢失），可以通过 <code>docker commit</code> 命令将容器的存储层保存下来成为镜像（在原来的镜像基础上加上存储层，构成新的镜像）。commit 命令格式如下：</p>
 <pre><code class="shell">docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]
-<span class="meta">#</span> docker commit -a 'csniu' -m '修改主页' webserver nginx:v2
+<span class="meta">#</span><span class="bash"> docker commit -a <span class="string">'csniu'</span> -m <span class="string">'修改主页'</span> webserver nginx:v2</span>
 </code></pre>
 <ul>
 <li>-a/–author:指定修改的作者</li>
@@ -942,24 +942,6 @@ docker volume prune  # 删除所有无主的卷
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -972,44 +954,6 @@ docker volume prune  # 删除所有无主的卷
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
