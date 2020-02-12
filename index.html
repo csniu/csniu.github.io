@@ -418,79 +418,16 @@
 
       
         
-          
-            <p>首先，Python是一种解释性型语言，是一种语言规范。规范有不同的实现方式，就有了不同的解释器，如 CPython、Pypy、Jython<br>等。其中CPython是C语言实现，是应用范围最广，也是官方的推荐的，我们在安装python时默认安装的解释器就是它。这叫<strong>解释器环境</strong>。</p>
+          <p>首先，Python是一种解释性型语言，是一种语言规范。规范有不同的实现方式，就有了不同的解释器，如 CPython、Pypy、Jython 等。其中CPython是C语言实现，是应用范围最广，也是官方的推荐的，我们在安装python时默认安装的解释器就是它。这叫<strong>解释器环境</strong>。</p>
 <p>其次，python在运行时的环境变量也会不同，这里主要说的是”包“的不同。这叫<strong>运行环境</strong>。</p>
 <p>还有就是在编辑工程中的编辑器不同。这叫<strong>编辑环境</strong>。</p>
-<h1 id="解释器环境"><a href="#解释器环境" class="headerlink" title="解释器环境"></a>解释器环境</h1><p>解释器环境还可以根据其实现语言和python版本细分。</p>
-<p>前面也说了CPython是官方推荐的也是应用最广的，所有没有特殊需要就不要换了。</p>
-<p>由于python2和python3的不兼容，导致出现了两种不同的编程方式。好在python2到python3的过渡基本完成，所有如果没有特别需求，使用python3就好。</p>
-<h2 id="多版本共存"><a href="#多版本共存" class="headerlink" title="多版本共存"></a>多版本共存</h2><p>可能你会需要在不同python版本测试你的代码，这就需要你同时安装不同的python版本。你可以参考<a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener">pyenv</a>，还有其和virtualenv的组合版本<a href="https://github.com/pyenv/pyenv-virtualenv" target="_blank" rel="noopener">pyenv-virtualenv</a>。</p>
-<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><p>这里主要说的是”包“环境的不同。比如你有两个项目都需要第三方包<code>requests</code>，但是一个项目需要其1.0版本，另一个项目需要其2.0版本。这时就要保证不同项目的环境完全独立互不干扰才行。</p>
-<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2><p>这时一般推荐的是<a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener">virtualenv</a>，它的原理是把系统中的python环境复制一份到virtualenv的环境。每次使用需要进入该环境，使用完需要退出环境。基本使用如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv  # 安装</span><br><span class="line"></span><br><span class="line">mkdir myproject # 新建路径</span><br><span class="line">cd myproject </span><br><span class="line"></span><br><span class="line">virtualenv  --no-site-packages venv  </span><br><span class="line"># 创建环境到当前路径下 venv 中</span><br><span class="line"># no-site-packages 不复制系统python环境中的所有第三方包</span><br><span class="line"></span><br><span class="line">source venv/bin/activate  # 进入环境</span><br><span class="line">...</span><br><span class="line">deactivate  # 退出环境</span><br></pre></td></tr></table></figure></p>
-<p>在使用virtualenv过程中还有两个问题：</p>
-<ul>
-<li>每一个虚拟环境都是安装在指定的路径下，不便于管理。</li>
-<li>使用虚拟环境需要激活和退出，才能进行其他的操作，如包的安装的程序的运行。</li>
-</ul>
-<p>基于这两个问题，又有不同的解决方案。</p>
-<p><a href="https://virtualenvwrapper.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">virtualenvwrapper</a> 可以把所有的虚拟环境放在一个地方方便管理。基本使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">pip install virtualenvwrapper</span><br><span class="line">export WORKON_HOME=~/Envs</span><br><span class="line">source /usr/local/bin/virtualenvwrapper.sh</span><br><span class="line"># pip install virtualenvwrapper-win # Windows 版</span><br><span class="line"></span><br><span class="line">mkvirtualenv my_project # 创建环境，会在 ~/Envs 中创建 my_project 文件夹。</span><br><span class="line"></span><br><span class="line">workon my_project  # 激活环境</span><br><span class="line"></span><br><span class="line">deactivate  # 退出环境</span><br><span class="line"></span><br><span class="line">rmvirtualenv my_project  # 删除环境</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://pipenv.readthedocs.io/en/latest/" target="_blank" rel="noopener">Pipenv</a>相当于是pip和virtualenv的合成版。尽管pip可以进行包管理，但是pipenv是一种更高级的工具，可以简化依赖关系的管理。</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pipenv</span><br></pre></td></tr></table></figure>
-<h5 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv install</span><br></pre></td></tr></table></figure>
-<ul>
-<li>会在当前路径下创建<code>Pipfile</code>和<code>Pipfile.lock</code>文件。<ul>
-<li><code>Pipfile</code>: 用来记录包的依赖关系，取代原<code>requirements.txt</code>文件。</li>
-<li><code>Pipfile.lock</code>: 是记录通过hash算法将包的名称和版本以及其依赖关系生成哈希值，以确保包的完整性。</li>
-<li>在提交项目时应将这两个文件一并提交。</li>
-</ul>
-</li>
-<li>可选参数<ul>
-<li>–three: 使用系统环境中的python3初始化。</li>
-<li>–two：使用系统环境中的python2初始化。</li>
-<li>–python: 使用系统环境中的python指定版本初始化。</li>
-<li>不可同时使用，系统环境中要有对应版本。</li>
-</ul>
-</li>
-<li>所有环境都安装在<code>~/.local/share/virtualenvs/</code>目录下。</li>
-</ul>
-<h5 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv install &lt;package&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果环境（Pipfile）不存在，则会创建一个。如果存在则会安装并更新Pipfile文件。</li>
-<li>–dev: 可选参数。安装到开发环境中。对应Pipfile文件中的[dev-packages]下，否则对应Pipfile中的[packages]下。</li>
-</ul>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pipenv shell  # 激活交互环境。</span><br><span class="line">exit  # 退出环境</span><br><span class="line"></span><br><span class="line">pipenv run python main.py  # 运行脚本</span><br></pre></td></tr></table></figure>
-<h5 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pipenv uninstall &lt;package&gt;  </span><br><span class="line">pipenv update [package]</span><br><span class="line">pipenv lock -r --dev &gt; requirements.txt</span><br><span class="line">pipenv install -r requirements.txt</span><br><span class="line"> pipenv --rm   # 删除环境</span><br><span class="line"> pipenv --where</span><br><span class="line"> pipenv --venv</span><br><span class="line"> pipenv graph  # 显示当前环境包的依赖图。</span><br><span class="line"> pipenv lock  #申明式生成 Pipfile.lock 文件</span><br></pre></td></tr></table></figure>
-<p>当然也还有一些其他的管理工具如<a href="https://github.com/brainsik/virtualenv-burrito" target="_blank" rel="noopener">virtualenv-burrito</a>、<a href="https://github.com/inishchith/autoenv" target="_blank" rel="noopener">autoenv</a>等可供选择。</p>
-<h2 id="venv"><a href="#venv" class="headerlink" title="venv"></a>venv</h2><p>上面说的都是基于virtualenv的，virtualenv同时支持python2和python3。但是从pyhon3.3开始就内置了一个虚拟环境工具<a href="https://docs.python.org/3/library/venv.html" target="_blank" rel="noopener">venv</a>。其和virtualenv比较类似，但是不支持python2。</p>
-<h5 id="创建环境-1"><a href="#创建环境-1" class="headerlink" title="创建环境"></a>创建环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv env</span><br></pre></td></tr></table></figure>
-<ul>
-<li>会在当前路径下创建env目录。</li>
-</ul>
-<h5 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Posix：source ./env/bin/activate</span><br><span class="line">Windows cmd: ./env/Scripts/activate.bat</span><br><span class="line">Windows PowerShell: ./env/Scripts/Activate.ps1</span><br><span class="line">Windows GitBash: source ./env/Script/activate</span><br></pre></td></tr></table></figure>
-<h5 id="退出环境"><a href="#退出环境" class="headerlink" title="退出环境"></a>退出环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-<p>与virtualenv相比venv更加轻量级，但是python社区更倾向于使用virtualenv。</p>
-<h2 id="conda-amp-Anaconda"><a href="#conda-amp-Anaconda" class="headerlink" title="conda &amp; Anaconda"></a>conda &amp; Anaconda</h2><p>conda 是”包“及其依赖项和环境的管理工具。适用于不同语言，如Python、R、Ruby、Java等等。主要解决”包“的依赖关系和环境管理。</p>
-<p>Anaconda 是集成了python、conda以及180+的科学包和其依赖的发行版。所有一般情况下如果需要，直接安装Anaconda就好。</p>
-<h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><p>直接到<a href="https://anaconda.org/" target="_blank" rel="noopener">官网</a>下载安装就好。安装完成后，还需要对所有工具包进行升级 <code>conda upgrade --all</code>（需要管理员权限）。</p>
-<h5 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda install package_name</span><br><span class="line">conda remove package_name</span><br><span class="line">conda update packge_name</span><br><span class="line">conda list</span><br></pre></td></tr></table></figure>
-<h5 id="环境管理"><a href="#环境管理" class="headerlink" title="环境管理"></a>环境管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conda create -n env_name packages</span><br><span class="line">source activate env_name</span><br><span class="line">source deactivate</span><br><span class="line">conda env remove -n env_name</span><br><span class="line">conda env list</span><br><span class="line">conda env export &gt;tt.yaml</span><br><span class="line">conda env create -f tt.yaml</span><br></pre></td></tr></table></figure>
-<h3 id="推荐方案"><a href="#推荐方案" class="headerlink" title="推荐方案"></a>推荐方案</h3><ul>
-<li>推荐使用Pipenv，当然使用Venv也可以。</li>
-<li>有科学计算需要的可以使用Anaconda。</li>
-</ul>
-<h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><p>任何能够编辑普通文本的编辑器都能够用来编写Python代码，然后，使用一个更加强大的编辑器会使您的生活变得容易点。</p>
-<p>常见的文本编辑器有：<code>Vim</code>、<code>Sublime Text</code>、<code>Atom</code>等可供选择。</p>
-<p>IDEs有：<code>PyCharm / IntelliJ IDEA</code>、<code>Visual Studio Code</code>、<code>Eclipse</code>、<code>Spyder</code>等</p>
-<p>其他：IDLE（python自带）、IPython。</p>
-<h3 id="推荐方案-1"><a href="#推荐方案-1" class="headerlink" title="推荐方案"></a>推荐方案</h3><ul>
-<li>脚本开发可以使用 <code>Vim</code>或<code>Sublime Text</code>，都可以，主要看个人习惯。</li>
-<li>项目开发可以使用 <code>PyCharm</code>,专为python开发。</li>
-<li>多语言，多功能可以使用<code>Visual Studio Code</code>。（推荐）</li>
-<li>交互式开发可以用<code>IPython</code>。</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/08/Python-开发环境/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
