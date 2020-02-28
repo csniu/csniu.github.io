@@ -102,24 +102,24 @@
 
 
 
-  <meta name="description" content="Docker 用来用来创建隔离环境。 Compose 是用于定义和运行多容器Docker应用程序的工具。通过Compose你可以使用YAML文件来配置多个服务，并可以使用一条命令来创建和启用所有的服务。 三步走：  通过 Dockerfile 定义你的服务。 通过 docker-compose.yml 组织所有服务。 通过 docker-compose up 创建并启用所有服务。  安装首先 Co">
+  <meta name="description" content="Blog搭建个人博客因该是很多人的需要，尤其是程序员！ 但是怎么搭建，搭建成什么样的每个人都会有不同的选择。 根据实现的技术大致有以下几种方案：  个人主页 有很多的平台都可以注册。优缺点就大家各自体会吧。  静态网站生成技术 这个就有一些技术门槛了，要有一些计算机的基础才行了。基本原理就是通过编写一些静态文件（Markdown），再通过编译器自动编译成要展示的页面。主流的有 hexo、hugo、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker Compose">
-<meta property="og:url" content="https://csniu.github.io/2020/02/28/Docker-Compose/index.html">
+<meta property="og:title" content="个人博客搭建">
+<meta property="og:url" content="https://csniu.github.io/2019/12/13/个人博客搭建/index.html">
 <meta property="og:site_name" content="李大宝的包子">
-<meta property="og:description" content="Docker 用来用来创建隔离环境。 Compose 是用于定义和运行多容器Docker应用程序的工具。通过Compose你可以使用YAML文件来配置多个服务，并可以使用一条命令来创建和启用所有的服务。 三步走：  通过 Dockerfile 定义你的服务。 通过 docker-compose.yml 组织所有服务。 通过 docker-compose up 创建并启用所有服务。  安装首先 Co">
+<meta property="og:description" content="Blog搭建个人博客因该是很多人的需要，尤其是程序员！ 但是怎么搭建，搭建成什么样的每个人都会有不同的选择。 根据实现的技术大致有以下几种方案：  个人主页 有很多的平台都可以注册。优缺点就大家各自体会吧。  静态网站生成技术 这个就有一些技术门槛了，要有一些计算机的基础才行了。基本原理就是通过编写一些静态文件（Markdown），再通过编译器自动编译成要展示的页面。主流的有 hexo、hugo、">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-28T07:44:22.000Z">
+<meta property="og:updated_time" content="2020-02-08T06:59:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker Compose">
-<meta name="twitter:description" content="Docker 用来用来创建隔离环境。 Compose 是用于定义和运行多容器Docker应用程序的工具。通过Compose你可以使用YAML文件来配置多个服务，并可以使用一条命令来创建和启用所有的服务。 三步走：  通过 Dockerfile 定义你的服务。 通过 docker-compose.yml 组织所有服务。 通过 docker-compose up 创建并启用所有服务。  安装首先 Co">
+<meta name="twitter:title" content="个人博客搭建">
+<meta name="twitter:description" content="Blog搭建个人博客因该是很多人的需要，尤其是程序员！ 但是怎么搭建，搭建成什么样的每个人都会有不同的选择。 根据实现的技术大致有以下几种方案：  个人主页 有很多的平台都可以注册。优缺点就大家各自体会吧。  静态网站生成技术 这个就有一些技术门槛了，要有一些计算机的基础才行了。基本原理就是通过编写一些静态文件（Markdown），再通过编译器自动编译成要展示的页面。主流的有 hexo、hugo、">
 
 
 
 
 
 
-  <link rel="canonical" href="https://csniu.github.io/2020/02/28/Docker-Compose/">
+  <link rel="canonical" href="https://csniu.github.io/2019/12/13/个人博客搭建/">
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>Docker Compose | 李大宝的包子</title>
+  <title>个人博客搭建 | 李大宝的包子</title>
   
 
 
@@ -326,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2020/02/28/Docker-Compose/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/个人博客搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -343,7 +343,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Docker Compose</h2>
+          <h2 class="post-title" itemprop="name headline">个人博客搭建</h2>
         
 
         <div class="post-meta">
@@ -355,7 +355,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-28T09:33:14+08:00">2020-02-28</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T11:28:55+08:00">2019-12-13</time>
             
 
             
@@ -376,7 +376,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境/" itemprop="url" rel="index"><span itemprop="name">环境</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/个人博客/" itemprop="url" rel="index"><span itemprop="name">个人博客</span></a></span>
 
                 
                 
@@ -391,8 +391,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/02/28/Docker-Compose/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/28/Docker-Compose/" itemprop="commentCount"></span>
+                <a href="/2019/12/13/个人博客搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/个人博客搭建/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -420,52 +420,258 @@
       
 
       
-        <p>Docker 用来用来创建隔离环境。</p>
-<p>Compose 是用于定义和运行多容器Docker应用程序的工具。通过Compose你可以使用YAML文件来配置多个服务，并可以使用一条命令来创建和启用所有的服务。</p>
-<p>三步走：</p>
+        <h2 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h2><p>搭建个人博客因该是很多人的需要，尤其是程序员！</p>
+<p>但是怎么搭建，搭建成什么样的每个人都会有不同的选择。</p>
+<p>根据实现的技术大致有以下几种方案：</p>
 <ul>
-<li>通过 Dockerfile 定义你的服务。</li>
-<li>通过 docker-compose.yml 组织所有服务。</li>
-<li>通过 <code>docker-compose up</code> 创建并启用所有服务。</li>
+<li><p>个人主页</p>
+<p>有很多的平台都可以注册。优缺点就大家各自体会吧。</p>
+</li>
+<li><p>静态网站生成技术</p>
+<p>这个就有一些技术门槛了，要有一些计算机的基础才行了。基本原理就是通过编写一些静态文件（Markdown），再通过编译器自动编译成要展示的页面。主流的有 hexo、hugo、jekyll等。</p>
+<p>优点：操作简单、足够定制化。</p>
+<p>缺点：有一定的技术门槛，是静态的。</p>
+</li>
+<li><p>内容管理系统</p>
+<p>这种技术要求就更高了，要涉及到服务器、数据库、域名等等。也就是建站了。如 Wordpress 等</p>
+<p>缺点：技术要求高、维护成本高。</p>
+<p>优点：完全定制化。</p>
+</li>
 </ul>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>首先 Compose 是依赖于 <code>Docker Engine</code> 的，所有在安装 Compose之前请确保已安装 <code>Docker Engine</code>。</p>
-<p>Mac 和 Wondows 中，在安装桌面版Docker程序是就已经集成了 Docker Engine 和 Compose 了，不需要单独安装。</p>
-<p>Windows Server 和 Linux 中需要单独安装，可以参考<a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">官方文档</a>。</p>
-<h1 id="入门操作"><a href="#入门操作" class="headerlink" title="入门操作"></a>入门操作</h1><h3 id="创建应用程序"><a href="#创建应用程序" class="headerlink" title="创建应用程序"></a>创建应用程序</h3><p>如创建一个 Flask 应用程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir composetest</span><br><span class="line">cd composetest</span><br></pre></td></tr></table></figure></p>
-<p>app.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">import redis</span><br><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">cache = redis.Redis(host=&apos;redis&apos;, port=6379)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_hit_count():</span><br><span class="line">    retries = 5</span><br><span class="line">    while True:</span><br><span class="line">        try:</span><br><span class="line">            return cache.incr(&apos;hits&apos;)</span><br><span class="line">        except redis.exceptions.ConnectionError as exc:</span><br><span class="line">            if retries == 0:</span><br><span class="line">                raise exc</span><br><span class="line">            retries -= 1</span><br><span class="line">            time.sleep(0.5)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def hello():</span><br><span class="line">    count = get_hit_count()</span><br><span class="line">    return &apos;Hello World! I have been seen &#123;&#125; times.\n&apos;.format(count)</span><br></pre></td></tr></table></figure></p>
+<p>参考：<a href="https://segmentfault.com/a/1190000011661576" target="_blank" rel="noopener">怎么选择和快速搭建个人博客</a></p>
+<a id="more"></a>
+<hr>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p><strong><em>说在前面，本机环境 window10， 64-bit，命令行操作默认是在 Git Bash 下除非特别说明。</em></strong></p>
+<h3 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h3><h4 id="一、搭建环境"><a href="#一、搭建环境" class="headerlink" title="一、搭建环境"></a>一、搭建环境</h4><ul>
+<li><p>安装 Git</p>
+</li>
+<li><p>安装 Node.js</p>
 <ul>
-<li>Redis中维护一个计数器。</li>
-<li>使用Redis默认暴露 6379 端口。</li>
+<li>下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></li>
+<li>默认会添加到环境变量中好安装 npm。</li>
+<li>测试：<code>node -v</code> 、 <code>npm -v</code></li>
 </ul>
-<h3 id="创建-Dockerfile-文件"><a href="#创建-Dockerfile-文件" class="headerlink" title="创建 Dockerfile 文件"></a>创建 Dockerfile 文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM python:3.7-alpine</span><br><span class="line">WORKDIR /code</span><br><span class="line">ENV FLASK_APP app.py</span><br><span class="line">ENV FLASK_RUN_HOST 0.0.0.0</span><br><span class="line">RUN apk add --no-cache gcc musl-dev linux-headers</span><br><span class="line">COPY requirements.txt requirements.txt</span><br><span class="line">RUN pip install -r requirements.txt</span><br><span class="line">COPY . .</span><br><span class="line">CMD [&quot;flask&quot;, &quot;run&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Hexo</p>
 <ul>
-<li>创建python环境并通过requirements.txt安装包。</li>
-<li>拷贝应用程序，也可以通过挂载的方式。</li>
-<li>设置环境变量和启动命令。</li>
+<li><code>npm install -g hexo-cli</code></li>
+<li>测试：<code>hexo -v</code></li>
 </ul>
-<h3 id="创建-docker-conpose-yml-文件"><a href="#创建-docker-conpose-yml-文件" class="headerlink" title="创建 docker-conpose.yml 文件"></a>创建 docker-conpose.yml 文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    build: .  # 使用当前路径下 Dockerfile 文件构建</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;5000:5000&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      - .:/code  # 挂载应用程序路径</span><br><span class="line">    environment:</span><br><span class="line">      FLASK_ENV: development</span><br><span class="line">  redis:</span><br><span class="line">    image: &quot;redis:alpine&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="二、初始化"><a href="#二、初始化" class="headerlink" title="二、初始化"></a>二、初始化</h4><ul>
+<li><p>创建项目文件夹</p>
 <ul>
-<li>创建两个服务，flask web 和 redis。</li>
-<li>redis服务使用 DockerHub 上的公共镜像创建，默认端口 6379。</li>
-<li>version：指定 docker-compose.yml 文件的写法格式</li>
+<li><code>mkdir myblog</code></li>
 </ul>
-<h3 id="创建并启用服务"><a href="#创建并启用服务" class="headerlink" title="创建并启用服务"></a>创建并启用服务</h3><p>执行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>初始化</p>
 <ul>
-<li>根据当前路径下的 docker-compose.yml 文件自动创建所有镜像并启动。</li>
+<li><code>hexo init myblog</code></li>
+<li>会自动在 myblog 文件夹中生成必要的文件。</li>
 </ul>
-<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>直接修改docker-compose.yml文件并通过上述命令启动。</p>
+</li>
+<li><p>目录介绍</p>
 <ul>
-<li>仅重新创建更改的镜像。</li>
+<li><pre><code>.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes
+</code></pre><blockquote>
+<p>_config.yml：配置文件</p>
+<p>packge.json：应用程序的信息</p>
+<p>scaffolds：模板文件夹</p>
+<p>source：资源文件夹</p>
+<p>themex：主题文件夹</p>
+</blockquote>
+</li>
 </ul>
-<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --help</span><br><span class="line"></span><br><span class="line">docker-compose up -d  # 后台</span><br><span class="line">docker-compose ps  # 查看当前运行容器</span><br><span class="line">docker-compose stop  # 停止</span><br><span class="line">docker-compose down  # 完全删除容器</span><br><span class="line">docker-compose down  --volumes  # 同时删除数据卷</span><br><span class="line"></span><br><span class="line">docker-compose logs  # 查看服务日志输出</span><br><span class="line">docker-compose start|stop|rm  eureka  # 启动/停止/删除指定服务已存在的容器</span><br></pre></td></tr></table></figure>
-<h3 id="启动和停止顺序"><a href="#启动和停止顺序" class="headerlink" title="启动和停止顺序"></a>启动和停止顺序</h3><p>可以通过 <a href="https://docs.docker.com/compose/compose-file/#depends-on" target="_blank" rel="noopener">depends_on</a> 选项来控制服务启动和关闭的顺序。</p>
-<p>但是Compose不会完全等到容器“就绪”才启动其他容器。</p>
+</li>
+</ul>
+<h4 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h4><ul>
+<li><p>网站的大部分配置都可以在 <em>config.yml 中设置。（主题中也有一个</em> config.yml 别搞混了）</p>
+</li>
+<li><p>详细介绍请移步<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">官方文档</a>，这里就不多介绍了。</p>
+</li>
+</ul>
+<h4 id="四、小试牛刀"><a href="#四、小试牛刀" class="headerlink" title="四、小试牛刀"></a>四、小试牛刀</h4><p>运行以下命令：</p>
+<pre><code class="bash">hexo new test_my_site  <span class="comment"># 新建一篇文章</span>
+hexo g  <span class="comment"># 解析成 Html 文件</span>
+hexo s  <span class="comment"># 启动服务器</span>
+</code></pre>
+<p>这个时候打开浏览器访问：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>  ，就能看到你博客了。</p>
+<blockquote>
+<p>会生成 db.json 和 public 文件夹</p>
+<p>db.json: 缓存文件</p>
+<p>public：生成的静态文件地址（Html 等前文件，真正展示的网页文件）</p>
+</blockquote>
+<h4 id="五、运行原理及流程"><a href="#五、运行原理及流程" class="headerlink" title="五、运行原理及流程"></a>五、运行原理及流程</h4><p>操作流程一般是：1.创建 md 文件。2.编辑内容。 3.渲染成 html 文件。4.发布</p>
+<p><strong>1.</strong>  <code>hexo new [layout] &lt;title&gt;</code></p>
+<blockquote>
 <ul>
-<li>应用程序应该考虑到其他服务随时不可以的情况。</li>
-<li>或者可以用  <a href="https://github.com/Eficode/wait-for" target="_blank" rel="noopener">wait-for</a>之类的工具解决。</li>
+<li><p>首先根据 layout 参数(有默认值)到 scaffolsd 文件夹下查找对应的模板文件。</p>
+</li>
+<li><p>layout 参数主要用来查找模板得到 Front-matter，和判断文件要保存的位置</p>
+</li>
+<li><p>Front-matter，如下</p>
+<pre><code>---
+title: Hello World
+date: 2019-04-01 16:51:03
+---
+</code></pre><blockquote>
+<ul>
+<li><p>记录一些必要信息，标题、时间、分类、标签等，详细参数<a href="https://hexo.io/zh-cn/docs/front-matter" target="_blank" rel="noopener">参见文档</a></p>
+</li>
+<li><p>hexo 提供了三种默认的布局：post(一篇文字)、page（一个文件夹）、draft。保存地址如下：</p>
+<ul>
+<li><p>post: source/_posts</p>
+</li>
+<li><p>page: source</p>
+</li>
+<li><p>draft: source/_drafts</p>
+</li>
 </ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker 官方文档</a></li>
+</li>
+<li><p>其他所有的布局都和 post 一样。</p>
+</li>
+<li><p>创建一个 page 就是对应一个导航地址（如 home， tags 等）</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>创建 md 文件</li>
+<li>默认以“标题 ”为文件名。(也可在配置文件中修改文件名命名规则)`</li>
+</ul>
+</blockquote>
+<p><strong>2.</strong> 编辑内容</p>
+<ul>
+<li>想写什么就大胆的写吧。反正也不会有人看。</li>
+</ul>
+<p><strong>3.</strong> <code>hexo generate</code></p>
+<ul>
+<li>内容写好，接下来就是要转译成 Html 等文件了。</li>
+</ul>
+<blockquote>
+<ul>
+<li>查找文件<ul>
+<li>忽略 source 下所有以 “_”开头的文件/文件夹，除了 _port</li>
+<li>md 文件将被解析，其他文件会被直接拷贝</li>
+</ul>
+</li>
+<li>解析 md 文件。<ul>
+<li>根据当前的主题和一定的解析规则，将 md 文件解析成 html 文件用于展示。</li>
+<li>解析的文件和拷贝的文件被保存在 public 中。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><strong>4.</strong> <code>hexo deploy</code></p>
+<blockquote>
+<ul>
+<li>就是将 public 文件夹下的文件推送到远端。</li>
+<li>其他文件并不会被推送。</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="主题篇"><a href="#主题篇" class="headerlink" title="主题篇"></a>主题篇</h3><h4 id="一、命令"><a href="#一、命令" class="headerlink" title="一、命令"></a>一、命令</h4><pre><code>hexo -help
+
+hexo init [folder]  # 初始化，可指定文件夹，默认当前路径
+
+hexo new [layout] &lt;title&gt;  # 新建一片文章，可指定 layout,默认使用配置文件中的默认值
+
+hexo generate # 生成静态文件，可选参数 -d(--deploy):生成后立即部署，-w(--watch):监视文件变化
+
+hexo publish [layout] &lt;filename&gt;  # 发表草稿
+
+hexo server # 启动服务器，默认 4000端口。可选参数：-p(--port):端口号，-s(--static):只使用静态文件，-l(--log):启动日志记录；-i：指定ip地址
+
+hexo deploy  # 部署，可选 -g(--generate):部署之前生成静态文件
+
+hexo render &lt;file1&gt; [file2] ...  # 渲染文件，可选 -o(--output):输出路径
+
+hexo migrate &lt;type&gt;  # 从其他博客系统迁移内容
+
+hexo clean  # 清除缓存文件（db.json）和已生成的静态文件（public）
+
+hexo list  
+
+hexo version
+
+# 以上命令都有以下可选参数
+hexo --safe  # 安全模式，不使用插件和脚本
+hexo --debug  # 调试模式，在终端和debug.log 中记录日志
+hexo --config custom.yml  # 自定义配置文件路径
+hexo --draft  # 显示草稿。（source/_drafts）
+hexo --cwd /path/to  # 自定义当前工作路径
+</code></pre><h4 id="二、部署到远端服务器"><a href="#二、部署到远端服务器" class="headerlink" title="二、部署到远端服务器"></a>二、部署到远端服务器</h4><ul>
+<li><p>在基础篇中都是部署在本地的，建博客当然是要让更多人看到我们的文章了，明显在本地是不行的。</p>
+</li>
+<li><p>hexo 提供了一键部署的功能 <code>hexo deploy</code>。</p>
+</li>
+<li><p>但是在运行前要在配置文件中配置好远端的信息才性。</p>
+</li>
+<li><p>以下以配置git 的远程仓库为例（如 gitbub）:</p>
+</li>
+</ul>
+<ol>
+<li>安装部署git插件：<code>npm install hexo-deployer-git --save</code></li>
+<li>配置</li>
+</ol>
+<pre><code>deploy:
+  type: git
+  repo: &lt;repository url&gt; #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io.git
+  branch: [branch] #published
+  message: [message]
+</code></pre><blockquote>
+<p>type:  类型，当然不止 git 一种了</p>
+<p>repo：远端仓库地址</p>
+<p>branch：分支，使用 gitbub 时系统会自动检测</p>
+<p>massage：提交信息</p>
+</blockquote>
+<p><strong><em>也可以同时配置多个远端。</em></strong></p>
+<p><strong><em>更直接的把 public 文件夹直接拷贝走。</em></strong></p>
+<h4 id="三、主题"><a href="#三、主题" class="headerlink" title="三、主题"></a>三、主题</h4><h5 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h5><ul>
+<li>所有主题都存放在根目录下的 themes 下。</li>
+<li>下载主题：<code>git clone https://github.com/iissnan/hexo-theme-next.git（主题的地址）</code></li>
+<li>官方主题列表：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></li>
+<li>一个主题就 themes 下的一个文件夹，一般结构如下：<ul>
+<li>_config.yml：主题配置文件</li>
+<li>languages：语言文件</li>
+<li>layout：布局文件，存放主题的模板文件。决定网页的呈现方式。本质就是带变量的 html 文件，一般包括如下<ul>
+<li>index: 首页</li>
+<li>post：文章详情页</li>
+<li>page：导航标签页</li>
+<li>archive：归档页</li>
+<li>category：类别页</li>
+<li>tag：标签页</li>
+<li>layout：网页的整个布局，动态的由以上文件组成</li>
+</ul>
+</li>
+<li>scripts：脚本文件夹</li>
+<li>source：资源文件夹</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h5><ul>
+<li>设置配置文件中的theme字段信息即可。</li>
+</ul>
+<h4 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h4><ul>
+<li>在实际使用中每个人都有一些不同的个性化需求。如 评论系统 等。</li>
+<li>遇到想要的功能 Google 一下基本都会有的。</li>
+<li>我的学习 hexo 的原则就是理解其运行原理即可，不懂的、想用的可以自行 Google。太深入的问题就没有必要去深究了。否则就违背了初衷。</li>
+<li>另外写了个脚本，可以通过有道云笔记来管理和备份博客内容。见<a href="https://github.com/csniu/YouDaoNote-Hexo" target="_blank" rel="noopener">GitHub</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a>，更加详细的介绍。</li>
+<li><a href="https://www.jianshu.com/p/5a1e6d8c83af" target="_blank" rel="noopener">站点布局的原理</a>。</li>
 </ul>
 
       
@@ -488,7 +694,7 @@
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://csniu.github.io/2020/02/28/Docker-Compose/" title="Docker Compose">https://csniu.github.io/2020/02/28/Docker-Compose/</a>
+    <a href="https://csniu.github.io/2019/12/13/个人博客搭建/" title="个人博客搭建">https://csniu.github.io/2019/12/13/个人博客搭建/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -508,8 +714,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/08/Python-开发环境/" rel="next" title="Python 开发环境">
-                <i class="fa fa-chevron-left"></i> Python 开发环境
+              <a href="/2019/12/13/Python-中对MySQL数据库的使用/" rel="next" title="Python 中对MySQL数据库的使用">
+                <i class="fa fa-chevron-left"></i> Python 中对MySQL数据库的使用
               </a>
             
           </div>
@@ -517,6 +723,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/13/logging/" rel="prev" title="logging">
+                logging <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -692,7 +902,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#入门操作"><span class="nav-number">2.</span> <span class="nav-text">入门操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建应用程序"><span class="nav-number">2.0.1.</span> <span class="nav-text">创建应用程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Dockerfile-文件"><span class="nav-number">2.0.2.</span> <span class="nav-text">创建 Dockerfile 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-docker-conpose-yml-文件"><span class="nav-number">2.0.3.</span> <span class="nav-text">创建 docker-conpose.yml 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建并启用服务"><span class="nav-number">2.0.4.</span> <span class="nav-text">创建并启用服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更新"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他命令"><span class="nav-number">2.0.5.</span> <span class="nav-text">其他命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动和停止顺序"><span class="nav-number">2.0.6.</span> <span class="nav-text">启动和停止顺序</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Blog"><span class="nav-number">1.</span> <span class="nav-text">Blog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo"><span class="nav-number">2.</span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础篇"><span class="nav-number">2.1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、搭建环境"><span class="nav-number">2.1.1.</span> <span class="nav-text">一、搭建环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、初始化"><span class="nav-number">2.1.2.</span> <span class="nav-text">二、初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、配置"><span class="nav-number">2.1.3.</span> <span class="nav-text">三、配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、小试牛刀"><span class="nav-number">2.1.4.</span> <span class="nav-text">四、小试牛刀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、运行原理及流程"><span class="nav-number">2.1.5.</span> <span class="nav-text">五、运行原理及流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题篇"><span class="nav-number">2.2.</span> <span class="nav-text">主题篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、命令"><span class="nav-number">2.2.1.</span> <span class="nav-text">一、命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、部署到远端服务器"><span class="nav-number">2.2.2.</span> <span class="nav-text">二、部署到远端服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、主题"><span class="nav-number">2.2.3.</span> <span class="nav-text">三、主题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">2.使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、其他"><span class="nav-number">2.2.4.</span> <span class="nav-text">四、其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -871,9 +1081,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://csniu.github.io/2020/02/28/Docker-Compose/';
-        this.page.identifier = '2020/02/28/Docker-Compose/';
-        this.page.title = 'Docker Compose';
+        this.page.url = 'https://csniu.github.io/2019/12/13/个人博客搭建/';
+        this.page.identifier = '2019/12/13/个人博客搭建/';
+        this.page.title = '个人博客搭建';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');

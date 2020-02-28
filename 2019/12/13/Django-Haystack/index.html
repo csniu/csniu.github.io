@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_favicon.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_favicon.png?v=6.1.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="django-Haystackdjango 的第三方插件，提供可拔插式的搜索后端。支持 Solr， Elasticsearch，Whoosh，Xapian 等搜索引擎。是项目于搜索引擎解耦和。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Haystack">
+<meta property="og:url" content="https://csniu.github.io/2019/12/13/Django-Haystack/index.html">
+<meta property="og:site_name" content="李大宝的包子">
+<meta property="og:description" content="django-Haystackdjango 的第三方插件，提供可拔插式的搜索后端。支持 Solr， Elasticsearch，Whoosh，Xapian 等搜索引擎。是项目于搜索引擎解耦和。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-08T06:53:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django Haystack">
+<meta name="twitter:description" content="django-Haystackdjango 的第三方插件，提供可拔插式的搜索后端。支持 Solr， Elasticsearch，Whoosh，Xapian 等搜索引擎。是项目于搜索引擎解耦和。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://csniu.github.io/2019/12/13/Django-Haystack/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Django Haystack | 李大宝的包子</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100475240-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100475240-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!--<a href="https://github.com/csniu" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李大宝的包子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Django-Haystack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Django Haystack</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T12:32:02+08:00">2019-12-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/13/Django-Haystack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Django-Haystack/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="django-Haystack"><a href="#django-Haystack" class="headerlink" title="django-Haystack"></a>django-Haystack</h1><p>django 的第三方插件，提供可拔插式的搜索后端。支持 <a href="http://lucene.apache.org/solr/" target="_blank" rel="noopener">Solr</a>， <a href="http://elasticsearch.org/" target="_blank" rel="noopener">Elasticsearch</a>，<a href="https://bitbucket.org/mchaput/whoosh/" target="_blank" rel="noopener">Whoosh</a>，<a href="http://xapian.org/" target="_blank" rel="noopener">Xapian</a></p>
+<p>等搜索引擎。是项目于搜索引擎解耦和。</p>
+<a id="more"></a>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><hr>
+<blockquote>
+<p><code>pip install django-haystack</code></p>
+</blockquote>
+<p><strong>1.安装引擎 （以 whoosh 为例）</strong></p>
+<p><code>pip install whoosh</code></p>
+<p><strong>2.中文搜索，</strong></p>
+<p>因 whoosh 默认的分词是英文的对中文支持不是很友好，所以需要从新配置使用更加友好的 jieba 分词。</p>
+<p>可直接修改 whoosh 的源码实现，当然这样是不明智的！</p>
+<p>把 haystack\backends\whoosh_backend.py 文件拷贝到 app 目录下，并重命名为 whoosh_cn_backend.py </p>
+<p>做一下修改：</p>
+<pre><code class="python">+ <span class="keyword">from</span> jieba.analyse <span class="keyword">import</span> ChineseAnalyzer
+
+- schema_fields[field_class.index_fieldname] = TEXT(stored=<span class="literal">True</span>, analyzer=StemmingAnalyzer(), field_boost=field_class.boost, sortable=<span class="literal">True</span>)
++ schema_fields[field_class.index_fieldname] = TEXT(stored=<span class="literal">True</span>, analyzer=ChineseAnalyzer(),field_boost=field_class.boost, sortable=<span class="literal">True</span>)
+</code></pre>
+<h3 id="2-配置django-project"><a href="#2-配置django-project" class="headerlink" title="2.配置django project"></a>2.配置django project</h3><hr>
+<p><strong>配置 settings.py </strong></p>
+<pre><code class="python">INSTALLED_APPS = [
+    <span class="string">'django.contrib.admin'</span>,
+    <span class="string">'django.contrib.auth'</span>,
+    <span class="string">'django.contrib.contenttypes'</span>,
+    <span class="string">'django.contrib.sessions'</span>,
+    <span class="string">'django.contrib.messages'</span>,
+    <span class="string">'django.contrib.staticfiles'</span>,
+    <span class="string">'patients.apps.PatientsConfig'</span>,
+    <span class="string">'haystack'</span>, <span class="comment"># 添加 app</span>
+]
+
+<span class="comment"># 配置 haystack</span>
+HAYSTACK_CONNECTIONS = {
+    <span class="string">'default'</span>: {
+        <span class="string">'ENGINE'</span>: <span class="string">'patients.whoosh_cn_backend.WhooshEngine'</span>,  <span class="comment"># 选择引擎（修改后支持中文引擎, patients 为 app 名）</span>
+        <span class="string">'PATH'</span>: os.path.join(BASE_DIR, <span class="string">'whoosh_index'</span>),  <span class="comment"># 索引存放的位置，需要手动创建</span>
+        <span class="string">'INCLUDE_SPELLING'</span>: <span class="literal">True</span>
+    },
+}
+
+<span class="comment"># 设置每页显示的数据量</span>
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = <span class="number">50</span>
+<span class="comment"># 当数据库改变时，会自动更新索引</span>
+HAYSTACK_SIGNAL_PROCESSOR = <span class="string">'haystack.signals.RealtimeSignalProcessor'</span>
+
+<span class="comment"># 其他详细配置参见官方文档</span>
+</code></pre>
+<p># <code>HAYSTACK_SIGNAL_PROCESSOR</code>是通过 django 的 save 信号来更新的。直接操作数据库是不会更新索引的。</p>
+<h3 id="3-原理及各文件编写（whoosh）"><a href="#3-原理及各文件编写（whoosh）" class="headerlink" title="3.原理及各文件编写（whoosh）"></a>3.原理及各文件编写（whoosh）</h3><hr>
+<h4 id="1-为数据的特定字段创建索引，用于快速搜索"><a href="#1-为数据的特定字段创建索引，用于快速搜索" class="headerlink" title="1.为数据的特定字段创建索引，用于快速搜索"></a>1.为数据的特定字段创建索引，用于快速搜索</h4><h5 id="一、创建索引类"><a href="#一、创建索引类" class="headerlink" title="一、创建索引类"></a>一、创建索引类</h5><p><em>索引类本质就是做一个到 model 的映射关系，可以设置检索字段、过滤数据 等其他自定设置。</em></p>
+<p><strong>1.</strong> 在 app 下创建 search_indexes.py 。默认文件名，请勿修改</p>
+<p><strong>2.</strong>编写 search_indexes.py 如下：</p>
+<pre><code class="python"><span class="keyword">from</span> haystack <span class="keyword">import</span> indexes
+<span class="keyword">from</span> .models <span class="keyword">import</span> Main
+
+<span class="class"><span class="keyword">class</span> <span class="title">MainIndex</span><span class="params">(indexes.SearchIndex, indexes.Indexable)</span>:</span>  <span class="comment"># 类名必须为模型名+Index</span>
+    text = indexes.CharField(document=<span class="literal">True</span>, use_template=<span class="literal">True</span>) 
+    <span class="comment"># use_template=True 使用索引模板建立索引文件</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">get_model</span><span class="params">(self)</span>:</span>  <span class="comment"># 设置模型</span>
+        <span class="keyword">return</span> Main
+
+    <span class="function"><span class="keyword">def</span> <span class="title">index_queryset</span><span class="params">(self, using=None)</span>:</span>  <span class="comment"># 设置查询范围</span>
+        <span class="keyword">return</span> self.get_model().objects.all()
+</code></pre>
+<p><strong>document=True </strong></p>
+<blockquote>
+<p>1.使用此字段的内容作为索引进行检索。</p>
+<p>2.每个索引类，都需要有一个字段设置为 True， 并且是唯一一个。</p>
+<p>3.此字段名习惯命名为 text。</p>
+</blockquote>
+<p><strong>use_template=True</strong></p>
+<blockquote>
+<p>1.使用索引模板建立索引文件</p>
+<p>2.索引模板的命名规则： 模型名（小写）+_text.txt。</p>
+<p>3.保存路径：templates/search/indexes/myapp/  (一般放在 app 下)</p>
+<blockquote>
+<p>myapp 是对应模型定义在的 app 名，不是当前app。</p>
+<p># 如在app1 里建立索引，但是用到模型是定义在 app2 中。那么保存的全路径应该是：</p>
+<p>‘myproject’/app1/templates/search/indexes/app2/‘model_name’_text.txt</p>
+</blockquote>
+<p>4.编写 patients\templates\search\indexes\patients\main_text.txt</p>
+<pre><code>{{ object.drug }}
+{{ object.summary }}
+</code></pre></blockquote>
+<p># 对应模型里的字段名</p>
+<p><strong>text = indexes.CharField(document=True, use_template=True)</strong></p>
+<blockquote>
+<p>根据 text 创建索引（document=True），text 对应对应数据库中的字段（在所有模板中编写）（use_template=True）</p>
+</blockquote>
+<h5 id="二、通过命令创建索引"><a href="#二、通过命令创建索引" class="headerlink" title="二、通过命令创建索引"></a>二、通过命令创建索引</h5><pre><code class="python">python manage.py rebuild_index
+</code></pre>
+<p># 看到 <code>Prefix dict has been built succesfully.</code>  就表示创建成功了。</p>
+<p><a href="https://django-haystack.readthedocs.io/en/v2.8.1/management_commands.html" target="_blank" rel="noopener">管理命令说明 </a></p>
+<p>1.会在根据 model 的 drug、summary 字段创建索引（索引类、索引模板设置）</p>
+<p>2.索引保存在根目录下的 whoosh_index 文件夹下（settings 中设置）</p>
+<h4 id="2-配置路由和编写视图函数"><a href="#2-配置路由和编写视图函数" class="headerlink" title="2.配置路由和编写视图函数"></a>2.配置路由和编写视图函数</h4><p><strong>1.配置路由 （urls.py）</strong></p>
+<pre><code class="python">+ path(<span class="string">''</span>, MySearchView.as_view(), name=<span class="string">'haystack'</span>)
+</code></pre>
+<p><strong>2.编写视图函数</strong></p>
+<blockquote>
+<p>1.视图函数使用继承 haystack 封装好的 SearchView 类，并经行重载的方法实现。</p>
+<blockquote>
+<p>1.版本2.4开始不推荐使用 haystack.views.SearchView，而是使用更标准的 haystack.generic_views.SearchView</p>
+</blockquote>
+<p>2.SearchView 封装了 表单（build_form）、查询（get_query、get_results）、返回 Response （render_to_response）等步骤。可通过重载实现自定义。</p>
+<p>3.SearchView 默认使用的 Form 为 ModelSearchForm， ModelSearchForm 也是继承 SearchForm，即所有的 Form 类都因该继承 SearchForm（自定义）。</p>
+</blockquote>
+<p>一、自定义表单</p>
+<blockquote>
+<p>1.编写表单类， 并继承 SearchForm。</p>
+<p>2.设置视图的 form_class 字段。</p>
+<p>3.重载 search 方法。</p>
+<pre><code class="python"><span class="keyword">from</span> django <span class="keyword">import</span> forms
+<span class="keyword">from</span> haystack.forms <span class="keyword">import</span> SearchForm
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">DateRangeSearchForm</span><span class="params">(SearchForm)</span>:</span>
+<span class="comment"># 在表单中定义 start_date， end_date 字段，默认只有一个 q 字段</span>
+start_date = forms.DateField(required=<span class="literal">False</span>)
+end_date = forms.DateField(required=<span class="literal">False</span>)
+
+<span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self)</span>:</span>
+sqs = super(DateRangeSearchForm, self).search()  <span class="comment"># 父类的结果</span>
+
+
+<span class="keyword">if</span> <span class="keyword">not</span> self.is_valid():
+  <span class="keyword">return</span> self.no_query_found()
+
+<span class="keyword">if</span> self.cleaned_data[<span class="string">'start_date'</span>]:  <span class="comment"># 如果表单中有 start_date，如何处理</span>
+  sqs = sqs.filter(pub_date__gte=self.cleaned_data[<span class="string">'start_date'</span>])
+
+<span class="keyword">if</span> self.cleaned_data[<span class="string">'end_date'</span>]:  <span class="comment"># 如果表单中有 end_date，如何处理</span>
+  sqs = sqs.filter(pub_date__lte=self.cleaned_data[<span class="string">'end_date'</span>])
+
+<span class="keyword">return</span> sqs
+</code></pre>
+</blockquote>
+<p>二、自定义查询数据</p>
+<blockquote>
+<p>重载 get_query 方法</p>
+</blockquote>
+<p>三、自定义模板渲染过程</p>
+<blockquote>
+<p>1.会先判断form是否有效，分别对应不同的函数form_invalid，form_valid，主要区别在于创建上下午数据。创建不同的 Response。</p>
+<p>2.重载 get_context_data 实现对上下文数据的再处理。</p>
+</blockquote>
+<blockquote>
+<p># <strong>得到的请求数据（<code>self.request.GET</code>）是 <code>&lt;QueryDict: {&#39;name&#39;: [&#39;&#39;], &#39;weight&#39;: [&#39;&#39;], &#39;size&#39;: [&#39;&#39;]}&gt;</code> 形式。即使是空的数据， is_valid 也是返回 True。</strong></p>
+<p># <strong>这也就导致根本无法执行到 form_invalid 。</strong></p>
+<p># <strong>暂时没有找到解决的办法，先绕行了，覆盖 get() 方法，以后再解决</strong></p>
+</blockquote>
+<p>views.py</p>
+<pre><code class="python"><span class="class"><span class="keyword">class</span> <span class="title">MySearchView</span><span class="params">(SearchView)</span>:</span>
+    template_name = <span class="string">'search/search.html'</span>  <span class="comment"># 指定模板</span>
+    form_class = DateRangeSearchForm  <span class="comment"># 自定自定义表单类</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">get_queryset</span><span class="params">(self)</span>:</span>  <span class="comment"># 查询集</span>
+        queryset = super(MySearchView, self).get_queryset()
+        <span class="keyword">return</span> queryset
+
+    <span class="function"><span class="keyword">def</span> <span class="title">get_context_data</span><span class="params">(self, *args, **kwargs)</span>:</span>  <span class="comment"># 上下文</span>
+        context = super(MySearchView, self).get_context_data(*args, **kwargs)
+        <span class="keyword">return</span> context
+
+    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, request, *args, **kwargs)</span>:</span>  <span class="comment"># get 请求</span>
+
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        self.queryset = form.search()
+
+        cleaned_data = form.cleaned_data
+        q = cleaned_data.get(self.search_field, <span class="literal">None</span>)  <span class="comment"># 表单字段 q</span>
+
+        <span class="keyword">if</span> q:  <span class="comment"># 有，返回查找结果</span>
+            context = self.get_context_data(**{
+                self.form_name: form,
+                <span class="string">'query'</span>: form.cleaned_data.get(self.search_field),
+                <span class="string">'object_list'</span>: self.queryset  <span class="comment"># 查找结果</span>
+            })
+            <span class="keyword">return</span> render(self.request, template_name=self.template_name, context=locals())
+
+        <span class="keyword">else</span>: <span class="comment"># 没有</span>
+            context = self.get_context_data(**{
+                self.form_name: form,
+                <span class="string">'query'</span>: form.cleaned_data.get(self.search_field),
+                <span class="string">'object_list'</span>: self.get_queryset()
+            })
+            <span class="keyword">return</span> render(self.request, template_name=self.template_name, context=locals())
+
+</code></pre>
+<p><a href="https://django-haystack.readthedocs.io/en/v2.8.1/views_and_forms.html" target="_blank" rel="noopener">参考官方文档</a></p>
+<p> <strong>3.编写模板</strong></p>
+<p>  <code>‘haystack ’</code>的上下文是自带<strong>分页</strong>功能的，是非常的方便的。默认上下文中包括如下字段：</p>
+<blockquote>
+<p>‘paginator’: 分页对象<br>‘page_obj’: 当前页对象<br>‘is_paginated’: 是否分页,<br>‘object_list’: 当前页包含的所有数据。<code>SearchResult</code>类对象。<a href="https://django-haystack.readthedocs.io/en/v2.8.1/searchresult_api.html" target="_blank" rel="noopener">API</a><br>‘form’: 表单对象,<br>‘query’: 查询字段<br>‘view’: 视图函数对象</p>
+</blockquote>
+<pre><code class="html"><span class="meta">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
+<span class="tag">&lt;<span class="name">body</span>&gt;</span>
+    <span class="comment">&lt;!-- 生成表单 --&gt;</span>
+    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"get"</span> <span class="attr">action</span>=<span class="string">""</span>&gt;</span>  
+        <span class="tag">&lt;<span class="name">table</span>&gt;</span>
+            <span class="comment">{{ form.as_table }}</span>
+            <span class="tag">&lt;<span class="name">tr</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">td</span>&gt;</span>
+                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Search"</span>&gt;</span>
+                <span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">table</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">form</span>&gt;</span>
+
+    <span class="comment">&lt;!-- 展示数据 --&gt;</span>
+    <span class="tag">&lt;<span class="name">div</span>&gt;</span>
+        <span class="comment">{% if query %}  <!-- 判断是否有查询字段 -->
+        
+            {% for object in object_list %}  <!-- 遍历当前页的所有数据 -->
+                <p>
+                    <a>{{ object.object.drug }}</a>
+                </p>
+            {% empty %}  <!-- 结果为空时 -->
+                <p>No results found.</p>
+            {% endfor %}
+
+            {% if is_paginated %}  <!-- 是否分页 -->
+                {% if page_obj.has_previous %}  <!-- 是否有上一页 -->
+                    <a href="{% url 'patients:haystack'%}?q={{ query }}&amp;page={{ page_obj.previous_page_number }}" class="prev">上一页</a>
+                {% endif %}</span>
+
+                <span class="comment">{% for page in paginator.page_range %} <!-- 列出所有页 -->
+                    <a href="{% url 'patients:haystack' %}?q={{ query }}&amp;page={{ page }}" target="_self">{{page}}</a>
+                {% endfor %}</span>
+
+                <span class="comment">{% if page_obj.has_next %}  <!-- 是否有下一页 -->
+                    <a href="{% url 'patients:haystack' %}?q={{ query }}&amp;page={{ page_obj.next_page_number }}" class="next">下一页</a>
+                {% endif %}</span>
+
+            <span class="comment">{% endif %}</span>
+        <span class="comment">{% endif %}</span>
+    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
+
+</code></pre>
+<hr>
+<p><strong>问题1：在多个模型中查找</strong></p>
+<p>  这个问题主要在于创建索引步骤。创建索引时可以创建多个索引，这样查找时就可以在多个模型中一起查找（默认），也可以指定在那个模型中查找，代码如下：</p>
+<pre><code class="python"><span class="keyword">from</span> haystack <span class="keyword">import</span> indexes
+<span class="keyword">from</span> .models <span class="keyword">import</span> *
+
+<span class="class"><span class="keyword">class</span> <span class="title">MainIndex</span><span class="params">(indexes.SearchIndex, indexes.Indexable)</span>:</span>  <span class="comment"># 类名必须为模型名+Index</span>
+    text = indexes.CharField(document=<span class="literal">True</span>, use_template=<span class="literal">True</span>)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">get_model</span><span class="params">(self)</span>:</span>  <span class="comment"># 设置模型</span>
+        <span class="keyword">return</span> Main
+    <span class="function"><span class="keyword">def</span> <span class="title">index_queryset</span><span class="params">(self, using=None)</span>:</span>  <span class="comment"># 设置查询范围</span>
+        <span class="keyword">return</span> self.get_model().objects.all()
+
+<span class="class"><span class="keyword">class</span> <span class="title">PatientBaseInfoIndex</span><span class="params">(indexes.SearchIndex, indexes.Indexable)</span>:</span>
+    text = indexes.CharField(document=<span class="literal">True</span>, use_template=<span class="literal">True</span>)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">get_model</span><span class="params">(self)</span>:</span>  
+        <span class="keyword">return</span> PatientBaseInfo
+    <span class="function"><span class="keyword">def</span> <span class="title">index_queryset</span><span class="params">(self, using=None)</span>:</span>
+        <span class="keyword">return</span> self.get_model().objects.all()
+
+</code></pre>
+<p># 然后正常通过命令创建索引就可以。</p>
+<p># 如果想在模板中判断查找的结果是那个模型的数据，可以定义模板过滤器的模型名。如下：</p>
+<pre><code class="python"><span class="meta">@register.filter</span>
+<span class="function"><span class="keyword">def</span> <span class="title">to_class_name</span><span class="params">(value)</span>:</span>
+    <span class="keyword">return</span> value.__class__.__name__
+
+</code></pre>
+<pre><code>{{ obj | to_class_name }} 
+
+</code></pre><hr>
+<p><strong>问题2：多个搜索引擎</strong></p>
+<p>直接在项目的 settings.py 中设置多个引擎就可以。</p>
+<pre><code class="python">HAYSTACK_CONNECTIONS = {
+    <span class="string">'default'</span>: {
+        <span class="string">'ENGINE'</span>: <span class="string">'haystack.backends.solr_backend.SolrEngine'</span>,
+        <span class="string">'URL'</span>: <span class="string">'http://localhost:9001/solr/default'</span>,
+        <span class="string">'TIMEOUT'</span>: <span class="number">60</span> * <span class="number">5</span>,
+        <span class="string">'INCLUDE_SPELLING'</span>: <span class="literal">True</span>,
+        <span class="string">'BATCH_SIZE'</span>: <span class="number">100</span>,
+        <span class="string">'SILENTLY_FAIL'</span>: <span class="literal">True</span>,
+    },
+    <span class="string">'autocomplete'</span>: {
+        <span class="string">'ENGINE'</span>: <span class="string">'haystack.backends.whoosh_backend.WhooshEngine'</span>,
+        <span class="string">'PATH'</span>: <span class="string">'/home/search/whoosh_index'</span>,
+        <span class="string">'STORAGE'</span>: <span class="string">'file'</span>,
+        <span class="string">'POST_LIMIT'</span>: <span class="number">128</span> * <span class="number">1024</span> * <span class="number">1024</span>,
+        <span class="string">'INCLUDE_SPELLING'</span>: <span class="literal">True</span>,
+        <span class="string">'BATCH_SIZE'</span>: <span class="number">100</span>,
+        <span class="string">'SILENTLY_FAIL'</span>: <span class="literal">True</span>,
+    },
+    <span class="string">'slave'</span>: {
+        <span class="string">'ENGINE'</span>: <span class="string">'xapian_backend.XapianEngine'</span>,
+        <span class="string">'PATH'</span>: <span class="string">'/home/search/xapian_index'</span>,
+        <span class="string">'INCLUDE_SPELLING'</span>: <span class="literal">True</span>,
+        <span class="string">'BATCH_SIZE'</span>: <span class="number">100</span>,
+        <span class="string">'SILENTLY_FAIL'</span>: <span class="literal">True</span>,
+    },
+    <span class="string">'db'</span>: {
+        <span class="string">'ENGINE'</span>: <span class="string">'haystack.backends.simple_backend.SimpleEngine'</span>,
+        <span class="string">'SILENTLY_FAIL'</span>: <span class="literal">True</span>,
+    }
+}
+
+</code></pre>
+<p><a href="https://django-haystack.readthedocs.io/en/v2.8.1/multiple_index.html" target="_blank" rel="noopener">官方说明</a></p>
+<h3 id="SearchQuerySet"><a href="#SearchQuerySet" class="headerlink" title="SearchQuerySet"></a>SearchQuerySet</h3><ul>
+<li>Haystack 的查询方式主要是 SearchQuerySet 类实现。</li>
+<li>查询方式类是与 django 的 Query。</li>
+<li>主要有如下方法：</li>
+</ul>
+<pre><code class="python"><span class="keyword">from</span> haystack.query <span class="keyword">import</span> SearchQuerySet
+Q = SearchQuerySet()
+
+Q.filter(content=<span class="string">'egfr'</span>)
+Q.models(model_name).filter(content=<span class="string">'egfr'</span>)
+
+</code></pre>
+<p># 其中查询参数有：</p>
+<p>content、contains、exact、gt、gte、lt、lte、in、startswith、endswith、range、fuzzy</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>csniu</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://csniu.github.io/2019/12/13/Django-Haystack/" title="Django Haystack">https://csniu.github.io/2019/12/13/Django-Haystack/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/13/Django认证系统/" rel="next" title="Django认证系统">
+                <i class="fa fa-chevron-left"></i> Django认证系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/13/Django-分页/" rel="prev" title="Django-分页">
+                Django-分页 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/my_avatar.jpg" alt="csniu">
+            
+              <p class="site-author-name" itemprop="name">csniu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/csniu" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:csniulv@aliyun.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#django-Haystack"><span class="nav-number">1.</span> <span class="nav-text">django-Haystack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-配置django-project"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.配置django project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-原理及各文件编写（whoosh）"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.原理及各文件编写（whoosh）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-为数据的特定字段创建索引，用于快速搜索"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1.为数据的特定字段创建索引，用于快速搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、创建索引类"><span class="nav-number">1.0.3.1.1.</span> <span class="nav-text">一、创建索引类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、通过命令创建索引"><span class="nav-number">1.0.3.1.2.</span> <span class="nav-text">二、通过命令创建索引</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置路由和编写视图函数"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2.配置路由和编写视图函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SearchQuerySet"><span class="nav-number">1.0.4.</span> <span class="nav-text">SearchQuerySet</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">csniu</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://csniu.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://csniu.github.io/2019/12/13/Django-Haystack/';
+        this.page.identifier = '2019/12/13/Django-Haystack/';
+        this.page.title = 'Django Haystack';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://csniu.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>
