@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_favicon.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_favicon.png?v=6.1.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="python 使用 redis1pip install redis 入门123456&amp;gt;&amp;gt;&amp;gt; import redis&amp;gt;&amp;gt;&amp;gt; r = redis.Redis(host=&amp;apos;localhost&amp;apos;, port=6379, db=0)&amp;gt;&amp;gt;&amp;gt; r.set(&amp;apos;foo&amp;apos;, &amp;apos;bar&amp;apos;)True&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-redis">
+<meta property="og:url" content="https://csniu.github.io/2020/03/03/python-redis/index.html">
+<meta property="og:site_name" content="李大宝的包子">
+<meta property="og:description" content="python 使用 redis1pip install redis 入门123456&amp;gt;&amp;gt;&amp;gt; import redis&amp;gt;&amp;gt;&amp;gt; r = redis.Redis(host=&amp;apos;localhost&amp;apos;, port=6379, db=0)&amp;gt;&amp;gt;&amp;gt; r.set(&amp;apos;foo&amp;apos;, &amp;apos;bar&amp;apos;)True&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-03T07:29:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python-redis">
+<meta name="twitter:description" content="python 使用 redis1pip install redis 入门123456&amp;gt;&amp;gt;&amp;gt; import redis&amp;gt;&amp;gt;&amp;gt; r = redis.Redis(host=&amp;apos;localhost&amp;apos;, port=6379, db=0)&amp;gt;&amp;gt;&amp;gt; r.set(&amp;apos;foo&amp;apos;, &amp;apos;bar&amp;apos;)True&amp;gt;">
+
+
+
+
+
+
+  <link rel="canonical" href="https://csniu.github.io/2020/03/03/python-redis/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>python-redis | 李大宝的包子</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100475240-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100475240-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!--<a href="https://github.com/csniu" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李大宝的包子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">16</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2020/03/03/python-redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">python-redis</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-03T10:25:09+08:00">2020-03-03</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/03/python-redis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/03/python-redis/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="python-使用-redis"><a href="#python-使用-redis" class="headerlink" title="python 使用 redis"></a>python 使用 redis</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install redis</span><br></pre></td></tr></table></figure>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import redis</span><br><span class="line">&gt;&gt;&gt; r = redis.Redis(host=&apos;localhost&apos;, port=6379, db=0)</span><br><span class="line">&gt;&gt;&gt; r.set(&apos;foo&apos;, &apos;bar&apos;)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; r.get(&apos;foo&apos;)</span><br><span class="line">&apos;bar&apos;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>在3.X版本中连接只有<code>Redis</code>,<code>StrictRedis</code>只是它的一个别名，是为了和之前版本兼容。</li>
+<li><p>如果使用的是3.X版则直接使用<code>Redis</code>即可。如果是从2.X升级过来则需要修改一下命令：</p>
+<ul>
+<li>SETEX</li>
+<li>LREM</li>
+<li>TTL/PTTL</li>
+</ul>
+</li>
+<li><p>默认情况下python3返回字节，python2返回str。</p>
+</li>
+<li>可设置<code>decode_responses = True</code>来解码所有响应。</li>
+</ul>
+<h2 id="API-规范"><a href="#API-规范" class="headerlink" title="API 规范"></a>API 规范</h2><p>redis-py 默认是遵循<a href="https://redis.io/commands" target="_blank" rel="noopener">官方命令语法</a>的,但是有一些例外：</p>
+<ul>
+<li>SELECT：为实现，“为了保证线程安全”。</li>
+<li>DEL：和python关键字“del”冲突，使用“delete”替代。</li>
+<li>MULTI / EXEC：默认情况下，执行时管道会用MULTI和EXEC语句包装，可以通过指定transaction = False禁用管道。</li>
+<li>SUBSCRIBE / LISTEN</li>
+<li>SCAN / SSCAN / HSCAN / ZSCAN</li>
+</ul>
+<h2 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h2><p>默认情况下，每创建一个Redis实例就会创建一个连接池。</p>
+<p>但是你也可以将已创建好的连接池通过<code>connection_pool</code>参数传递给Redis类用于实例化操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pool = redis.ConnectionPool(host=&apos;localhost&apos;, port=6379, db=0)</span><br><span class="line">r = redis.Redis(connection_pool=pool)</span><br></pre></td></tr></table></figure></p>
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><p>redis-py 提供了两种连接方式：</p>
+<ul>
+<li><code>TCP socket</code>的常规连接。</li>
+<li><code>Unix domain socket</code>连接。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = redis.Redis(unix_socket_path=&apos;/tmp/redis.sock&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>也可以创建直接的“Connection”类.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pool = redis.ConnectionPool(connection_class=YourConnectionClass, your_arg=&apos;...&apos;, ...)</span><br></pre></td></tr></table></figure></p>
+<h3 id="连接断开"><a href="#连接断开" class="headerlink" title="连接断开"></a>连接断开</h3><p>连接空闲达到预设的阈值时将会被断开，这是再继续操作将会受到<code>ConnectionError</code>错误。客户端可自行判断处理。</p>
+<p>但是在生产环境中实时检查会比较繁琐，可通过如下方法解决：</p>
+<ul>
+<li>在实例化<code>Redis</code>或<code>ConnectionPool</code>时设置<code>health_check_interval</code>值来对执行命令前的健康检查。<ul>
+<li>该值为整数。</li>
+<li>为0时为禁用健康检查。</li>
+<li>如为30则表示：当连接空闲超过30秒时，则在执行命令前进行连接的健康检查。</li>
+</ul>
+</li>
+<li>使<code>health_check_interval</code>小于系统空闲阈值。</li>
+</ul>
+<h2 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h2><p>redis-py 中有两个解析器类：PythonParser 和 HiredisParser。首先会尝试使用 HiredisParser。</p>
+<p>HiredisParser 是使用C语言编写，性能更高。可通过pip安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install hiredis</span><br></pre></td></tr></table></figure></p>
+<h2 id="响应回调"><a href="#响应回调" class="headerlink" title="响应回调"></a>响应回调</h2><p>客户端实例通过一组回调函数将Redis响应转换成Python类型。</p>
+<p>自定义实例的回调函数，可在实例化是通过<code>set_response_callback</code>参数设置。</p>
+<p>修改全局的回调函数，可通过继承<code>Redis</code>类并修改<code>RESPONSE_CALLBACKS</code>属性。</p>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>Redis客户端实例可以在线程之间安全地共享。</p>
+<p>只有在执行命令是才会从连接池中取出连接并执行，当命令执行完毕后连接会被放回连接池中。命令的执行过程不会修改连接实例的状态。</p>
+<p>因为<code>SELECT</code>命令会修改当前使用的数据库，从而导致连接实例的状态被修改。所有在 redis-py 中没有实现<code>SELECT</code>命令。如果在同一应用程序中需要使用不同Redis数据库，则需要创建不同的连接实例（连接池实例）。</p>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>在redis中使用管道来缓存请求命名，从而减少客户端和服务端的TCP数据包的数量。（即多次请求一次返回）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">r = redis.Redis(...)  # 创建客户端实例</span><br><span class="line">r.set(&apos;bing&apos;, &apos;baz&apos;)  # 添加数据</span><br><span class="line"></span><br><span class="line">pipe = r.pipeline()  # 创建管道实例</span><br><span class="line">pipe.set(&apos;foo&apos;, &apos;bar&apos;)  # 向管道中添加命令</span><br><span class="line">pipe.get(&apos;bing&apos;)</span><br><span class="line"></span><br><span class="line">pipe.execute()  # 一次将所有请求发生到服务端并取回结果</span><br><span class="line"># [True, &apos;baz&apos;]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>默认管道操作是具有原子性的。（transaction=True）</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">with r.pipeline() as pipe:</span><br><span class="line">    while True:</span><br><span class="line">        try:</span><br><span class="line">            # 开始事务前监视该值，如果被改变则终止事务并抛出 WatchError 错误</span><br><span class="line">            pipe.watch(&apos;OUR-SEQUENCE-KEY&apos;)</span><br><span class="line">            current_value = pipe.get(&apos;OUR-SEQUENCE-KEY&apos;)</span><br><span class="line">            next_value = int(current_value) + 1</span><br><span class="line">            # 开始事务</span><br><span class="line">            pipe.multi()</span><br><span class="line">            # 需要执行的命令</span><br><span class="line">            pipe.set(&apos;OUR-SEQUENCE-KEY&apos;, next_value)</span><br><span class="line">            # 触发执行所有命令</span><br><span class="line">            pipe.execute()</span><br><span class="line">            break</span><br><span class="line">        except WatchError:</span><br><span class="line">            continue</span><br><span class="line">        # finally：</span><br><span class="line">        #     pipe.reset()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>管道使用完毕需要放回到连接池中，需要调用reset()方法或使用上下文管理器。</li>
+</ul>
+<p>或者使用客户端对象的<code>transaction()</code>方法快捷的执行事务操作。其至少需要一个可调用对象，并且可选择传入需要监视的值。定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def transaction(self, func, *watches, **kwargs):</span><br><span class="line">    shard_hint = kwargs.pop(&apos;shard_hint&apos;, None)</span><br><span class="line">    value_from_callable = kwargs.pop(&apos;value_from_callable&apos;, False)</span><br><span class="line">    watch_delay = kwargs.pop(&apos;watch_delay&apos;, None)</span><br><span class="line">    with self.pipeline(True, shard_hint) as pipe:</span><br><span class="line">        while True:</span><br><span class="line">            try:</span><br><span class="line">                if watches:</span><br><span class="line">                    pipe.watch(*watches)</span><br><span class="line">                func_value = func(pipe)</span><br><span class="line">                exec_value = pipe.execute()</span><br><span class="line">                return func_value if value_from_callable else exec_value</span><br><span class="line">            except WatchError:</span><br><span class="line">                if watch_delay is not None and watch_delay &gt; 0:</span><br><span class="line">                    time.sleep(watch_delay)</span><br><span class="line">                continue</span><br></pre></td></tr></table></figure></p>
+<p>上了事务可改写为如下方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def client_side_incr(pipe):</span><br><span class="line">    current_value = pipe.get（&apos; OUR-SEQUENCE-KEY &apos;）</span><br><span class="line">    next_value =  int(current_value) + 1</span><br><span class="line">    pipe.multi()</span><br><span class="line">    pipe.set(&apos;OUR-SEQUENCE-KEY&apos;，next_value）</span><br><span class="line"></span><br><span class="line">r.transaction(client_side_incr，&apos;OUR-SEQUENCE-KEY&apos;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h2><p>redis-py提供一个PubSub对象，用来订阅和侦听消息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">r = redis.Redis(..)</span><br><span class="line">p = r.pubsub()  # 创建对象</span><br><span class="line"></span><br><span class="line">p.subscribe(&apos;my-first-channel&apos;, &apos;my-second-channel&apos;)  # 订阅频道</span><br><span class="line">p.psubscribe(&apos;my-*&apos;)  # 模式订阅</span><br><span class="line"></span><br><span class="line">p.unsubscribe()  # 取消订阅，如无参数传入则取消所有订阅</span><br><span class="line">p.punsubscribe(&apos;my-*&apos;)  # 模式取消</span><br><span class="line"></span><br><span class="line">p.get_message()  # 读取消息</span><br><span class="line"></span><br><span class="line">p.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读取的消息是一个dict，并且始终具有以下键：<ul>
+<li>type：消息类型，值为’subscribe’，’unsubscribe’，’psubscribe’，’punsubscribe’，’message’，’pmessage’之一。</li>
+<li>pattern：匹配模式，除“pmessage”类型外，均为None。</li>
+<li>channel：消息发布的频道。</li>
+<li>data：消息数据。如果是取消订阅，则为取消订阅频道的数量。</li>
+</ul>
+</li>
+</ul>
+<h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>还可以注册回调函数，来自定义消息处理。该回调函数需要接收单个参数，即消息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def my_handler(message)</span><br><span class="line">    print(&apos;My Handler&apos;, message[&apos;data&apos;])</span><br><span class="line">    </span><br><span class="line">p.subscribe(**&#123;&apos;my_channel&apos;: my_handler&#125;)  # 订阅频道并注册其回调函数</span><br><span class="line">p.get_message()</span><br></pre></td></tr></table></figure></p>
+<h4 id="过滤消息"><a href="#过滤消息" class="headerlink" title="过滤消息"></a>过滤消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = r.pubsub(ignore_subscribe_messages = True)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将过滤所有订阅与取消订阅的消息，即type为‘subscribe’、‘unsubscribe’、‘psubscribe’、‘punsubscribe’的消息。</li>
+</ul>
+<h4 id="读取消息的三种策略"><a href="#读取消息的三种策略" class="headerlink" title="读取消息的三种策略"></a>读取消息的三种策略</h4><ul>
+<li>pubsub.get_message(): 有消息则返回消息，无则返回None。</li>
+<li>pubsub.listen(): 会阻塞当前进程直到有消息为止。</li>
+<li>pubsub.run_in_thread(): 会创建一个新的线程，并在新线程中循环调用 get_message。<ul>
+<li>订阅的频道必须注册回调函数。</li>
+<li>可接受sleep_time参数，在每次循环中调用time.sleep()。</li>
+<li>thread.stop()：结束新线程。</li>
+</ul>
+</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://github.com/andymccurdy/redis-py" target="_blank" rel="noopener">GitHub redis-py</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>csniu</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://csniu.github.io/2020/03/03/python-redis/" title="python-redis">https://csniu.github.io/2020/03/03/python-redis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/02/Redis-入门-/" rel="next" title="Redis 入门">
+                <i class="fa fa-chevron-left"></i> Redis 入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/my_avatar.jpg" alt="csniu">
+            
+              <p class="site-author-name" itemprop="name">csniu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/csniu" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:csniulv@aliyun.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python-使用-redis"><span class="nav-number">1.</span> <span class="nav-text">python 使用 redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入门"><span class="nav-number">1.1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-规范"><span class="nav-number">1.2.</span> <span class="nav-text">API 规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接池"><span class="nav-number">1.3.</span> <span class="nav-text">连接池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接"><span class="nav-number">1.4.</span> <span class="nav-text">连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接断开"><span class="nav-number">1.4.1.</span> <span class="nav-text">连接断开</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析器"><span class="nav-number">1.5.</span> <span class="nav-text">解析器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应回调"><span class="nav-number">1.6.</span> <span class="nav-text">响应回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程安全"><span class="nav-number">1.7.</span> <span class="nav-text">线程安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道"><span class="nav-number">1.8.</span> <span class="nav-text">管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">1.9.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布-订阅"><span class="nav-number">1.10.</span> <span class="nav-text">发布/订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回调函数"><span class="nav-number">1.10.0.1.</span> <span class="nav-text">回调函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤消息"><span class="nav-number">1.10.0.2.</span> <span class="nav-text">过滤消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取消息的三种策略"><span class="nav-number">1.10.0.3.</span> <span class="nav-text">读取消息的三种策略</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">csniu</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://csniu.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://csniu.github.io/2020/03/03/python-redis/';
+        this.page.identifier = '2020/03/03/python-redis/';
+        this.page.title = 'python-redis';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://csniu.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

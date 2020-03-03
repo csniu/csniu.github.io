@@ -102,24 +102,24 @@
 
 
 
-  <meta name="description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
+  <meta name="description" content="Redis 是一个开源的、基于内存的、高性能的key-value数据库。  特点：  支持数据持久化。 支持多种数据结构。string、list、set、zset、hash等。 支持数据备份。 高性能。 所有操作都具有原子性。 支持主从同步">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django的表单">
-<meta property="og:url" content="https://csniu.github.io/2019/12/13/Django的表单/index.html">
+<meta property="og:title" content="Redis 入门">
+<meta property="og:url" content="https://csniu.github.io/2020/03/02/Redis-入门-/index.html">
 <meta property="og:site_name" content="李大宝的包子">
-<meta property="og:description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
+<meta property="og:description" content="Redis 是一个开源的、基于内存的、高性能的key-value数据库。  特点：  支持数据持久化。 支持多种数据结构。string、list、set、zset、hash等。 支持数据备份。 高性能。 所有操作都具有原子性。 支持主从同步">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-24T08:42:31.000Z">
+<meta property="og:updated_time" content="2020-03-03T02:26:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django的表单">
-<meta name="twitter:description" content="django-form一、Form  在 HTML 中， 表单是在 &amp;lt;form&amp;gt;....&amp;lt;/form&amp;gt; 中的一些元素，用于收集不同类型的用户输入。   一个完整的表单主要包括：  * 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。 * 请求方式：method 属性指定。 * 元素控件：input 标签。获取输">
+<meta name="twitter:title" content="Redis 入门">
+<meta name="twitter:description" content="Redis 是一个开源的、基于内存的、高性能的key-value数据库。  特点：  支持数据持久化。 支持多种数据结构。string、list、set、zset、hash等。 支持数据备份。 高性能。 所有操作都具有原子性。 支持主从同步">
 
 
 
 
 
 
-  <link rel="canonical" href="https://csniu.github.io/2019/12/13/Django的表单/">
+  <link rel="canonical" href="https://csniu.github.io/2020/03/02/Redis-入门-/">
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>Django的表单 | 李大宝的包子</title>
+  <title>Redis 入门 | 李大宝的包子</title>
   
 
 
@@ -326,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Django的表单/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2020/03/02/Redis-入门-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -343,7 +343,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Django的表单</h2>
+          <h2 class="post-title" itemprop="name headline">Redis 入门</h2>
         
 
         <div class="post-meta">
@@ -355,7 +355,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T12:30:53+08:00">2019-12-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T16:58:01+08:00">2020-03-02</time>
             
 
             
@@ -376,14 +376,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -398,8 +391,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/13/Django的表单/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Django的表单/" itemprop="commentCount"></span>
+                <a href="/2020/03/02/Redis-入门-/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/02/Redis-入门-/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -427,138 +420,66 @@
       
 
       
-        <h1 id="django-form"><a href="#django-form" class="headerlink" title="django-form"></a>django-form</h1><h2 id="一、Form"><a href="#一、Form" class="headerlink" title="一、Form"></a>一、Form</h2><p>  在 HTML 中， 表单是在 <code>&lt;form&gt;....&lt;/form&gt;</code> 中的一些元素，用于收集不同类型的用户输入。</p>
-<p>  一个完整的表单主要包括：</p>
-<blockquote>
-<p>* 提交地址：action 属性指定，决定提交的数据由那个 url 接受和处理。若为空，则表示由当前 url 接受。</p>
-<p>* 请求方式：method 属性指定。</p>
-<p>* 元素控件：input 标签。获取输入数据，由其 type 属性定义输入数据的类型，常见如下：</p>
-<blockquote>
-<p>ext：文本，默认是20个字符长</p>
-<p>password：密码，不会明文显示，而是以星号或圆点替代。</p>
-<p>radio：单选框</p>
-<p>checkbox：复选框</p>
-<p>submit：提交，当用户单击确认按钮时，表单的内容会被传送到另一个文件。表单的动作属性定义了目的文件的文件名。</p>
-</blockquote>
-<p>* 提交按钮：input 标签，type=submit</p>
-</blockquote>
-<pre><code class="html"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"input"</span> <span class="attr">action</span>=<span class="string">"html_form_action.php"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span>
-    First name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstname"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>
-    Last name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastname"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">form</span>&gt;</span>
-</code></pre>
-<p>  <a href="http://www.runoob.com/html/html-forms.html" target="_blank" rel="noopener">参考</a></p>
+        <p>Redis 是一个开源的、基于内存的、高性能的key-value数据库。 </p>
+<p>特点：</p>
+<ul>
+<li>支持数据持久化。</li>
+<li>支持多种数据结构。string、list、set、zset、hash等。</li>
+<li>支持数据备份。</li>
+<li>高性能。</li>
+<li>所有操作都具有原子性。</li>
+<li>支持主从同步</li>
+</ul>
 <a id="more"></a>
-<h3 id="二-django"><a href="#二-django" class="headerlink" title="二.django"></a>二.django</h3><p> 在模板中直接编写表单是很简单的事情，但是如果表单过多，会增加代码量，同时对日后的维护和更新带来很大的不便。django 封装了完善的表单功能，详情见<a href="https://docs.djangoproject.com/zh-hans/2.1/topics/forms/" target="_blank" rel="noopener">官方文档</a>。</p>
-<p> 核心内容是 django 的 Form 类和其子类（ModelForm） 。</p>
-<p>​    # ModelForm 是将模型的字段转换成表单字段，在从表单字段生成 Html 表单控件。</p>
-<pre><code class="python"><span class="keyword">from</span> django.forms <span class="keyword">import</span> Form，ModelForm
-</code></pre>
-<p>工作流程： </p>
-<blockquote>
-<p>* 1.自定义 Form 类，继承自 django.forms.From 或其子类。</p>
-<p>* 2.在视图函数中实例化自定义的 Form 类，并传给模板。</p>
-<p>* 3.模板中根据 Form 类动态生成对应的表单元素控件。</p>
-</blockquote>
-<h4 id="1-自定义-Form-类"><a href="#1-自定义-Form-类" class="headerlink" title="1.自定义 Form 类"></a>1.自定义 Form 类</h4><p>  在 app 下创建form.py。如下：</p>
-<pre><code class="python"><span class="keyword">from</span> django <span class="keyword">import</span> forms
-
-<span class="comment"># 自定义数据验证函数</span>
-<span class="function"><span class="keyword">def</span> <span class="title">weight_validate</span><span class="params">(value)</span>:</span>
-    <span class="keyword">if</span> <span class="keyword">not</span> str(value).isdigit():
-        <span class="keyword">raise</span> ValidationError(<span class="string">'请输入正确的重量'</span>)
-
-<span class="class"><span class="keyword">class</span> <span class="title">ProductForm</span><span class="params">(forms.Form)</span>:</span>
-    <span class="comment"># 设置错误信息并设置样式</span>
-    <span class="comment"># help_text 提示信息</span>
-    <span class="comment"># required 是否必须需要，默认为True</span>
-    name = forms.CharField(max_length=<span class="number">20</span>, label=<span class="string">'名字'</span>,
-                           widget=forms.widgets.TextInput(attrs={<span class="string">'class'</span>: <span class="string">'c1'</span>}),
-                           error_messages={<span class="string">'required'</span>: <span class="string">'名字不能为空'</span>},)
-    <span class="comment"># 使用自定义数据验证函数</span>
-    weight = forms.CharField(max_length=<span class="number">50</span>, label=<span class="string">'重量'</span>,validators=[weight_validate])
-    size = forms.CharField(max_length=<span class="number">50</span>, label=<span class="string">'尺寸'</span>)
-    <span class="comment"># 获取数据库数据</span>
-    choices_list = [(i+<span class="number">1</span>, v[<span class="string">'type_name'</span>]) <span class="keyword">for</span> i,v <span class="keyword">in</span> enumerate(Type.objects.values(<span class="string">'type_name'</span>))]
-    <span class="comment"># 设置CSS样式</span>
-    type = forms.ChoiceField(widget=forms.widgets.Select(attrs={<span class="string">'class'</span>: <span class="string">'type'</span>,<span class="string">'size'</span>:<span class="string">'4'</span>}),
-                             choices=choices_list,label=<span class="string">'产品类型'</span>)
-</code></pre>
-<blockquote>
-<p>*1. forms 中定义了很多的数据类型。<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/forms/fields/" target="_blank" rel="noopener">所有字段</a></p>
-<p>* 2.每个类字段对应 HTML 中的一个控件。</p>
-<p>* 3.每个字段类型，也都有一些特定的参数，达到数据的规范型。<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/forms/fields/" target="_blank" rel="noopener">说明</a></p>
-<p>* 4.<strong>每个 Form 类都有一个 is_valid() 方法，用来验证数据，如果所有字段都包含数据，则会返回 True 并将表单数据放到它的 cleaned_data 中。</strong></p>
-<p># 不包括<code>submit</code> 控件，要在模板中实现</p>
-</blockquote>
-<h4 id="2-实列化和模板"><a href="#2-实列化和模板" class="headerlink" title="2.实列化和模板"></a>2.实列化和模板</h4><pre><code class="python"><span class="comment"># views.py</span>
-<span class="keyword">from</span> .form <span class="keyword">import</span> MyForm
-
-<span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(request)</span>:</span>
-    myform = MyForm()
-    <span class="keyword">return</span>  render(request, template_name=<span class="string">'patients/test.html'</span>, context=locals())
-</code></pre>
-<blockquote>
-<p>一般流程：</p>
-<p>*1.判断请求方式</p>
-<p>* 2.创建实例</p>
-<blockquote>
-<p>如果模板中表单的请求方式是 post。</p>
-<p>如果判断请求方式也是 post 方法， 那么实例化时要用请求数据实例化。</p>
-<pre><code class="python">myform = MyForm(request.POST)
-</code></pre>
-<p>否则创建一个空的表单：</p>
-<pre><code class="python">myform = MyForm()
-</code></pre>
-</blockquote>
-<p>* 3.使用 is_valid 验证数据。</p>
-<p>* 4.提取数据，处理数据。表单数据在 cleaned_data 属性中。</p>
-<pre><code class="python">subject = myform.cleaned_data[<span class="string">'subject'</span>]
-</code></pre>
-<p>* 4.渲染模板</p>
-</blockquote>
-<pre><code class="html"># test.html
-
-<span class="meta">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
-<span class="tag">&lt;<span class="name">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>
-    <span class="comment">{% if myform.errors %}  <!-- 渲染表单错误 -->
-        <p>
-            数据出错啦，错误信息：{{ myform.errors }}.
-        </p>
-    {% else %}
-
-        <form action method="post">
-            {% csrf_token %}  <!-- 使用 csrf_token 标签，防止跨站攻击 -->
-            <table>
-                {{ myform.as_table  }}  <!-- 使用实例化的 myform，自动创建表单控件  -->
-            </table>
-            <input type="submit" value="提交">
-        </form>
-
-    {% endif %}</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
-</code></pre>
-<blockquote>
-<p># 记得实现提交按钮</p>
-</blockquote>
-<blockquote>
-<p>* <strong>1</strong>.如果实例化的表单名叫 ‘form’，那么模板中 <code></code>将渲染它为 Html 中相应的 <code>&lt;label&gt;</code> 和 <code>&lt;input&gt;</code> 元素。</p>
-<p>* <strong>2</strong>.也可以渲染成其他标签，如下：</p>
-<blockquote>
-<p>1.<code></code>  ：<tr> 标签</tr></p>
-<p>2.<code></code> ：</p><p> 标签</p>
-<p>3.<code></code> ： <li> 标签</li></p>
-<p># 但是要在模板中提供外层标签，<table> 、<ul> 等。</ul></table></p>
-</blockquote>
-<p>* <strong>3</strong>.同时 django 也提供了手动渲染的方式，<a href="https://docs.djangoproject.com/zh-hans/2.1/topics/forms/" target="_blank" rel="noopener">详情见文档</a></p>
-</blockquote>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>启动服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server.exe redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>连接服务;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli.exe -h 127.0.0.1 -p 6379</span><br></pre></td></tr></table></figure></p>
+<p>数据超出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set foo bar  # 添加</span><br><span class="line">get foo  # 取出</span><br><span class="line">exists key  # 检查key是否存在</span><br><span class="line">keys *  # 查看所有key</span><br><span class="line">flushall  # 清除所有key</span><br></pre></td></tr></table></figure></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>配置文件是安装路径下的 redis.conf 文件。</p>
+<p>可以通过直接修改文件或交互式下的 CONFIG 命令修改配置。</p>
+<p>配置说明：</p>
+<ul>
+<li>daemonize：后台守护进程运行，默认‘no’。</li>
+<li>pidfile：当为后台守护进程运行时会把pid写入该路径文件中。默认为：var/run/redis.pid</li>
+<li>port：端口。默认6379。</li>
+<li>bind：绑定主机地址。127.0.0.1</li>
+<li>timeout: 最大空闲时间。如设置为0则关闭改功能。</li>
+<li>loglevel：日志等级，默认verbose。</li>
+<li>logfile：日志输出，默认为标准输出。</li>
+<li>databases： 数据库数量。</li>
+<li>save：将数据同步到数据文件。可以多个条件配合。<ul>
+<li>save 900 1 ： 900秒1次更改。</li>
+<li>save 300 10 ：300秒10个更改。</li>
+<li>save 60 10000 ：60秒10000个更改。</li>
+</ul>
+</li>
+<li>rdbcompression：保存本地时是否压缩数据。默认yes。</li>
+<li>dbfilename：本地数据库文件名。默认dump.rdb.</li>
+<li>dir: 本地数据库保存地址。</li>
+<li>requirepass：连接密码。默认关闭。</li>
+<li>maxclients：最大连接数。默认无限制。</li>
+<li>maxmemory：最大内存限制。</li>
+<li>appendonly：是否在每次更新操作后进行日志记录。如果不开启，可能会在断电时导致一段时间内的数据丢失。默认是“no”。</li>
+<li>appendfilename：更新日志文件名。</li>
+<li>appendfsync： 更新日志条件，可选no、always、everysec（每秒，默认）。</li>
+</ul>
+<p>其他详细配置项及详细介绍可参考<a href="https://www.w3cschool.cn/redis/redis-conf.html" target="_blank" rel="noopener">W3Cschool Redis 教程</a>。</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>string是redis最基本的类型，且是二进制安全的。比如图片等。</p>
+<p>最大可存储512MB数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SET key &quot;value&quot;</span><br><span class="line">GET key</span><br></pre></td></tr></table></figure></p>
+<h2 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h2><p>hash 是一个键值对集合，适合于存储对象。</p>
+<p>每个hash可存储2的（32-1）次方个值（40多亿）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HMSET key field value [field value]</span><br><span class="line">HGETALL key</span><br></pre></td></tr></table></figure>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p>每个list可存储2的（32-1）次方个值（40多亿）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lpush key value [value]</span><br><span class="line">lpush key value [value]  # 加载列表后</span><br><span class="line">lrange kay start stop</span><br></pre></td></tr></table></figure></p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>每个set可存储2的（32-1）次方个值（40多亿）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sadd key member  # 添加，成功返回1，成员已存在返回0</span><br><span class="line"></span><br><span class="line">smembers key</span><br></pre></td></tr></table></figure></p>
+<h2 id="zset（有序集合）"><a href="#zset（有序集合）" class="headerlink" title="zset（有序集合）"></a>zset（有序集合）</h2><p>每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。</p>
+<p>zset的成员是唯一的,但分数(score)却可以重复。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zadd key score member [score member]</span><br><span class="line"></span><br><span class="line">ZRANGEBYSCORE key min max</span><br></pre></td></tr></table></figure></p>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 订阅/退订给定模式频道，可使用通配符“*”</span><br><span class="line">PSUBSCRIBE pattern [pattern ...]  </span><br><span class="line">PUNSUBSCRIBE [pattern [pattern ...]]  </span><br><span class="line"></span><br><span class="line"># 订阅/退订给定频道</span><br><span class="line">SUBSCRIBE channel [channel ...]</span><br><span class="line">UNSUBSCRIBE channel [channel ...]</span><br><span class="line"></span><br><span class="line"># 发布消息到指定频道</span><br><span class="line">PUBLISH channel message  </span><br><span class="line"></span><br><span class="line"># 查看状态</span><br><span class="line">PUBSUB &lt;subcommand&gt; [argument [argument ...]]</span><br></pre></td></tr></table></figure>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MULTI  # 开始事务</span><br><span class="line"></span><br><span class="line">.....   # 执行命令</span><br><span class="line"># DISCARD  # 取消事务</span><br><span class="line">EXEC  # 触发事务， 一并执行事务中的所有命令</span><br><span class="line"></span><br><span class="line">Watch  # 监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断</span><br><span class="line">UNWATCH  # 取消 WATCH 命令对所有 key 的监视</span><br></pre></td></tr></table></figure>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><p>Redis 脚本使用 Lua 解释器来执行脚本。</p>
+<p>执行脚本的常用命令为 EVAL。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EVAL script numkeys key [key ...] arg [arg ...]</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://redis.io/" target="_blank" rel="noopener">官方文档</a></li>
+<li><a href="https://www.w3cschool.cn/redis/" target="_blank" rel="noopener">W3Cschool Redis 教程</a></li>
+</ul>
 
       
     </div>
@@ -580,7 +501,7 @@
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://csniu.github.io/2019/12/13/Django的表单/" title="Django的表单">https://csniu.github.io/2019/12/13/Django的表单/</a>
+    <a href="https://csniu.github.io/2020/03/02/Redis-入门-/" title="Redis 入门">https://csniu.github.io/2020/03/02/Redis-入门-/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -600,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/13/logging/" rel="next" title="logging">
-                <i class="fa fa-chevron-left"></i> logging
+              <a href="/2020/02/28/Docker-Compose/" rel="next" title="Docker Compose">
+                <i class="fa fa-chevron-left"></i> Docker Compose
               </a>
             
           </div>
@@ -610,8 +531,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/13/Django认证系统/" rel="prev" title="Django认证系统">
-                Django认证系统 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/03/python-redis/" rel="prev" title="python-redis">
+                python-redis <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -792,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#django-form"><span class="nav-number">1.</span> <span class="nav-text">django-form</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Form"><span class="nav-number">1.1.</span> <span class="nav-text">一、Form</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二-django"><span class="nav-number">1.1.1.</span> <span class="nav-text">二.django</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-自定义-Form-类"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.自定义 Form 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-实列化和模板"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2.实列化和模板</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">3.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">3.1.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hash"><span class="nav-number">3.2.</span> <span class="nav-text">hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">3.3.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set"><span class="nav-number">3.4.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zset（有序集合）"><span class="nav-number">3.5.</span> <span class="nav-text">zset（有序集合）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他命令"><span class="nav-number">3.6.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发布订阅"><span class="nav-number">3.6.1.</span> <span class="nav-text">发布订阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">3.6.2.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本"><span class="nav-number">3.6.3.</span> <span class="nav-text">脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -971,9 +892,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://csniu.github.io/2019/12/13/Django的表单/';
-        this.page.identifier = '2019/12/13/Django的表单/';
-        this.page.title = 'Django的表单';
+        this.page.url = 'https://csniu.github.io/2020/03/02/Redis-入门-/';
+        this.page.identifier = '2020/03/02/Redis-入门-/';
+        this.page.title = 'Redis 入门';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
