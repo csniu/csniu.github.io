@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="在日常开发过程中总是在所难免的会和数据库打交道。 在 Python 中对数据库（MySQL为例）的操作不外乎以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
+  <meta name="description" content="Python 可以支持非常多的数据库管理系统，如：MySQL、Oracle、SQL Server 和 PostgreSQL 等。为了实现对这些 DBMS 的统一访问，Python 需要遵守一个规范，这就是 DB API 规范。可以访问这里查看支持的数据库。 对于不同的DBMS有普通的模块支持，相同的DBMS也会有不同的实现方式。对MySQL主要有一下两类：  使用支持原生 SQL 语句的连接方式。">
 <meta name="keywords" content="ORM,MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 中对MySQL数据库的使用">
-<meta property="og:url" content="https://csniu.github.io/2019/12/13/Python-中对MySQL数据库的使用/index.html">
+<meta property="og:title" content="Python-MySQL">
+<meta property="og:url" content="https://csniu.github.io/2019/12/13/Python-MySQL/index.html">
 <meta property="og:site_name" content="李大宝的包子">
-<meta property="og:description" content="在日常开发过程中总是在所难免的会和数据库打交道。 在 Python 中对数据库（MySQL为例）的操作不外乎以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
+<meta property="og:description" content="Python 可以支持非常多的数据库管理系统，如：MySQL、Oracle、SQL Server 和 PostgreSQL 等。为了实现对这些 DBMS 的统一访问，Python 需要遵守一个规范，这就是 DB API 规范。可以访问这里查看支持的数据库。 对于不同的DBMS有普通的模块支持，相同的DBMS也会有不同的实现方式。对MySQL主要有一下两类：  使用支持原生 SQL 语句的连接方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-08T06:24:03.000Z">
+<meta property="og:updated_time" content="2020-03-10T08:25:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python 中对MySQL数据库的使用">
-<meta name="twitter:description" content="在日常开发过程中总是在所难免的会和数据库打交道。 在 Python 中对数据库（MySQL为例）的操作不外乎以下两种情况：  使用支持原生 SQL 语句的连接方式。 使用支持 ORM 框架的方式。">
+<meta name="twitter:title" content="Python-MySQL">
+<meta name="twitter:description" content="Python 可以支持非常多的数据库管理系统，如：MySQL、Oracle、SQL Server 和 PostgreSQL 等。为了实现对这些 DBMS 的统一访问，Python 需要遵守一个规范，这就是 DB API 规范。可以访问这里查看支持的数据库。 对于不同的DBMS有普通的模块支持，相同的DBMS也会有不同的实现方式。对MySQL主要有一下两类：  使用支持原生 SQL 语句的连接方式。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://csniu.github.io/2019/12/13/Python-中对MySQL数据库的使用/">
+  <link rel="canonical" href="https://csniu.github.io/2019/12/13/Python-MySQL/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Python 中对MySQL数据库的使用 | 李大宝的包子</title>
+  <title>Python-MySQL | 李大宝的包子</title>
   
 
 
@@ -263,7 +263,7 @@
   
   <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">16</span>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">17</span>
       </a>
 </li>
 
@@ -327,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Python-中对MySQL数据库的使用/">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2019/12/13/Python-MySQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="csniu">
@@ -344,7 +344,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Python 中对MySQL数据库的使用</h2>
+          <h2 class="post-title" itemprop="name headline">Python-MySQL</h2>
         
 
         <div class="post-meta">
@@ -399,8 +399,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/13/Python-中对MySQL数据库的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Python-中对MySQL数据库的使用/" itemprop="commentCount"></span>
+                <a href="/2019/12/13/Python-MySQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/13/Python-MySQL/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -428,8 +428,8 @@
       
 
       
-        <p>在日常开发过程中总是在所难免的会和数据库打交道。</p>
-<p>在 Python 中对数据库（MySQL为例）的操作不外乎以下两种情况：</p>
+        <p>Python 可以支持非常多的数据库管理系统，如：MySQL、Oracle、SQL Server 和 PostgreSQL 等。为了实现对这些 DBMS 的统一访问，Python 需要遵守一个规范，这就是 DB API 规范。可以访问<a href="https://wiki.python.org/moin/DatabaseInterfaces" target="_blank" rel="noopener">这里</a>查看支持的数据库。</p>
+<p>对于不同的DBMS有普通的模块支持，相同的DBMS也会有不同的实现方式。对MySQL主要有一下两类：</p>
 <ul>
 <li>使用支持原生 SQL 语句的连接方式。</li>
 <li>使用支持 ORM 框架的方式。</li>
@@ -439,30 +439,6 @@
 <h2 id="1-原生-SQL-语句"><a href="#1-原生-SQL-语句" class="headerlink" title="1.原生 SQL 语句"></a>1.原生 SQL 语句</h2><p>使用原生的 SQL 语句去操作数据库会更加的灵活可以，也比较轻量级。</p>
 <p>这种方式的使用和在数据库的客户端执行 SQL 语句基本无差。</p>
 <p>缺点就是要拼接 SQL 语句，代码会变得非常臃肿，也不利于后期的维护工作。当然安全性也是个问题。</p>
-<p>一般流程：</p>
-<ul>
-<li>1.创建连接</li>
-<li>2.获得游标</li>
-<li>3.执行 SQL 语句（拼接 SQL 语句）</li>
-<li>4.关闭游标和连接</li>
-</ul>
-<pre><code class="python"><span class="comment">#!/usr/bin/env python</span>
-<span class="comment"># -*- coding:utf-8 -*-</span>
-<span class="keyword">import</span> pymysql
-
-<span class="comment"># 连接数据库</span>
-conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">3306</span>, user=<span class="string">'root'</span>, passwd=<span class="string">'123'</span>, db=<span class="string">'t1'</span>)
-<span class="comment"># 游标设置为字典类型</span>
-cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
-<span class="comment"># 执行语句</span>
-r = cursor.execute(<span class="string">"call p1()"</span>)
-<span class="comment"># 获取结果</span>
-result = cursor.fetchone()
-<span class="comment"># 提交和关闭连接</span>
-conn.commit()
-cursor.close()
-conn.close()
-</code></pre>
 <p>目前主要的 MySQL 驱动有如下几个：</p>
 <ul>
 <li><p>MySQL-python</p>
@@ -479,7 +455,35 @@ conn.close()
 <p>优点是安装方便简单。</p>
 </li>
 </ul>
-<hr>
+<p>一般流程：</p>
+<ul>
+<li>创建连接</li>
+<li>获得游标</li>
+<li>执行 SQL 语句</li>
+<li>关闭游标和连接</li>
+</ul>
+<pre><code class="python"><span class="comment">#!/usr/bin/env python</span>
+<span class="comment"># -*- coding:utf-8 -*-</span>
+<span class="keyword">import</span> pymysql
+
+<span class="comment"># 连接数据库</span>
+db = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">3306</span>, user=<span class="string">'root'</span>, passwd=<span class="string">'123'</span>, db=<span class="string">'t1'</span>)
+
+<span class="comment"># 游标设置为字典类型</span>
+cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
+
+<span class="comment"># 执行语句</span>
+r = cursor.execute(<span class="string">"call p1()"</span>)  <span class="comment"># 向SQL中传入参数时，需要使用”%s“占位。或者使用字符串拼接好SQl语句</span>
+
+<span class="comment"># 获取结果</span>
+result = cursor.fetchone()
+
+<span class="comment"># 提交和关闭连接</span>
+db.commit()
+<span class="comment"># db.rollback()</span>
+cursor.close()
+db.close()
+</code></pre>
 <h2 id="2-ORM-框架"><a href="#2-ORM-框架" class="headerlink" title="2.ORM 框架"></a>2.ORM 框架</h2><p>在使用原生 SQL 时，对数据库的简单操作或者是低频次的使用时，是足够的。</p>
 <p>但是如果项目比较繁琐需要频繁的对数据库进行操作，这个时候就会遇到一些问题，比如连接池，性能等等问题。</p>
 <p>ORM 框架是建立在数据库 API 之上，使用关系对象映射进行数据操作。</p>
@@ -496,11 +500,17 @@ conn.close()
 <li>1.创建类。对数据库的映射关系。</li>
 <li>2.操作类。转换成 SQL 语句，对数据库进行操作。</li>
 </ul>
-<p>Python 的 ORM 框架有很多，在网上能够搜到很多的介绍和比较，这里主要介绍 SQLAlchemy。</p>
-<hr>
-<h3 id="SQLAlchemy"><a href="#SQLAlchemy" class="headerlink" title="SQLAlchemy"></a>SQLAlchemy</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p><code>pip3 install sqlalchemy</code></p>
+<p>主要有以下ORM工具：</p>
+<ul>
+<li><a href="http://www.sqlalchemy.org/" target="_blank" rel="noopener">SQLAlchemy</a>：使用最多的工具。不仅支持ORM还支持原生的SQL操作。</li>
+<li>Django ORM：是Django用来访问数据库的接口。</li>
+<li><a href="http://docs.peewee-orm.com/en/latest/" target="_blank" rel="noopener">peewee</a>：轻量级的工具。</li>
+<li><a href="http://ponyorm.com/" target="_blank" rel="noopener">PonyORM</a></li>
+<li><a href="http://www.sqlobject.org/" target="_blank" rel="noopener">SQLObject</a></li>
+</ul>
+<h2 id="SQLAlchemy"><a href="#SQLAlchemy" class="headerlink" title="SQLAlchemy"></a>SQLAlchemy</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p><code>pip3 install sqlalchemy</code></p>
 <p>记得要安装底层的 MySQL API <code>pip3 install mysqlclient</code></p>
-<h4 id="2-连接"><a href="#2-连接" class="headerlink" title="2.连接"></a>2.连接</h4><pre><code class="python"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine
+<h3 id="2-连接"><a href="#2-连接" class="headerlink" title="2.连接"></a>2.连接</h3><pre><code class="python"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine
 engine = create_engine(<span class="string">'mysql+pymysql://root:root@localhost/test?charset=utf8'</span>,echo=<span class="literal">True</span>)
 </code></pre>
 <ul>
@@ -523,14 +533,14 @@ engine = create_engine(<span class="string">'mysql+pymysql://root:root@localhost
 <li>echo=True，表示启用 logging 记录底层的 SQL 语句。</li>
 <li>还有很多的其他参数可设置，可查看文档。这些参数主要用于底层的连接池创建设置。</li>
 </ul>
-<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><p>SQLALchemy 支持一下使用方式。</p>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>SQLALchemy 支持一下使用方式。</p>
 <ul>
 <li>原生的 SQL 语句</li>
 <li><code>Expression Language</code></li>
 <li>ORM </li>
 </ul>
 <p>对数据库的操作一般也就是 增、删、改、查、事务 等。</p>
-<h5 id="原生-SQL-方法"><a href="#原生-SQL-方法" class="headerlink" title="原生 SQL 方法"></a>原生 SQL 方法</h5><pre><code class="python">conn = engine.connect()  <span class="comment"># 创建一个连接</span>
+<h4 id="原生-SQL-方法"><a href="#原生-SQL-方法" class="headerlink" title="原生 SQL 方法"></a>原生 SQL 方法</h4><pre><code class="python">conn = engine.connect()  <span class="comment"># 创建一个连接</span>
 trans = connection.begin()  <span class="comment"># 开始一个事务</span>
 
 <span class="keyword">try</span>:
@@ -544,7 +554,7 @@ trans = connection.begin()  <span class="comment"># 开始一个事务</span>
     trans.rollback()  <span class="comment"># 回滚，事务</span>
 conn.close()  <span class="comment"># 关闭连接，也可以使用 with 语句</span>
 </code></pre>
-<h5 id="创建映射关系"><a href="#创建映射关系" class="headerlink" title="创建映射关系"></a>创建映射关系</h5><p>在使用另外两种方式操作数据之前，都需要先对数据库的表做映射。</p>
+<h4 id="创建映射关系"><a href="#创建映射关系" class="headerlink" title="创建映射关系"></a>创建映射关系</h4><p>在使用另外两种方式操作数据之前，都需要先对数据库的表做映射。</p>
 <ul>
 <li>创建基类<br>在 SQLAlchemy 中所有的数据模型都要继承于一个基类，而这个基类一般通过 <a href="https://docs.sqlalchemy.org/en/latest/orm/extensions/declarative/api.html#sqlalchemy.ext.declarative.declarative_base" target="_blank" rel="noopener"><code>declarative_base()</code></a>创建。</li>
 </ul>
@@ -576,7 +586,7 @@ Base = declarative_base()
 </code></pre>
 </li>
 </ul>
-<h5 id="Expression-Language"><a href="#Expression-Language" class="headerlink" title="Expression Language"></a><code>Expression Language</code></h5><pre><code>meta = MetaData(bind=engine, reflect=True)
+<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><pre><code>meta = MetaData(bind=engine, reflect=True)
 table = meta.tables[&apos;stock_basics&apos;]
 result2 = list(engine.execute(table.select(table.c.pe &lt; 2))) 
 
@@ -615,7 +625,7 @@ s = join(users, emails).select()
 # 外连接
 s = outerjoin(users, emails).select()
 
-</code></pre><h5 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h5><h6 id="创建会话"><a href="#创建会话" class="headerlink" title="创建会话"></a>创建会话</h6><pre><code class="python"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker
+</code></pre><h4 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h4><h5 id="创建会话"><a href="#创建会话" class="headerlink" title="创建会话"></a>创建会话</h5><pre><code class="python"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker
 Session = sessionmaker(bind=engine)  <span class="comment"># 根据 engine 创建会话类</span>
 session = Session()  
 </code></pre>
@@ -632,7 +642,7 @@ session = Session()
 </ul>
 </li>
 </ul>
-<h6 id="3-增删改查操作"><a href="#3-增删改查操作" class="headerlink" title="3.增删改查操作"></a>3.增删改查操作</h6><p>查:</p>
+<h5 id="3-增删改查操作"><a href="#3-增删改查操作" class="headerlink" title="3.增删改查操作"></a>3.增删改查操作</h5><p>查:</p>
 <p>使用 seesion 的 query 方法。 </p>
 <ul>
 <li>传入映射类时，返回 Query 对象，支持 get、切片、过滤、排序、分组等操作。</li>
@@ -714,7 +724,7 @@ seesion.rollback()  <span class="comment"># 回滚</span>
 seesion.close()
 </code></pre>
 <hr>
-<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><p>1.在使用过程中一般有两个情况：（1）代码优先。（2）数据库优先</p>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p>1.在使用过程中一般有两个情况：（1）代码优先。（2）数据库优先</p>
 <ul>
 <li><p>代码优先：通过编写代码动态的创建数据库。需要考虑数据的迁移问题(alembic )。</p>
 </li>
@@ -729,7 +739,7 @@ sqlacodegen mysql+pymysql://root:<span class="number">123456</span>@<span class=
 <ul>
 <li>ORM 框架主要是解决了连接池的问题，我们也可以通过 <a href="https://commons.apache.org/proper/commons-dbutils/" target="_blank" rel="noopener">DBUtils</a> 解决这个问题。</li>
 </ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>SQLAlchemy 官方文档：<a href="https://docs.sqlalchemy.org/en/latest/index.html" target="_blank" rel="noopener">https://docs.sqlalchemy.org/en/latest/index.html</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>SQLAlchemy 官方文档：<a href="https://docs.sqlalchemy.org/en/latest/index.html" target="_blank" rel="noopener">https://docs.sqlalchemy.org/en/latest/index.html</a></p>
 <p>alembic 官方文档：<a href="https://alembic.sqlalchemy.org/en/latest/" target="_blank" rel="noopener">https://alembic.sqlalchemy.org/en/latest/</a></p>
 <p>sqlacodegen ：<a href="https://pypi.org/project/sqlacodegen/" target="_blank" rel="noopener">https://pypi.org/project/sqlacodegen/</a></p>
 
@@ -753,7 +763,7 @@ sqlacodegen mysql+pymysql://root:<span class="number">123456</span>@<span class=
     <strong>本文作者： </strong>csniu</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://csniu.github.io/2019/12/13/Python-中对MySQL数据库的使用/" title="Python 中对MySQL数据库的使用">https://csniu.github.io/2019/12/13/Python-中对MySQL数据库的使用/</a>
+    <a href="https://csniu.github.io/2019/12/13/Python-MySQL/" title="Python-MySQL">https://csniu.github.io/2019/12/13/Python-MySQL/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -879,7 +889,7 @@ sqlacodegen mysql+pymysql://root:<span class="number">123456</span>@<span class=
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -973,7 +983,7 @@ sqlacodegen mysql+pymysql://root:<span class="number">123456</span>@<span class=
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-原生-SQL-语句"><span class="nav-number">1.</span> <span class="nav-text">1.原生 SQL 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ORM-框架"><span class="nav-number">2.</span> <span class="nav-text">2.ORM 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLAlchemy"><span class="nav-number">2.1.</span> <span class="nav-text">SQLAlchemy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-连接"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-使用"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原生-SQL-方法"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">原生 SQL 方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建映射关系"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">创建映射关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Expression-Language"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">Expression Language</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ORM"><span class="nav-number">2.1.3.4.</span> <span class="nav-text">ORM</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建会话"><span class="nav-number">2.1.3.4.1.</span> <span class="nav-text">创建会话</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-增删改查操作"><span class="nav-number">2.1.3.4.2.</span> <span class="nav-text">3.增删改查操作</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他问题"><span class="nav-number">2.2.</span> <span class="nav-text">其他问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.3.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-原生-SQL-语句"><span class="nav-number">1.</span> <span class="nav-text">1.原生 SQL 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ORM-框架"><span class="nav-number">2.</span> <span class="nav-text">2.ORM 框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLAlchemy"><span class="nav-number">3.</span> <span class="nav-text">SQLAlchemy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装"><span class="nav-number">3.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-连接"><span class="nav-number">3.2.</span> <span class="nav-text">2.连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用"><span class="nav-number">3.3.</span> <span class="nav-text">3.使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原生-SQL-方法"><span class="nav-number">3.3.1.</span> <span class="nav-text">原生 SQL 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建映射关系"><span class="nav-number">3.3.2.</span> <span class="nav-text">创建映射关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用示例"><span class="nav-number">3.3.3.</span> <span class="nav-text">使用示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ORM"><span class="nav-number">3.3.4.</span> <span class="nav-text">ORM</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建会话"><span class="nav-number">3.3.4.1.</span> <span class="nav-text">创建会话</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-增删改查操作"><span class="nav-number">3.3.4.2.</span> <span class="nav-text">3.增删改查操作</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他问题"><span class="nav-number">4.</span> <span class="nav-text">其他问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -1152,9 +1162,9 @@ sqlacodegen mysql+pymysql://root:<span class="number">123456</span>@<span class=
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://csniu.github.io/2019/12/13/Python-中对MySQL数据库的使用/';
-        this.page.identifier = '2019/12/13/Python-中对MySQL数据库的使用/';
-        this.page.title = 'Python 中对MySQL数据库的使用';
+        this.page.url = 'https://csniu.github.io/2019/12/13/Python-MySQL/';
+        this.page.identifier = '2019/12/13/Python-MySQL/';
+        this.page.title = 'Python-MySQL';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
