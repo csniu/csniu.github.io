@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_favicon.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_favicon.png?v=6.1.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Git 是一个分布式版本控制系统，可运行在各种主流操作系统上，如Linux、Mac、Unix、Windows。 你既可以像集中式版本控制系统那样使用中心仓库工作，也可使用分布式工作流程方式工作。使开发者间的协作变得更加灵活多样。 而且你既可以通过命令行方式操作 Git，又可以使用可视化的工具（Gitk）工作。甚至可以使用以下工具将 Git 集成到你现有的工程中。  Libgit2：是一个可移植、纯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="版本控制-Git 入门">
+<meta property="og:url" content="https://csniu.github.io/2020/02/12/版本控制-Git-入门/index.html">
+<meta property="og:site_name" content="李大宝的包子">
+<meta property="og:description" content="Git 是一个分布式版本控制系统，可运行在各种主流操作系统上，如Linux、Mac、Unix、Windows。 你既可以像集中式版本控制系统那样使用中心仓库工作，也可使用分布式工作流程方式工作。使开发者间的协作变得更加灵活多样。 而且你既可以通过命令行方式操作 Git，又可以使用可视化的工具（Gitk）工作。甚至可以使用以下工具将 Git 集成到你现有的工程中。  Libgit2：是一个可移植、纯">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-03T07:49:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="版本控制-Git 入门">
+<meta name="twitter:description" content="Git 是一个分布式版本控制系统，可运行在各种主流操作系统上，如Linux、Mac、Unix、Windows。 你既可以像集中式版本控制系统那样使用中心仓库工作，也可使用分布式工作流程方式工作。使开发者间的协作变得更加灵活多样。 而且你既可以通过命令行方式操作 Git，又可以使用可视化的工具（Gitk）工作。甚至可以使用以下工具将 Git 集成到你现有的工程中。  Libgit2：是一个可移植、纯">
+
+
+
+
+
+
+  <link rel="canonical" href="https://csniu.github.io/2020/02/12/版本控制-Git-入门/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>版本控制-Git 入门 | 李大宝的包子</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100475240-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100475240-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!--<a href="https://github.com/csniu" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李大宝的包子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-archives menu-item-active">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-commonweal">
+    <a href="/404/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://csniu.github.io/2020/02/12/版本控制-Git-入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="csniu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/my_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李大宝的包子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">版本控制-Git 入门</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T21:59:44+08:00">2020-02-12</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程工具/" itemprop="url" rel="index"><span itemprop="name">编程工具</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/12/版本控制-Git-入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/12/版本控制-Git-入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Git 是一个分布式版本控制系统，可运行在各种主流操作系统上，如Linux、Mac、Unix、Windows。</p>
+<p>你既可以像集中式版本控制系统那样使用中心仓库工作，也可使用<a href="https://git-scm.com/book/zh/v2/%E5%88%86%E5%B8%83%E5%BC%8F-Git-%E5%88%86%E5%B8%83%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B" target="_blank" rel="noopener">分布式工作流程</a>方式工作。使开发者间的协作变得更加灵活多样。</p>
+<p>而且你既可以通过命令行方式操作 Git，又可以使用可视化的工具（<a href="https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-A%3A-%E5%9C%A8%E5%85%B6%E5%AE%83%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8-Git-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2" target="_blank" rel="noopener">Gitk</a>）工作。甚至可以使用以下工具将 Git 集成到你现有的工程中。</p>
+<ul>
+<li><a href="https://libgit2.org/" target="_blank" rel="noopener">Libgit2</a>：是一个可移植、纯C语言实现的Git开发包，作为一款带有稳固API的可重入链接库，libgit2允许你使用<strong>任何语言</strong>来编写Git应用。</li>
+<li><a href="https://www.eclipse.org/jgit/" target="_blank" rel="noopener">JGit</a>：使用 Java 实现的 Git 库。</li>
+<li><a href="https://github.com/src-d/go-git" target="_blank" rel="noopener">go-git</a>：使用 Go 实现的 Git 库。</li>
+<li><a href="https://www.dulwich.io/" target="_blank" rel="noopener">Dulwich</a>：使用 Python 实现的 Git 库。</li>
+</ul>
+<a id="more"></a>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>Git 用户配置有三种级别，从高到低依次为：</p>
+<ul>
+<li>system：系统级，整个系统只有一个。配置文件地址为 <code>$(prefix)/etc/gitconfig</code>.</li>
+<li>global：用户级，一个系统用户一个。配置文件为 <code>~/.gitconfig</code></li>
+<li>local：代码库级别，每个代码库可以有一个。配置文件为仓库路径下的 <code>.git/config</code></li>
+</ul>
+<p>读取配置由高到低，逐级覆盖。也就是说如果三级都配置了，最后使用的是 local 级。</p>
+<h5 id="查看配置"><a href="#查看配置" class="headerlink" title="查看配置:"></a>查看配置:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --list  # 所有</span><br><span class="line">git config --list --local  # 相应级别下的所有</span><br><span class="line">git config --loacl  user.name  # 某一配置项</span><br></pre></td></tr></table></figure>
+<h5 id="添加-修改配置："><a href="#添加-修改配置：" class="headerlink" title="添加/修改配置："></a>添加/修改配置：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git conﬁg --global user.email your_email@domain.com</span><br></pre></td></tr></table></figure>
+<h5 id="删除配置："><a href="#删除配置：" class="headerlink" title="删除配置："></a>删除配置：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --unset --local user.name</span><br></pre></td></tr></table></figure>
+<p>一般情况下我们自需要配置一个全局的用户名和邮箱即可，用于提交时表明身份。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>更加详细的配置项及其介绍请查看<a href="https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%AE%BE%E7%BD%AE%E4%B8%8E%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">官方文档</a>。</p>
+<h1 id="内部原理"><a href="#内部原理" class="headerlink" title="内部原理"></a>内部原理</h1><p><strong><em>先了解其内部原理，可以帮助我们更好的理解Git。当然你也可以只了解其使用方法，或者你也可以先了解使用方法后再来阅读也行。</em></strong></p>
+<p>仓库下的<code>.git</code>子目录，存储了仓库的所有信息。主要有以下结构：</p>
+<ul>
+<li>config: 存储仓库的配置信息。</li>
+<li>description: 仅供 GitWeb 程序使用，一般无需关心。</li>
+<li>hooks/:包括客户端或服务端的钩子脚本（hook scripts）。</li>
+<li>info/:包含一个全局性排除（global exclude）文件， 用以放置那些不希望被记录在 <code>.gitignore</code> 文件中的忽略模式（ignored patterns）。</li>
+<li><strong>HEAD</strong>:指向当前所在分支</li>
+<li><strong>objects/</strong>:存储所有<strong>对象</strong>内容。</li>
+<li><strong>refs/</strong>:存储指向数据（分支、远程仓库和标签等）的提交对象的<strong>指针</strong>。</li>
+<li><strong>index</strong> :暂存区信息。</li>
+</ul>
+<h2 id="三种对象"><a href="#三种对象" class="headerlink" title="三种对象"></a>三种对象</h2><p>Git 的核心是一个简单的键值对数据库（key-value data store）。你可以向 Git 仓库中插入任意类型的内容，它会返回一个唯一的键，通过该键可以在任意时刻再次取回该内容。</p>
+<p>键是由“待存储数据“加上“头部信息”拼接后，再通过SHA-1算法计算出的一个长度为40个字符串。</p>
+<p>“头部信息” = 关键字 + 一个空格 + “待存储数据”的长度 + 一个空字节。</p>
+<p>存储方式：</p>
+<ul>
+<li>键的前两位作为子目录的文件名，</li>
+<li>键的后38位作为文件名。</li>
+<li>文件内容为使用<code>zlib</code>压缩后的拼接内容。</li>
+</ul>
+<h3 id="数据对象（blob-object）"><a href="#数据对象（blob-object）" class="headerlink" title="数据对象（blob object）"></a>数据对象（blob object）</h3><p>“待存储数据”几乎可以是任何东西（文本、二进制文件等）。</p>
+<p>“头部信息关键字”为<code>blob</code>。</p>
+<h5 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;test content&apos; | git hash-object -w --stdin</span><br><span class="line"># d670460b4b4aece5915caf5c68d12f560a9fe3e4</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-w</code>:保持到数据库中（object目录）。</li>
+<li><code>--stdin</code>:从标准输入读入，或者在该命令后指定文件路径。</li>
+<li>会创建<code>.git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4</code>文件，文件内容为<code>blob \</code></li>
+</ul>
+<h5 id="查询对象"><a href="#查询对象" class="headerlink" title="查询对象"></a>查询对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p d670460b4b4aece5915caf5c68d12f560a9fe3e4</span><br><span class="line"># test content</span><br></pre></td></tr></table></figure>
+<p>数据对象解决的单个文件的版本管理问题，但是还不完美。主要有：</p>
+<ul>
+<li>需要记住每一个版本的SHA-1值。</li>
+<li>只保存了文件内容，文件名等信息并没有被保存。</li>
+</ul>
+<h3 id="树对象（tree-object）"><a href="#树对象（tree-object）" class="headerlink" title="树对象（tree object）"></a>树对象（tree object）</h3><p>树对象是为了解决文件名无法保存的问题，它允许我们将多个文件组织在一起。Git 以一种类似于 UNIX 文件系统的方式存储内容，但作了些许简化。 所有内容均以树对象和数据对象的形式存储。</p>
+<p>一个树对象包含了一条或多条记录，每条记录含有一个指向数据对象或者子树对象的 SHA-1 指针（键），以及相应的模式、类型、文件名信息。</p>
+<p>“待存储数据”由所有记录组成。“头部信息关键字”为<code>tree</code>。</p>
+<h5 id="查询对象-1"><a href="#查询对象-1" class="headerlink" title="查询对象"></a>查询对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p master^&#123;tree&#125;</span><br><span class="line"># 100644 blob a906cb2a4a904a152e80877d4088654daad0c859      README</span><br><span class="line"># 100644 blob 8f94139338f9404f26296befa88755fc2598c289      Rakefile</span><br><span class="line"># 040000 tree 99f1a6d12cb4b6f19c8655fca46c3ecf317074e0      lib</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看 master 分支上最新的提交所指向的树对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p 99f1a6d12cb4b6f19c8655fca46c3ecf317074e0</span><br><span class="line"># 100644 blob 47c6340d6459e05787f644c2447d2595f5d3a54b      simplegit.rb</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看指定树对象内容</li>
+</ul>
+<h5 id="创建对象-1"><a href="#创建对象-1" class="headerlink" title="创建对象"></a>创建对象</h5><p>Git是根据某一时刻暂存区的状态来创建并记录一个对应的树对象。这也就是为什么要先将修改加到暂存区，再提交的原因。</p>
+<h6 id="更新暂存区"><a href="#更新暂存区" class="headerlink" title="更新暂存区"></a>更新暂存区</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git update-index --add --cacheinfo 100644 83baae61804e65cc73a7201a7252750c76066a30 test.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--add</code>：将文件加到暂存区，第一次开始记录时需要。</li>
+<li><code>--cacheinfo</code>：将已经保持Git数据库中的对象加到暂存区。</li>
+<li><code>100644</code>: 文件模式。参考与UNIX文件模式，但主要有三种：<ul>
+<li>100644：普通文件。</li>
+<li>100755：可执行文件。</li>
+<li>120000：符号链接。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git update-index --add new.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将工作区中的文件加到暂存区</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git read-tree --prefix=bak d8329fc1cc938780ffdd9f94e0d364e0ea74f579</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将一个树对象读到暂存区</li>
+<li>这是再创建新的树对象时就会包括该子树对象了。</li>
+</ul>
+<h6 id="创建树对象"><a href="#创建树对象" class="headerlink" title="创建树对象"></a>创建树对象</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git write-tree</span><br><span class="line"># d8329fc1cc938780ffdd9f94e0d364e0ea74f579</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据当前的暂存区，创建一个树对象。</li>
+</ul>
+<p>树对象帮我们解决了前面的两个问题，但是同时又产生了新的问题：</p>
+<ul>
+<li>需要记住所有的树对象的SHA-1值（键）。</li>
+<li>不能保存每一次提交的信息（谁提交的？什么时候？提交的什么？等）。</li>
+</ul>
+<h3 id="提交对象"><a href="#提交对象" class="headerlink" title="提交对象"></a>提交对象</h3><p>提交对象就是用来解决上面问题的。创建一个提交对象需要：</p>
+<ul>
+<li>一个顶级树对象。</li>
+<li>该提交对象的父提交对象。（如果有）</li>
+<li>提交人的信息。（在三种配置级别下查找）</li>
+<li>提交的时间。</li>
+<li>提交的日志信息。</li>
+</ul>
+<p>通过父对象以及提交时间，就串起了一个完整的版本更新状态。</p>
+<p>“头部信息关键字”为<code>commit</code>。</p>
+<h5 id="查询对象-2"><a href="#查询对象-2" class="headerlink" title="查询对象"></a>查询对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p &lt;sha1&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="创建对象-2"><a href="#创建对象-2" class="headerlink" title="创建对象"></a>创建对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit-tree &lt;tree_sha1&gt; [-p &lt;parent_commit_sha1&gt;] [-m &lt;message&gt;]</span><br></pre></td></tr></table></figure>
+<h5 id="查看历史提交信息"><a href="#查看历史提交信息" class="headerlink" title="查看历史提交信息"></a>查看历史提交信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log  &lt;commit_sha1&gt;</span><br></pre></td></tr></table></figure>
+<p><strong><em>Git 所做的工作实质就是将被改写的文件保存为数据对象， 更新暂存区，记录树对象，最后创建一个指明了顶层树对象和父提交的提交对象。</em></strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>从数据对象到树对象，再到提交对象，逐级简化后我们还是需要记住最后提交SHA-1值。</p>
+<p>为了解决这个问题，你可能会很自然的想到，可以把该值保存到一个固定的文件中（或者更简单的将该值作为文件名）。这样每次我们只需要查看该文件就好了。</p>
+<p>没错 Git 也是这么想的，这就是 Git 中的引用。Git 将其保存在<code>.git/refs</code>中。</p>
+<p>这基本就是 Git 分支的本质：一个指向某一系列提交之首的指针或引用。</p>
+<h4 id="更新引用"><a href="#更新引用" class="headerlink" title="更新引用"></a>更新引用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 1a410efbd13591db07496601ebc7a059dd55cfe9 &gt; .git/refs/heads/master  # 不过不建议直接操控文件</span><br><span class="line">git update-ref refs/heads/master 1a410efbd13591db07496601ebc7a059dd55cfe9</span><br></pre></td></tr></table></figure>
+<h4 id="查看引用"><a href="#查看引用" class="headerlink" title="查看引用"></a>查看引用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline master</span><br></pre></td></tr></table></figure>
+<h4 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git update-ref refs/heads/test cac0ca</span><br></pre></td></tr></table></figure>
+<h3 id="HEAD-引用"><a href="#HEAD-引用" class="headerlink" title="HEAD 引用"></a>HEAD 引用</h3><p>HEAD 文件通常是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，表示它是一个指向其他引用的指针。</p>
+<p>除了直接操作文件，可以使用更安全的命令<code>git symbolic-ref</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git symbolic-ref HEAD  # 查看</span><br><span class="line">git symbolic-ref HEAD refs/heads/test  # 更新</span><br></pre></td></tr></table></figure></p>
+<h3 id="标签引用"><a href="#标签引用" class="headerlink" title="标签引用"></a>标签引用</h3><p>除了前面说到的三种对象外，还有一种“标签对象（tag object）”。其包含一个标签创建者信息、一个日期、一段注释信息，以及一个指针。</p>
+<p>标签对象非常类似于一个提交对象。主要的区别在于，标签对象通常指向一个提交对象，而不是一个树对象。 它像是一个永不移动的分支引用（永远指向同一个提交对象），只不过给这个提交对象加上一个更友好的名字。</p>
+<h5 id="轻量标签"><a href="#轻量标签" class="headerlink" title="轻量标签"></a>轻量标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git update-ref refs/tags/v1.0 cac0cab538b970a37ea1e769cbbde608743bc96d</span><br></pre></td></tr></table></figure>
+<h5 id="附注标签"><a href="#附注标签" class="headerlink" title="附注标签"></a>附注标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.1 1a410efbd13591db07496601ebc7a059dd55cfe9 -m &apos;test tag&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Git 会创建一个标签对象，并记录一个引用来指向该标签对象。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat .git/refs/tags/v1.1  # 查看标签对象</span><br><span class="line">git cat-file -p 9585191f37f7b0fb9444f35a9bf50de191beadc2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="远程引用（remote-reference）"><a href="#远程引用（remote-reference）" class="headerlink" title="远程引用（remote reference）"></a>远程引用（remote reference）</h3><p>如果你添加了一个远程版本库并对其执行过推送操作，Git 会记录下最近一次推送操作时每一个分支所对应的值，并保存在 refs/remotes 目录下。 </p>
+<p>远程引用是只读的，你永远不能通过 commit 命令来更新远程引用。</p>
+<h2 id="包文件"><a href="#包文件" class="headerlink" title="包文件"></a>包文件</h2><p>在说数据对象时说到，每一个数据对象都会存储文件的所有内容。这样做的好处是简化了数据结构，但是缺点是增加存储空间。</p>
+<p>为了节省空间，Git会根据文件名和文件大小将其打包。打包文件存放在：<code>.git/objects/pack</code></p>
+<h4 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git gc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Git 时常会自动对仓库进行重新打包以节省空间。当然你也可以随时手动执行.</li>
+<li>会创建一个包文件(<code>.pack</code>)和一个索引文件(<code>.idx</code>)<ul>
+<li>包文件包含了从文件系统中移除的所有对象的内容。</li>
+<li>索引文件包含了包文件的偏移信息。</li>
+</ul>
+</li>
+<li>最新的对象会保存完整的数据，之前的对象只会保存差异内容。</li>
+</ul>
+<h4 id="查看打包的对象"><a href="#查看打包的对象" class="headerlink" title="查看打包的对象"></a>查看打包的对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git verify-pack -v .git/objects/pack/pack-978e03944f5c581011e6998cd0e9e30000905586.idx</span><br></pre></td></tr></table></figure>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>如果你是先了解了Git的内部原理，那么你在使用中更能知其所以然。如果你是想先了解它基本用法也没关系。你只需要记住Git的基本流程即可：</p>
+<ol>
+<li>在工作区中修改数据。</li>
+<li>将修改内容添加到暂存区。</li>
+<li>将暂存区内容提交到Git历史版本中。</li>
+</ol>
+<h2 id="获取仓库"><a href="#获取仓库" class="headerlink" title="获取仓库"></a>获取仓库</h2><p>通常有两种获取 Git 项目仓库的方式：</p>
+<ul>
+<li>将尚未进行版本控制的本地目录转换为 Git 仓库；</li>
+<li>从其它服务器克隆一个已存在的 Git 仓库。</li>
+</ul>
+<h4 id="本地初始化初始化"><a href="#本地初始化初始化" class="headerlink" title="本地初始化初始化"></a>本地初始化初始化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init [&lt;project&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认将当前路径作为仓库管理。</li>
+<li>给定<code>project</code>时，会在当前路径下创建一个子文件夹，并以改路径作为仓库管理</li>
+<li>会创建一个<code>.git</code>的子文件夹，它是Git仓库的核心文件。</li>
+</ul>
+<h4 id="远端克隆"><a href="#远端克隆" class="headerlink" title="远端克隆"></a>远端克隆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;url&gt; [&lt;local_name&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认会将远程 Git 仓库中的每一个文件的每一个版本都将被拉取下来。</li>
+</ul>
+<h2 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h2><p>所有的修改都是在工作区完成的，工作区的文件不外乎两种状态：已跟踪和未跟踪。</p>
+<p>已跟踪的文件就是已经加入到Git版本控制的文件，只有已跟踪的文件才可以对其每一次的更新进行管理。</p>
+<h5 id="查看当前工作区状态"><a href="#查看当前工作区状态" class="headerlink" title="查看当前工作区状态"></a>查看当前工作区状态</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status [-s|--short]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认会列出详细的状态及说明。</li>
+<li>可使用<code>-s</code>或<code>--short</code>简化输出，格式如：<code>MM filename</code>，第一个“M”为暂存区的状态，第二为工作区的状态。<ul>
+<li>A:新添加到暂存区中的文件。</li>
+<li>M:修改过的文件。</li>
+<li>未跟踪文件的文件则为“??”。</li>
+</ul>
+</li>
+</ul>
+<h5 id="建立跟踪-添加到暂存区"><a href="#建立跟踪-添加到暂存区" class="headerlink" title="建立跟踪/添加到暂存区"></a>建立跟踪/添加到暂存区</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file_or_dirname&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开始跟踪新文件，或者把已跟踪的文件放到暂存区。</li>
+<li>如果给定的是文件夹，则会递归其下的所有文件。</li>
+<li>多次修改同一文件，可重复使用该命令，以更新暂存区内容。</li>
+<li><code>-A</code>:添加所有文件。</li>
+<li><code>-u</code>:添加工作区中所有已经被 git 管理的文件。</li>
+</ul>
+<p>还能用于合并时把有冲突的文件标记为已解决状态等。</p>
+<h5 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h5><p>未跟踪的文件也就不会被Git管理，但是在执行其他命令时会进行提醒。如果是真的不需要Git进行管理的文件，可通过<code>.gitignore</code>文件进行配置。这要Git就会忽略掉所有符合规则的文件。</p>
+<p><code>.gitignore</code>的格式规范如下：</p>
+<ul>
+<li>空行或以<code>#</code>开头的行都会被忽略。</li>
+<li>可以使用标准的 glob 模式匹配（shell 中简化的正则表达式），它会递归地应用在整个工作区中。</li>
+<li>可以以（/）开头防止递归。</li>
+<li>可以以（/）结尾指定目录。</li>
+<li>要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反。</li>
+</ul>
+<p>不同语言及项目的<code>gitignore</code>文件模板可以参考<a href="https://github.com/github/gitignore" target="_blank" rel="noopener">这里</a>。</p>
+<p><strong><em>注意<code>.gitignore</code>文件本身是要被添加到Git仓库的。</em></strong></p>
+<h5 id="取消跟踪-删除文件"><a href="#取消跟踪-删除文件" class="headerlink" title="取消跟踪/删除文件"></a>取消跟踪/删除文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached &lt;file_or_dirname&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>取消已跟踪文件（删除暂存区中文件），但是保留工作区中的内容。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm &lt;file_or_dirname&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同时删除Git仓库和工作区中的文件。</li>
+<li>已修改或已添加到暂存区的文件，需要使用<code>-f</code>强制删除。</li>
+</ul>
+<h5 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;filename&gt;</span><br><span class="line">git clean</span><br></pre></td></tr></table></figure>
+<ul>
+<li>撤销文件的所有修改，回到上次提交状态。</li>
+</ul>
+<h5 id="查看已修改但未暂存的内容"><a href="#查看已修改但未暂存的内容" class="headerlink" title="查看已修改但未暂存的内容"></a>查看已修改但未暂存的内容</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [&lt;commit&gt;] [&lt;commit&gt;] [-- &lt;file&gt; ...]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认会比较工作区和暂存区之间所有文件的差异。</li>
+<li>使用<code>--staged</code>或<code>--cached</code>可比较暂存区和最后一次提交的差异。</li>
+<li><code>commit</code>可是提交对象、分支、标签等（本质都是提交对象或其应用）。</li>
+</ul>
+<h5 id="重命名文件"><a href="#重命名文件" class="headerlink" title="重命名文件"></a>重命名文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv &lt;old_name&gt; &lt;new_name&gt;</span><br></pre></td></tr></table></figure>
+<p>等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv &lt;old_name&gt; &lt;new_name&gt; </span><br><span class="line">git rm &lt;old_name&gt;</span><br><span class="line">git add &lt;new_name&gt;</span><br></pre></td></tr></table></figure></p>
+<h5 id="保存工作区"><a href="#保存工作区" class="headerlink" title="保存工作区"></a>保存工作区</h5><p>如果工作区中的任务还没有完成，并且需要进行其他的尝试或者需要切换到其他分支，但是又不想将修改添加到暂存区或者提交。这是可以先将工作区的状态先保存起来，在需要的时候再取出来就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git stash  # 保存</span><br><span class="line">git stash list  # 列举</span><br><span class="line">git stash apply  # 取回</span><br><span class="line">git stash pop  # 取回并删除</span><br></pre></td></tr></table></figure></p>
+<h5 id="直接提交"><a href="#直接提交" class="headerlink" title="直接提交"></a>直接提交</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把所有已经跟踪文件暂存并提交。</li>
+<li>一般结合<code>-m</code>使用。</li>
+</ul>
+<h2 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h2><p>暂存区是对工作区中的修改的“暂时保存”，同时也是最终提交到Git版本仓库的结果，起到了承上启下的作用。同时要记住一点所有的提交都是对暂存区的提交。</p>
+<h5 id="提交暂存区"><a href="#提交暂存区" class="headerlink" title="提交暂存区"></a>提交暂存区</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit [-m &lt;message&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认会启动系统默认的文本编辑器，以输入说明信息。</li>
+<li>或者使用<code>-m</code>直接输入说明信息。</li>
+<li><code>-a</code>从工作区直接提交。</li>
+<li><code>--amend</code>:修改上次提交的日志信息（自上次提交以来没有其他修改）。</li>
+</ul>
+<h5 id="查看历史提交"><a href="#查看历史提交" class="headerlink" title="查看历史提交"></a>查看历史提交</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log [&lt;branch&gt;]</span><br></pre></td></tr></table></figure>
+<ol>
+<li>默认会列出当前分支的所有提交，使用默认格式并按照时间顺序排列。<br>2.<code>--all</code>列举出所有分支的提交记录。</li>
+<li>使用不同的输出格式可以使用以下可选参数：</li>
+</ol>
+<ul>
+<li><code>-p</code>或<code>--patch</code>:会展示出每次提交的差别。</li>
+<li><code>--stat</code>:总结性的结果。哪些文件被修改了，已经删除多少插入多少。</li>
+<li><code>--pretty</code>:<ul>
+<li><code>oneline</code>：使用一行展示。</li>
+<li><code>short</code>，<code>full</code> 和 <code>fuller</code>:格式类似只是详尽程度不同。</li>
+<li><code>format</code>:使用自定义格式，占位符参考<a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2#pretty_format" target="_blank" rel="noopener">这里</a>。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>默认是展示所有提交记录，也可以使用如<code>-2</code>的参数限制要显示的日志条目数量。详细的过滤参数参考<a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2#limit_options" target="_blank" rel="noopener">这里</a>。</li>
+<li><code>--graph</code>使用简单的图形展示，结合<code>oneline</code>或<code>format</code>使用效果更佳。</li>
+</ol>
+<h5 id="取消暂存"><a href="#取消暂存" class="headerlink" title="取消暂存"></a>取消暂存</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD [&lt;filename&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>取消暂存，放回到工作区。（默认是暂存区中的所有文件）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard [&lt;commit_sha1&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同时清除暂存区和工作区的修改，回到上次提交状态。（默认为<code>HEAD</code>）</li>
+</ul>
+<h2 id="Git仓库"><a href="#Git仓库" class="headerlink" title="Git仓库"></a>Git仓库</h2><p>Git仓库的核心数据几乎都存储在<code>./.git</code>中。</p>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>标签是打在某个提交上的，相当于对在历史提交中做一个“书签”。方便日后对某个特殊提交查找。</p>
+<p>标签有两种：</p>
+<ul>
+<li>轻量标签（lightweight）: 只是一个提交对象的引用。</li>
+<li>附注标签（annotated）: 真实的Git标签对象，内容包括打标签者的名字、电子邮件地址、日期时间， 此外还有一个标签信息。（推荐使用）</li>
+</ul>
+<h5 id="查看仓库书签"><a href="#查看仓库书签" class="headerlink" title="查看仓库书签"></a>查看仓库书签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认列举出所有标签。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -l &apos;v1.8.*&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列举出特定格式的标签。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show &lt;tag_name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看标签的详细信息。</li>
+</ul>
+<h5 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h5><p>默认都是打在当前提交上的（HEAD），也可以指定提交对象。</p>
+<h6 id="轻量标签-1"><a href="#轻量标签-1" class="headerlink" title="轻量标签"></a>轻量标签</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tag_name&gt; [&lt;commit_sha1&gt;]</span><br></pre></td></tr></table></figure>
+<h6 id="附注标签-1"><a href="#附注标签-1" class="headerlink" title="附注标签"></a>附注标签</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a -m &lt;message&gt; &lt;tag_name&gt; [&lt;commit_sha1&gt;]</span><br></pre></td></tr></table></figure>
+<h5 id="共享标签"><a href="#共享标签" class="headerlink" title="共享标签"></a>共享标签</h5><p>因为<code>git push</code>默认是不会推送标签数据的，所有必须显示的推送标签数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;remote_name&gt; &lt;tag_name&gt;</span><br><span class="line">git push &lt;remote_name&gt; --all  # 推送所有标签</span><br></pre></td></tr></table></figure></p>
+<h5 id="删除本地标签"><a href="#删除本地标签" class="headerlink" title="删除本地标签"></a>删除本地标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tag_name&gt;</span><br></pre></td></tr></table></figure>
+<p>同时也需要删除远端该标签时，可以先删除本地的标签，在共享到远端。或者直接使用下述命令直接删除远端的标签：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete &lt;tag_name&gt;</span><br></pre></td></tr></table></figure></p>
+<h5 id="切换到标签状态"><a href="#切换到标签状态" class="headerlink" title="切换到标签状态"></a>切换到标签状态</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;tag_name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>切换到标签对应提交的状态，但会仓库进入“分离头指针”状态。</li>
+</ul>
+<p>在“分离头指针”状态下，如果你做了某些更改然后提交它们，但新提交将不属于任何分支，并且将无法访问，除非通过确切的提交哈希才能访问。通常应该根基该标签创建一个新的分支，再进行修改提交。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;new_branch&gt; &lt;tag_name&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>了解了Git的原理后，我们都知道Git的核心就是由三个对象组成的。其中每一个提交对象都至少有一个父提交对象（除了第一个），则也就构成了一个”版本线“。</p>
+<p>如果多个提交对象的父对象是同一个对象，那么也就是一分多。如果一个提交对象有多个父对象，也就是多合一。则也就是分支的本质，就是一个指向提交对象的可变指针。并且分支会随着提交操作自动向前移动。</p>
+<p>Git默认分支是<code>master</code>，它并没有什么特殊，只是在初始化时自动创建的一个默认分支而已。</p>
+<h5 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;branch_name&gt; [&lt;commit_sha1&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认在当前所在提交对象上创建一个新的分支。</li>
+</ul>
+<h5 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h5><p>创建好的分支，我们可以通过<code>git checkout</code>命令切换到该分支上:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branch_name&gt;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>如果想切换到新的分支（不存在的分支），可以使用<code>-b</code>，创建该分支并切换到该分支上。</li>
+<li>切换分支时必须要保证工作区和暂存区干净（工作区没有已修改的文件，暂存区没有未提交的文件），可以提交当前所有的修改，或者通过”暂存”和”修补提交”解决。</li>
+<li>同切换标签，如果给定的是一个提交对象，则会进入分离头指针状态。</li>
+</ul>
+<h5 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>合并指定分支到当前分支。</li>
+<li>如果当前分支和指定分支在一条线上（直接祖先），那么Git只会将当前分支的指针向前移动。这是最快速的合并方式（fast-forward），因为他不会有冲突需要解决。</li>
+<li>如果不在一条线上，则Git会根据两个分支的末端及其最近共同祖先做合并，并创建一个新的提交对象指向该结果。</li>
+</ul>
+<p>合并操作并不总是一帆风顺，如果不同分支对相同地方做了不同修改，合并是就好产生冲突。Git并不会帮我们自动修改冲突，需要我们手动的解决所有的冲突后再合并。</p>
+<p>可通过<code>git stats</code>查看哪些文件存在冲突。解决冲突后使用<code>git add</code>命令将文件标记为”已解决“。解决所有文件冲突后使用<code>git commit</code>继续完成合并操作。</p>
+<h5 id="变基操作"><a href="#变基操作" class="headerlink" title="变基操作"></a>变基操作</h5><p>整合不同分支的修改，可以使用前面说到的分支合并，也可以通过”变基“达到相同的效果。变基就是修改分支的历史提交记录（基），将其他分支上的提交修改到当前分支上。</p>
+<p>如有一个<code>dev</code>分支和一个<code>master</code>分支，并且都做了不同的提交。</p>
+<h6 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge dev  # 三方合并</span><br></pre></td></tr></table></figure>
+<h6 id="变基"><a href="#变基" class="headerlink" title="变基"></a>变基</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br><span class="line">git rebase master</span><br><span class="line"></span><br><span class="line">git checkout master</span><br><span class="line">git merge dev  # 快速合并</span><br></pre></td></tr></table></figure>
+<p>可以看出变基操作和合并分支的结果是完全一样的，但是变基可以使提交历史更加整洁。但是变基也是有<strong>风险</strong>的，比如你对一个共享的分支进行的变基操作，则会使后续的提交推送变得复杂繁琐，难以维护。所有如果你选择变基，请遵守准则：</p>
+<ul>
+<li>如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。</li>
+</ul>
+<p>实际使用过程中因人而异，如果你更认可提交历史记录本身的价值，那么你可以选择合并分支的方式。相反你可以通过变基使历史记录更加的简洁整齐。</p>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>远端仓库并不一定是在其他电脑上，如果你愿意也可以是在你本地的其他目录。Git 的默认远程仓库名为<code>origin</code>。</p>
+<h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3><p>在和远程仓库进行数据交互时可以使用以下协议：</p>
+<ul>
+<li>本地协议</li>
+<li>SSH协议</li>
+<li>Git协议</li>
+<li>HTTP协议</li>
+</ul>
+<h4 id="本地协议（File协议）"><a href="#本地协议（File协议）" class="headerlink" title="本地协议（File协议）"></a>本地协议（File协议）</h4><p>只能用于远程仓库位于本地的情况，直接使用仓库的路径即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[file://]/path/&lt;project.git&gt;</span><br></pre></td></tr></table></figure></p>
+<p>优点是简单，直接使用了现有的文件权限和网络访问权限。</p>
+<p>缺点是有局限性，并且每一个用户都有“远程”目录的完整 shell 权限，无法保证仓库的安全性。</p>
+<h4 id="SSH协议"><a href="#SSH协议" class="headerlink" title="SSH协议"></a><a href="https://baike.baidu.com/item/SSH/10407" target="_blank" rel="noopener">SSH</a>协议</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh://[user@]server/project.git</span><br><span class="line">[user@]server:project.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不指定用户时，Git会使用当前登录的用户名。</li>
+</ul>
+<p>优点是架设服务相对简单，而且大多数服务器都已支持。其次的安全性，所有传输数据都要经过授权和加密（口令或秘钥）。传输效率也比较高效。</p>
+<p>缺点是无法匿名访问。</p>
+<h4 id="Git协议"><a href="#Git协议" class="headerlink" title="Git协议"></a>Git协议</h4><p>它包含在 Git 里的一个特殊的守护进程，监听9418端口。类似于 SSH 服务，但是访问无需任何授权。要让版本库支持 Git 协议，需要先创建一个 <code>git-daemon-export-ok</code>文件。</p>
+<p>优点是它的网络传输是最快的，而且支持匿名访问（无需验证）。</p>
+<p>缺点是缺乏授权机制，要么都可以要都不可以。而且架设复杂（<a href="https://git-scm.com/book/zh/v2/服务器上的-Git-Git-守护进程" target="_blank" rel="noopener">架设</a>），一般很少使用。</p>
+<h4 id="HTTP-HTTPS协议"><a href="#HTTP-HTTPS协议" class="headerlink" title="HTTP/HTTPS协议"></a>HTTP/HTTPS协议</h4><p>在 Git 1.6.6 版本之前只有一个方式可用，十分简单并且通常是只读模式的。 Git 1.6.6 版本引入了一种新的、更智能的协议，让 Git 可以像通过 SSH 那样智能的协商和传输数据。一般称前者为<strong>哑 HTTP 协议</strong>，而后者为<strong>智能 HTTP协议</strong>。</p>
+<p>哑 HTTP 协议里 web 服务器仅把裸版本库当作普通文件来对待，提供文件服务。 只需要把一个裸版本库放在 HTTP 根目录，并设置一个叫做 post-update 的挂钩就可以。 </p>
+<p>智能 HTTP 的运行方式和 SSH 及 Git 协议类似，只是运行在标准的 HTTP/S 端口上并且可以使用各种 HTTP 验证机制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://example.com/gitproject.git</span><br></pre></td></tr></table></figure>
+<p>优点（智能 HTTP 协议）是可以像 SSH 协议一样安全而且验证方式更简单，也可以像 Git 协议那样支持匿名访问。而且运行在标准的 HTTP 端口上，更具有普适性。</p>
+<p>缺点是<a href="https://git-scm.com/book/zh/v2/服务器上的-Git-Smart-HTTP" target="_blank" rel="noopener">架设</a>一个Web服务相对于其他协议更为复杂一些。</p>
+<h5 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote [-v|--verbose]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认只列出所有远程仓库的名字。可使用<code>-v</code>或<code>--verbose</code>查看详情。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show &lt;remote_name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看远端仓库的详细情况。</li>
+</ul>
+<h5 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;remote_name&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="修改远程仓库名"><a href="#修改远程仓库名" class="headerlink" title="修改远程仓库名"></a>修改远程仓库名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rename &lt;old_name&gt; &lt;new_name&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="删除远程仓库"><a href="#删除远程仓库" class="headerlink" title="删除远程仓库"></a>删除远程仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove &lt;remote_name&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="拉去数据"><a href="#拉去数据" class="headerlink" title="拉去数据"></a>拉去数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch [&lt;remote_name&gt;] [&lt;branch_name&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认拉取远端仓库的所有分支的数据。</li>
+<li>只会将数据下载到你的本地仓库（不会自动合并或修改你当前的工作），需要手动合并。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull [&lt;remote_name&gt;] [&lt;branch_name&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>拉取远端仓库数据，并默认合并当前分支和其跟踪远程分支。有冲突时需手动解决。</li>
+</ul>
+<h5 id="推送数据"><a href="#推送数据" class="headerlink" title="推送数据"></a>推送数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [&lt;remote_name&gt;] [&lt;branch_name&gt;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>和远端仓库有跟踪关系时可不指定仓库和分支。</li>
+<li>默认是不会推送本地标签到远端。详见标签部分介绍。</li>
+<li><code>--all</code>推送所有分支。</li>
+<li><code>-f</code>强制推送（慎用）。</li>
+</ul>
+<h1 id="Git服务器"><a href="#Git服务器" class="headerlink" title="Git服务器"></a>Git服务器</h1><p>你可以选择自建一个Git服务器，也可以使用<a href="https://git.wiki.kernel.org/index.php/GitHosting" target="_blank" rel="noopener">代码托管服务</a>（<a href="https://git-scm.com/book/zh/v2/GitHub-%E8%B4%A6%E6%88%B7%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">GitHub</a>等）。</p>
+<h2 id="自建Git服务器"><a href="#自建Git服务器" class="headerlink" title="自建Git服务器"></a>自建Git服务器</h2><p>一个公共的Git仓库一般是裸仓库（没有工作区），因为它只是用来存放Git数据的，并不需要在其上进行代码提交。创建一个裸仓库可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare [&lt;project&gt;]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>仓库的文件夹名一般以<code>.git</code>结尾。</li>
+</ul>
+<p>因为SSH架设比较简单，所有一般自建Git服务器都会使用SSH进行通信。再结合操作系统的权限管理就可以满足基本的需求了。当然你也可以使用<a href="https://git-scm.com/book/zh/v2/服务器上的-Git-Git-守护进程" target="_blank" rel="noopener">Git协议</a>或者<a href="https://git-scm.com/book/zh/v2/服务器上的-Git-Smart-HTTP" target="_blank" rel="noopener">HTTP协议</a>通信。</p>
+<p>用户比较少的情况下，可以直接通过用户名和密码登陆。用户比较多的话就不现实了，这时可以创建一个公共的<code>git</code>用户，然后让需要写权限的人发送一个 SSH 公钥，再将其加入 git 账户的 <code>~/.ssh/authorized_keys</code> 文件。这样所有人都将通过 git 账户访问主机<br>。具体配置方法可参考<a href="https://git-scm.com/book/zh/v2/服务器上的-Git-配置服务器" target="_blank" rel="noopener">官方教程</a>。</p>
+<h4 id="SSH-密钥"><a href="#SSH-密钥" class="headerlink" title="SSH 密钥"></a>SSH 密钥</h4><p>默认情况下，用户的 SSH 密钥存储在其 <code>~/.ssh</code> 目录下。命名方式为<code>*id_dsa</code> 或 <code>*id_rsa</code>，其中<code>.pub</code> 扩展名的为公钥，另一个则为私钥（不要随意泄露）。</p>
+<p>SSH 认证的原理很简单，可以简单理解为：用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。</p>
+<h5 id="生成秘钥"><a href="#生成秘钥" class="headerlink" title="生成秘钥"></a>生成秘钥</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen [-t rsa] [-C &quot;youremail@example.com&quot;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-t</code>:密钥类型。默认生成用于SSH-2的RSA密钥。</li>
+<li><code>-C</code>:添加注释，可以用来标识密钥的用途或其他有用的信息。</li>
+<li>过程中还会提示输入私钥密码，如不需要可直接跳过。</li>
+<li>生成好的秘钥对会保存在默认路径下，或者通过<code>-f</code>指定也可以。</li>
+</ul>
+<h5 id="多秘钥管理"><a href="#多秘钥管理" class="headerlink" title="多秘钥管理"></a>多秘钥管理</h5><p>在生成多个秘钥时，要注意对之前的秘钥进行备份保存，防止覆盖丢失。</p>
+<p><code>~/.ssh/config</code>文件可以用来定义不同主机的配置。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host mygithub.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/worker_id-rsa</span><br></pre></td></tr></table></figure></p>
+<h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T &lt;host&gt;</span><br></pre></td></tr></table></figure>
+<p>如果你并不满足于命令行方式管理，想要架设一个Web端的管理工具。你可以使用Git原始的<a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-GitWeb" target="_blank" rel="noopener">GitWeb</a>工具，或者可以使用更现代的开源工具<a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-GitLab" target="_blank" rel="noopener">GitLab</a>架设。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Git官方文档</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>csniu</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://csniu.github.io/2020/02/12/版本控制-Git-入门/" title="版本控制-Git 入门">https://csniu.github.io/2020/02/12/版本控制-Git-入门/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/08/Python-开发环境/" rel="next" title="Python 开发环境">
+                <i class="fa fa-chevron-left"></i> Python 开发环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/28/Docker-Compose/" rel="prev" title="Docker Compose">
+                Docker Compose <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/my_avatar.jpg" alt="csniu">
+            
+              <p class="site-author-name" itemprop="name">csniu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/csniu" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:csniulv@aliyun.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看配置"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">查看配置:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加-修改配置："><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">添加/修改配置：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除配置："><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">删除配置：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#内部原理"><span class="nav-number">2.</span> <span class="nav-text">内部原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三种对象"><span class="nav-number">2.1.</span> <span class="nav-text">三种对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据对象（blob-object）"><span class="nav-number">2.1.1.</span> <span class="nav-text">数据对象（blob object）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建对象"><span class="nav-number">2.1.1.0.1.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询对象"><span class="nav-number">2.1.1.0.2.</span> <span class="nav-text">查询对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树对象（tree-object）"><span class="nav-number">2.1.2.</span> <span class="nav-text">树对象（tree object）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查询对象-1"><span class="nav-number">2.1.2.0.1.</span> <span class="nav-text">查询对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建对象-1"><span class="nav-number">2.1.2.0.2.</span> <span class="nav-text">创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#更新暂存区"><span class="nav-number">2.1.2.0.2.1.</span> <span class="nav-text">更新暂存区</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建树对象"><span class="nav-number">2.1.2.0.2.2.</span> <span class="nav-text">创建树对象</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交对象"><span class="nav-number">2.1.3.</span> <span class="nav-text">提交对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查询对象-2"><span class="nav-number">2.1.3.0.1.</span> <span class="nav-text">查询对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建对象-2"><span class="nav-number">2.1.3.0.2.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看历史提交信息"><span class="nav-number">2.1.3.0.3.</span> <span class="nav-text">查看历史提交信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">2.2.</span> <span class="nav-text">引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更新引用"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">更新引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看引用"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">查看引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">创建新分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEAD-引用"><span class="nav-number">2.2.1.</span> <span class="nav-text">HEAD 引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签引用"><span class="nav-number">2.2.2.</span> <span class="nav-text">标签引用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#轻量标签"><span class="nav-number">2.2.2.0.1.</span> <span class="nav-text">轻量标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#附注标签"><span class="nav-number">2.2.2.0.2.</span> <span class="nav-text">附注标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程引用（remote-reference）"><span class="nav-number">2.2.3.</span> <span class="nav-text">远程引用（remote reference）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包文件"><span class="nav-number">2.3.</span> <span class="nav-text">包文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打包"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看打包的对象"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">查看打包的对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本使用"><span class="nav-number">3.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取仓库"><span class="nav-number">3.1.</span> <span class="nav-text">获取仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地初始化初始化"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">本地初始化初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远端克隆"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">远端克隆</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作区"><span class="nav-number">3.2.</span> <span class="nav-text">工作区</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看当前工作区状态"><span class="nav-number">3.2.0.0.1.</span> <span class="nav-text">查看当前工作区状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#建立跟踪-添加到暂存区"><span class="nav-number">3.2.0.0.2.</span> <span class="nav-text">建立跟踪/添加到暂存区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#忽略文件"><span class="nav-number">3.2.0.0.3.</span> <span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#取消跟踪-删除文件"><span class="nav-number">3.2.0.0.4.</span> <span class="nav-text">取消跟踪/删除文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#撤销修改"><span class="nav-number">3.2.0.0.5.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看已修改但未暂存的内容"><span class="nav-number">3.2.0.0.6.</span> <span class="nav-text">查看已修改但未暂存的内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重命名文件"><span class="nav-number">3.2.0.0.7.</span> <span class="nav-text">重命名文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保存工作区"><span class="nav-number">3.2.0.0.8.</span> <span class="nav-text">保存工作区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接提交"><span class="nav-number">3.2.0.0.9.</span> <span class="nav-text">直接提交</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暂存区"><span class="nav-number">3.3.</span> <span class="nav-text">暂存区</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#提交暂存区"><span class="nav-number">3.3.0.0.1.</span> <span class="nav-text">提交暂存区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看历史提交"><span class="nav-number">3.3.0.0.2.</span> <span class="nav-text">查看历史提交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#取消暂存"><span class="nav-number">3.3.0.0.3.</span> <span class="nav-text">取消暂存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git仓库"><span class="nav-number">3.4.</span> <span class="nav-text">Git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标签"><span class="nav-number">3.4.1.</span> <span class="nav-text">标签</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看仓库书签"><span class="nav-number">3.4.1.0.1.</span> <span class="nav-text">查看仓库书签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建标签"><span class="nav-number">3.4.1.0.2.</span> <span class="nav-text">创建标签</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#轻量标签-1"><span class="nav-number">3.4.1.0.2.1.</span> <span class="nav-text">轻量标签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#附注标签-1"><span class="nav-number">3.4.1.0.2.2.</span> <span class="nav-text">附注标签</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#共享标签"><span class="nav-number">3.4.1.0.3.</span> <span class="nav-text">共享标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除本地标签"><span class="nav-number">3.4.1.0.4.</span> <span class="nav-text">删除本地标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#切换到标签状态"><span class="nav-number">3.4.1.0.5.</span> <span class="nav-text">切换到标签状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支"><span class="nav-number">3.4.2.</span> <span class="nav-text">分支</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建分支"><span class="nav-number">3.4.2.0.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除分支"><span class="nav-number">3.4.2.0.2.</span> <span class="nav-text">删除分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#切换分支"><span class="nav-number">3.4.2.0.3.</span> <span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并分支"><span class="nav-number">3.4.2.0.4.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变基操作"><span class="nav-number">3.4.2.0.5.</span> <span class="nav-text">变基操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#分支合并"><span class="nav-number">3.4.2.0.5.1.</span> <span class="nav-text">分支合并</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#变基"><span class="nav-number">3.4.2.0.5.2.</span> <span class="nav-text">变基</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">3.5.</span> <span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通信协议"><span class="nav-number">3.5.1.</span> <span class="nav-text">通信协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地协议（File协议）"><span class="nav-number">3.5.1.1.</span> <span class="nav-text">本地协议（File协议）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH协议"><span class="nav-number">3.5.1.2.</span> <span class="nav-text">SSH协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git协议"><span class="nav-number">3.5.1.3.</span> <span class="nav-text">Git协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-HTTPS协议"><span class="nav-number">3.5.1.4.</span> <span class="nav-text">HTTP/HTTPS协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看远程仓库"><span class="nav-number">3.5.1.4.1.</span> <span class="nav-text">查看远程仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">3.5.1.4.2.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改远程仓库名"><span class="nav-number">3.5.1.4.3.</span> <span class="nav-text">修改远程仓库名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除远程仓库"><span class="nav-number">3.5.1.4.4.</span> <span class="nav-text">删除远程仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#拉去数据"><span class="nav-number">3.5.1.4.5.</span> <span class="nav-text">拉去数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#推送数据"><span class="nav-number">3.5.1.4.6.</span> <span class="nav-text">推送数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git服务器"><span class="nav-number">4.</span> <span class="nav-text">Git服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自建Git服务器"><span class="nav-number">4.1.</span> <span class="nav-text">自建Git服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH-密钥"><span class="nav-number">4.1.0.1.</span> <span class="nav-text">SSH 密钥</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#生成秘钥"><span class="nav-number">4.1.0.1.1.</span> <span class="nav-text">生成秘钥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多秘钥管理"><span class="nav-number">4.1.0.1.2.</span> <span class="nav-text">多秘钥管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测试"><span class="nav-number">4.1.0.1.3.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">csniu</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://csniu.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://csniu.github.io/2020/02/12/版本控制-Git-入门/';
+        this.page.identifier = '2020/02/12/版本控制-Git-入门/';
+        this.page.title = '版本控制-Git 入门';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://csniu.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>
