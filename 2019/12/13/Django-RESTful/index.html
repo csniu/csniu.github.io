@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="RESTful 框架 RESTful框架是一种 Web 框架的设计规范，而不是标准。 REST  是 Representational State Transfer 的缩写，翻译为“(资源的)表现层状态转化”。 资源：就是网络上的一个实体，可以是一段文本，一张图片等等。每种资源都对应一个特定的URL（统一资源定位符）。 表现层：资源的表现形式，可以是 XML、JSON、HTML等格式。 URL只代">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-24T09:05:42.000Z">
+<meta property="og:updated_time" content="2020-06-24T09:10:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django RESTful">
 <meta name="twitter:description" content="RESTful 框架 RESTful框架是一种 Web 框架的设计规范，而不是标准。 REST  是 Representational State Transfer 的缩写，翻译为“(资源的)表现层状态转化”。 资源：就是网络上的一个实体，可以是一段文本，一张图片等等。每种资源都对应一个特定的URL（统一资源定位符）。 表现层：资源的表现形式，可以是 XML、JSON、HTML等格式。 URL只代">
@@ -808,7 +808,7 @@ serializer_class`属性值。
     serializer = UserSerializer(user)
     return Response(serializer.data)
 </code></pre><pre><code>没有定义`get()`方法也就不能响应`get`请求，但是可通过`actions`参数将`list()`绑定到`get()`方法上。如源码中定义：
-</code></pre><h1 id="ViewSetMixin-as-view"><a href="#ViewSetMixin-as-view" class="headerlink" title="ViewSetMixin.as_view()"></a>ViewSetMixin.as_view()</h1><p>for method, action in actions.items():<br>    handler = getattr(self, action)<br>    setattr(self, method, handler)</p>
+</code></pre><p># ViewSetMixin.as_view()<br>for method, action in actions.items():<br>    handler = getattr(self, action)<br>    setattr(self, method, handler)</p>
 <pre><code>配置如下：
 </code></pre><p>user_list = UserViewSet.as_view({‘get’: ‘list’})</p>
 <pre><code>- 当然一般不需要我们这样手动配置，而是结合 `Routers` 自动生成。
@@ -904,8 +904,8 @@ https://www.django-rest-framework.org/api-guide/format-suffixes/)修改路由
 上面的方法会使所有的请求都分页，这可能并不是我们想要的。
 可以通过自定义分页类来实现局部的分页。
 </code></pre><p>from rest_framework.pagination import PageNumberPagination</p>
-<h1 id="自定义分页类"><a href="#自定义分页类" class="headerlink" title="自定义分页类"></a>自定义分页类</h1><p>class SnippetPagination(PageNumberPagination):<br>    page_size = 1<br>    page_size_query_param = “page_size”<br>    page_query_param = “p”#?p=1，默认为page<br>    max_page_size = 20</p>
-<h1 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h1><p>class SnippetDetail(mixins.RetrieveModelMixin,<br>                    mixins.UpdateModelMixin,<br>                    mixins.DestroyModelMixin,<br>                    generics.GenericAPIView):<br>    queryset = Snippet.objects.all()<br>    serializer_class = SnippetSerializer<br>    pagination_class = SnippetPagination  # 指定分页类<br>    …</p>
+<p># 自定义分页类<br>class SnippetPagination(PageNumberPagination):<br>    page_size = 1<br>    page_size_query_param = “page_size”<br>    page_query_param = “p”#?p=1，默认为page<br>    max_page_size = 20</p>
+<p># 修改<br>class SnippetDetail(mixins.RetrieveModelMixin,<br>                    mixins.UpdateModelMixin,<br>                    mixins.DestroyModelMixin,<br>                    generics.GenericAPIView):<br>    queryset = Snippet.objects.all()<br>    serializer_class = SnippetSerializer<br>    pagination_class = SnippetPagination  # 指定分页类<br>    …</p>
 <pre><code>
 ### [过滤与排序（查询集）](https://www.django-rest-framework.org/api-guide/filtering/)
 列表视图默认是返回模型的全部数据，如果需要限制数据可以直接复写视图类的`get_queryset()`方法即可。
@@ -1321,7 +1321,7 @@ throttle_scope`属性值的方案。
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RESTful-框架"><span class="nav-number">1.</span> <span class="nav-text">RESTful 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-中-RESTful-API-实现"><span class="nav-number">1.1.</span> <span class="nav-text">Django 中 RESTful API 实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-REST-framework（DRF）"><span class="nav-number">2.</span> <span class="nav-text">Django REST framework（DRF）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置"><span class="nav-number">2.1.</span> <span class="nav-text">安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewSetMixin-as-view"><span class="nav-number">3.</span> <span class="nav-text">ViewSetMixin.as_view()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义分页类"><span class="nav-number">4.</span> <span class="nav-text">自定义分页类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改"><span class="nav-number">5.</span> <span class="nav-text">修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另外-DRF-内置了如下过滤器-需添加到filter-backends中使用"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">另外 DRF 内置了如下过滤器(需添加到filter_backends中使用)</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#身份认证"><span class="nav-number">5.1.</span> <span class="nav-text">身份认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域访问"><span class="nav-number">5.2.</span> <span class="nav-text">跨域访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.3.</span> <span class="nav-text">参考</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RESTful-框架"><span class="nav-number">1.</span> <span class="nav-text">RESTful 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-中-RESTful-API-实现"><span class="nav-number">1.1.</span> <span class="nav-text">Django 中 RESTful API 实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-REST-framework（DRF）"><span class="nav-number">2.</span> <span class="nav-text">Django REST framework（DRF）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置"><span class="nav-number">2.1.</span> <span class="nav-text">安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另外-DRF-内置了如下过滤器-需添加到filter-backends中使用"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">另外 DRF 内置了如下过滤器(需添加到filter_backends中使用)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#身份认证"><span class="nav-number">2.2.</span> <span class="nav-text">身份认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域访问"><span class="nav-number">2.3.</span> <span class="nav-text">跨域访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
