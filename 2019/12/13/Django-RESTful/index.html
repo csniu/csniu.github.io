@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="RESTful 框架 RESTful框架是一种 Web 框架的设计规范，而不是标准。 REST  是 Representational State Transfer 的缩写，翻译为“(资源的)表现层状态转化”。 资源：就是网络上的一个实体，可以是一段文本，一张图片等等。每种资源都对应一个特定的URL（统一资源定位符）。 表现层：资源的表现形式，可以是 XML、JSON、HTML等格式。 URL只代">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-24T08:53:41.000Z">
+<meta property="og:updated_time" content="2020-06-24T08:57:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django RESTful">
 <meta name="twitter:description" content="RESTful 框架 RESTful框架是一种 Web 框架的设计规范，而不是标准。 REST  是 Representational State Transfer 的缩写，翻译为“(资源的)表现层状态转化”。 资源：就是网络上的一个实体，可以是一段文本，一张图片等等。每种资源都对应一个特定的URL（统一资源定位符）。 表现层：资源的表现形式，可以是 XML、JSON、HTML等格式。 URL只代">
@@ -464,60 +464,98 @@
 <li>URL 中加入版本号</li>
 </ul>
 </li>
-<li>使用HTTP方法操作资源<br><code>`</code><br>HEAD：只获取资源的头部信息，如修改时间等。<br>GET: 获取资源，只是查询不修改资源。<br>POST：创建新的资源。<br>PUT： 更新资源的全部属性。需传递所有属性值，即使没有。<br>PATCH：更新资源的部分属性。PATCH比较新且比较复杂，一般使用POST代替。<br>DELETE：删除资源。</li>
+<li>使用HTTP方法操作资源<ul>
+<li>HEAD：只获取资源的头部信息，如修改时间等。</li>
+<li>GET: 获取资源，只是查询不修改资源。</li>
+<li>POST：创建新的资源。</li>
+<li>PUT： 更新资源的全部属性。需传递所有属性值，即使没有。</li>
+<li>PATCH：更新资源的部分属性。PATCH比较新且比较复杂，一般使用POST代替。</li>
+<li>DELETE：删除资源。</li>
+</ul>
+</li>
 </ul>
 <p>更新和创建返回最新的资源，删除不返回内容。<br>对于仅支持GET、POST方法的客户端，可以使用POST方法加头部信息模仿其他方法</p>
-<pre><code>|     |GET  |POST |PUT  |DELETE|
-| --- | --- | --- | --- | ---  |
-|/employees  |获取集合的所有资源  |创建一个新的资源  |批量更新  |删除所有  |
-|/employees/1  |获取具体资源  |错误  |更新  |删除  |
-
-- 可选、复杂的参数使用查询字符串（？）
-- 返回状态码+头部文件+详细信息
-</code></pre><p>200 : 一般性的成功，不能用于错误返回<br>201： 资源创建成功<br>202：异步操作，表示已搜到当未处理</p>
-<p>400： 一般性的失败<br>401：身份验证失败<br>403：非验证性资源访问被禁止<br>404：资源不存在<br>405：HTTP方法不支持<br>406：请求数据格式不支持</p>
-<p>500： 服务端错误</p>
-<pre><code>- 数据字段使用JavaScript命名规范（小写驼峰命名:yearOfBirth）
-- 使用分页，而不是返回所有资源
-- 限流（rate limit）
-
-
-详情请参考[&quot;理解RESTful架构( 阮一峰)&quot;](https://www.ruanyifeng.com/blog/2011/09/restful.html)、[&quot;RESTful API 最佳实践(阮一峰)&quot;](http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)、[RESTful架构](https://www.cnblogs.com/zhangxinglong/p/11113235.html)
-
-
-
-## Django 中 RESTful API 实现
-Django REST framework 是 Django 的一个第三方插件，用于快速开发 RESTful API。
-具有一下特点：
-- 自动生成网站API文档；
-- 提供了定义序列化器Serializer的方法，可以快速根据 Django ORM 或者其它库自动序列化/反序列化；
-- Authentication（身份认证）：快速实现支持Auth1、Auth2方式的权限验证。
-- 提供了丰富的类视图、Mixin扩展类：简化视图的编写；
-- 内置了限流系统；
-- Request and Response（请求与响应）：扩展了常规的HttpResquest和TemplateResponse；
-- ViewSet and Routers（视图集和路由）：让路由设置更简便；
-
-详情见官方文档[地址](https://www.django-rest-framework.org/)。
-
-# Django REST framework（DRF）
-
-## 安装配置
-
-### 安装
-</code></pre><p>pip install djangorestframework</p>
-<pre><code>如需要其他功能，需令行安装，如：
-</code></pre><p>pip install markdown  # browsable API<br>pip install django-filter # 数据过滤</p>
-<pre><code>
-### 配置
-- 直接在 django 项目的 settings.py 中注册 app 即可：
-</code></pre><p>INSTALLED_APPS = [<br>    ‘rest_framework’<br>]</p>
-<pre><code>- app 的配置信息都保存在项目的`settings.py`模块中的`REST_FRAMEWORK`字典中：
-</code></pre><p>REST_FRAMEWORK = {<br>    ‘DEFAULT_PERMISSION_CLASSES’: [<br>        ‘rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly’<br>    ]<br>}</p>
-<pre><code>- app  还提供了内置视图，只需将其添加到项目的路由中即可使用：
-</code></pre><p>from django.contrib import admin<br>from django.urls import path, include, re_path<br>from django.conf.urls import include, url<br>from rest_framework.documentation import include_docs_urls</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET</th>
+<th>POST</th>
+<th>PUT</th>
+<th>DELETE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/employees</td>
+<td>获取集合的所有资源</td>
+<td>创建一个新的资源</td>
+<td>批量更新</td>
+<td>删除所有</td>
+</tr>
+<tr>
+<td>/employees/1</td>
+<td>获取具体资源</td>
+<td>错误</td>
+<td>更新</td>
+<td>删除</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>可选、复杂的参数使用查询字符串（？）</li>
+<li><p>返回状态码+头部文件+详细信息</p>
+<ul>
+<li>200 : 一般性的成功，不能用于错误返回</li>
+<li>201： 资源创建成功</li>
+<li>202：异步操作，表示已搜到当未处理</li>
+<li>400： 一般性的失败</li>
+<li>401：身份验证失败</li>
+<li>403：非验证性资源访问被禁止</li>
+<li>404：资源不存在</li>
+<li>405：HTTP方法不支持</li>
+<li>406：请求数据格式不支持</li>
+<li>500： 服务端错误</li>
+</ul>
+</li>
+<li><p>数据字段使用JavaScript命名规范（小写驼峰命名:yearOfBirth）</p>
+</li>
+<li>使用分页，而不是返回所有资源</li>
+<li>限流（rate limit）</li>
+</ul>
+<p>详情请参考<a href="https://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="noopener">“理解RESTful架构( 阮一峰)”</a>、<a href="http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html" target="_blank" rel="noopener">“RESTful API 最佳实践(阮一峰)”</a>、<a href="https://www.cnblogs.com/zhangxinglong/p/11113235.html" target="_blank" rel="noopener">RESTful架构</a></p>
+<h2 id="Django-中-RESTful-API-实现"><a href="#Django-中-RESTful-API-实现" class="headerlink" title="Django 中 RESTful API 实现"></a>Django 中 RESTful API 实现</h2><p>Django REST framework 是 Django 的一个第三方插件，用于快速开发 RESTful API。<br>具有一下特点：</p>
+<ul>
+<li>自动生成网站API文档；</li>
+<li>提供了定义序列化器Serializer的方法，可以快速根据 Django ORM 或者其它库自动序列化/反序列化；</li>
+<li>Authentication（身份认证）：快速实现支持Auth1、Auth2方式的权限验证。</li>
+<li>提供了丰富的类视图、Mixin扩展类：简化视图的编写；</li>
+<li>内置了限流系统；</li>
+<li>Request and Response（请求与响应）：扩展了常规的HttpResquest和TemplateResponse；</li>
+<li>ViewSet and Routers（视图集和路由）：让路由设置更简便；</li>
+</ul>
+<p>详情见官方文档<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener">地址</a>。</p>
+<h1 id="Django-REST-framework（DRF）"><a href="#Django-REST-framework（DRF）" class="headerlink" title="Django REST framework（DRF）"></a>Django REST framework（DRF）</h1><h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>pip install djangorestframework
+</code></pre><p>如需要其他功能，需令行安装，如：</p>
+<pre><code>pip install markdown  # browsable API
+pip install django-filter # 数据过滤
+</code></pre><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li>直接在 django 项目的 settings.py 中注册 app 即可：<pre><code>INSTALLED_APPS = [
+  &apos;rest_framework&apos;
+]
+</code></pre></li>
+<li>app 的配置信息都保存在项目的<code>settings.py</code>模块中的<code>REST_FRAMEWORK</code>字典中：<pre><code>REST_FRAMEWORK = {
+  &apos;DEFAULT_PERMISSION_CLASSES&apos;: [
+      &apos;rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly&apos;
+  ]
+}
+</code></pre></li>
+<li>app  还提供了内置视图，只需将其添加到项目的路由中即可使用：<br><code>`</code><br>from django.contrib import admin<br>from django.urls import path, include, re_path<br>from django.conf.urls import include, url<br>from rest_framework.documentation import include_docs_urls</li>
+</ul>
 <p>urlpatterns = [<br>    path(‘admin/‘, admin.site.urls),<br>    path(‘docs/‘, include_docs_urls(title=”这是标题”)),  # 文档（自动生成）<br>    url(r’^api-auth/‘, include(‘rest_framework.urls’))</p>
 <pre><code># re_path(r&apos;^api-auth/&apos;, include(&apos;rest_framework.urls&apos;))  # 2.x 版本推荐写法
-</code></pre><pre><code>`python manage.py runserver` 启动服务即可访问：
+</code></pre><pre><code>
+`python manage.py runserver` 启动服务即可访问：
 - `http://127.0.0.1:8000/api-auth/login/`: 登录
 - `http://127.0.0.1:8000/docs/`：API文档
 - `http://127.0.0.1:8000/admin/`：django 后台
@@ -1283,7 +1321,7 @@ throttle_scope`属性值的方案。
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RESTful-框架"><span class="nav-number">1.</span> <span class="nav-text">RESTful 框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewSetMixin-as-view"><span class="nav-number">2.</span> <span class="nav-text">ViewSetMixin.as_view()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义分页类"><span class="nav-number">3.</span> <span class="nav-text">自定义分页类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改"><span class="nav-number">4.</span> <span class="nav-text">修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另外-DRF-内置了如下过滤器-需添加到filter-backends中使用"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">另外 DRF 内置了如下过滤器(需添加到filter_backends中使用)</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#身份认证"><span class="nav-number">4.1.</span> <span class="nav-text">身份认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域访问"><span class="nav-number">4.2.</span> <span class="nav-text">跨域访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.3.</span> <span class="nav-text">参考</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RESTful-框架"><span class="nav-number">1.</span> <span class="nav-text">RESTful 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-中-RESTful-API-实现"><span class="nav-number">1.1.</span> <span class="nav-text">Django 中 RESTful API 实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-REST-framework（DRF）"><span class="nav-number">2.</span> <span class="nav-text">Django REST framework（DRF）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置"><span class="nav-number">2.1.</span> <span class="nav-text">安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewSetMixin-as-view"><span class="nav-number">3.</span> <span class="nav-text">ViewSetMixin.as_view()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义分页类"><span class="nav-number">4.</span> <span class="nav-text">自定义分页类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改"><span class="nav-number">5.</span> <span class="nav-text">修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另外-DRF-内置了如下过滤器-需添加到filter-backends中使用"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">另外 DRF 内置了如下过滤器(需添加到filter_backends中使用)</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#身份认证"><span class="nav-number">5.1.</span> <span class="nav-text">身份认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域访问"><span class="nav-number">5.2.</span> <span class="nav-text">跨域访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.3.</span> <span class="nav-text">参考</span></a></li></div>
             
 
           </div>
