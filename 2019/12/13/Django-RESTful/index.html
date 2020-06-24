@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="李大宝的包子">
 <meta property="og:description" content="RESTful 框架 RESTful框架是一种 Web 框架的设计规范，而不是标准。 REST  是 Representational State Transfer 的缩写，翻译为“(资源的)表现层状态转化”。 资源：就是网络上的一个实体，可以是一段文本，一张图片等等。每种资源都对应一个特定的URL（统一资源定位符）。 表现层：资源的表现形式，可以是 XML、JSON、HTML等格式。 URL只代">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-24T08:57:49.000Z">
+<meta property="og:updated_time" content="2020-06-24T09:05:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django RESTful">
 <meta name="twitter:description" content="RESTful 框架 RESTful框架是一种 Web 框架的设计规范，而不是标准。 REST  是 Representational State Transfer 的缩写，翻译为“(资源的)表现层状态转化”。 资源：就是网络上的一个实体，可以是一段文本，一张图片等等。每种资源都对应一个特定的URL（统一资源定位符）。 表现层：资源的表现形式，可以是 XML、JSON、HTML等格式。 URL只代">
@@ -555,7 +555,7 @@ pip install django-filter # 数据过滤
 <p>urlpatterns = [<br>    path(‘admin/‘, admin.site.urls),<br>    path(‘docs/‘, include_docs_urls(title=”这是标题”)),  # 文档（自动生成）<br>    url(r’^api-auth/‘, include(‘rest_framework.urls’))</p>
 <pre><code># re_path(r&apos;^api-auth/&apos;, include(&apos;rest_framework.urls&apos;))  # 2.x 版本推荐写法
 </code></pre><pre><code>
-`python manage.py runserver` 启动服务即可访问：
+python manage.py runserver 启动服务即可访问：
 - `http://127.0.0.1:8000/api-auth/login/`: 登录
 - `http://127.0.0.1:8000/docs/`：API文档
 - `http://127.0.0.1:8000/admin/`：django 后台
@@ -574,7 +574,7 @@ BaseSerializer: 继承于 `rest_framework.fields.Field`， 同时也是其他序
     - save: 将验证后的数据保存到对象实例中。（create、update）
     - to_representation():  重写此方法来改变读取操作的序列化结果。
     - to_internal_value():  重写此方法来改变写入操作的序列化结果。
-    - create() 和 .update(): 重写其中一个或两个来改变保存实例时的动作。
+    - create() 和 update(): 重写其中一个或两个来改变保存实例时的动作。
 
 实例化参数：
 - instance： 可选，数据模型实例。
@@ -772,13 +772,13 @@ def delete(self, request, pk, format=None):  # DELETE
 - `get_serializer_class(self)`：过滤`queryset`方法一个新的`queryset`集合。默认`
 serializer_class`属性值。
 - 钩子方法：
-        - `perform_create(self, serializer)`： 在保存新对象实例时由 `CreateModelMixin` 调用。
-        - `perform_update(self, serializer)`： 在保存现有对象实例时由 UpdateModelMixin 调用。
-        - `perform_destroy(self, instance)`： 在删除对象实例时由 `DestroyModelMixin` 调用。
+        - `perform_create(self, serializer)`： 在保存新对象实例时由`CreateModelMixin`调用。
+        - `perform_update(self, serializer)`： 在保存现有对象实例时由`UpdateModelMixin`调用。
+        - `perform_destroy(self, instance)`： 在删除对象实例时由`DestroyModelMixin`调用。
 - 其他方法
-    - `get_serializer_context()`： 返回包含应该提供给序列化程序的任何额外上下文的字典。默认包含 &apos;request&apos;, &apos;view&apos; 和 &apos;format&apos; 这些keys。
+    - `get_serializer_context()`： 返回包含应该提供给序列化程序的任何额外上下文的字典。默认包含`request`,`view`和`format` 这些keys。
     - `get_serializer()`： 返回一个序列化器的实例。
-    - `get_paginated_response()`: 返回分页样式的 Response 对象。
+    - `get_paginated_response()`: 返回分页样式的`Response`对象。
     - `paginate_queryset()`: 如果需要分页查询，返回页面对象，如果没有为此视图配置分页，则返回 None。
     - `filter_queryset()`: 给定查询集，使用任何过滤器后端进行过滤，返回一个新的查询集。
 
